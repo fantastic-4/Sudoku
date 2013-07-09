@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<SUDOKO>
+  <Configuration>
+    <solver_output_type>Console</solver_output_type>
+    <default_algorithm>A</default_algorithm>
+    <difficulty_levels type="level">Easy</difficulty_levels>
+  </Configuration>
+</SUDOKO>
