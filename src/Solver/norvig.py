@@ -54,12 +54,11 @@ class Norvig (Solve_Algorithm):
     
 ################ Solve ################
     def solve(self,gridA):        
-        self.grid.raw_grid = gridA
         if self.validate.validate_values(gridA):
 
             return self.__search__(self.__grid_to_dict__(gridA))
         else: 
-            print "The grid is not valid-----"
+            print "The grid is not valid"
  
 ################ __search__ ################   
     def __search__(self,values):
