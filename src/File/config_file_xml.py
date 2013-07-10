@@ -4,15 +4,14 @@ from xml.dom import minidom
 from xml.dom.minidom import parse
 
 class Xml_file(Config_file):
-    """doc string for xml_file"""
+    """method to start the attributes for xml_file"""
     def __init__(self, name,path):
         Config_file.__init__(self, name, path)
         self.file_path=self.path+self.name+".xml"
+        """Create the xml configuration file when it does not exist"""
         if not os.path.isfile("../File/xml_config_file"):
             self._create_xml_config_file()
-        
         self.doc_xml=parse(self.file_path)
-        #self.implementacion_DOM = minidom.getDOMImplementation() # Create object DOM
         
     """Creating a xml file if it doesn't exist then the xml file is created"""    
     def _create_xml_config_file(self):
@@ -36,13 +35,14 @@ class Xml_file(Config_file):
         xml_file.close()
         return self.file_path
 
-    """Read the solver output type, default algorithm and difficulty levels from a xml file"""
+    """Read the default solver output type, algorithm and difficulty levels from the xml configuration file"""
 
     def get_xml_value(self, tag_name):
         for n in self.doc_xml.getElementsByTagName(tag_name):
             value= n.firstChild.data
         return value
     
+    """Modify the default solver output type, algorithm and difficulty levels from the xml configuration file"""
     def set_xml_value(self, new_value, tag_name):
         node = self.doc_xml.getElementsByTagName(tag_name)
         node[0].firstChild.nodeValue = new_value
@@ -50,8 +50,10 @@ class Xml_file(Config_file):
         self.doc_xml.writexml(xml_file, encoding='utf-8')
         xml_file.close()
         return node[0].firstChild.nodeValue
-        
+    
+    """Add a element to the xml configuration file"""   
     def add_element(self, xml_document, element, value):
         element_added = xml_document.createElement(element)
         element_added.appendChild(xml_document.createTextNode(value))
         return element_added
+    
