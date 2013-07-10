@@ -1,5 +1,5 @@
 import unittest
-from File.config_file import Xml_file
+from File.config_file_xml import Xml_file
 
 class Test_XML_config_file(unittest.TestCase):
 
