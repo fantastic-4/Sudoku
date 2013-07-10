@@ -8,5 +8,7 @@ class Validate:
         chars = [c for c in grid if c in self.digits or c in '0.']
         if len(chars) == 81:
             return True
-        else: return False
+        else:
+            return False
+        
         
