@@ -22,30 +22,37 @@ class Test_integration_using_norvig(unittest.TestCase):
         name="To_read_sudoku_easy.txt"
         txtfile=TXT_File(self.path,name)
         other_grid=self.norvig.solve(txtfile.read_file())
+        txtfile.file_name="Sudoku_norvig_easy_solved.txt"
+        txtfile.output_file(other_grid)
         self.assertEqual(self.grid_expected,other_grid)
-        print self.grid.display(other_grid)
+        #print self.grid.display(other_grid)
   
     def test_resolve_string_from_file_using_brute_easy(self):
         name="To_read_sudoku_easy.txt"
         txtfile=TXT_File(self.path,name)
         other_grid=self.brute.solve(txtfile.read_file())
+        txtfile.file_name="Sudoku_brute_easy_solved.txt"
+        txtfile.output_file(other_grid)
         self.assertEqual(self.grid_expected,other_grid)
-        print self.grid.display(other_grid)
- 
- 
+        #print self.grid.display(other_grid)#  
+
     def test_resolve_string_from_file_using_norvig_hard(self):
         name="To_read_sudoku_hard.txt"
         txtfile=TXT_File(self.path,name)
         other_grid=self.norvig.solve(txtfile.read_file())
+        txtfile.file_name="Sudoku_norvig_hard_solved.txt"
+        txtfile.output_file(other_grid)
         self.assertEqual(self.expected_grid_hard,other_grid)
-        print self.grid.display(other_grid)
+        #print self.grid.display(other_grid)#  
 
 #     def test_resolve_string_from_file_using_brute_hard(self):
 #         name="To_read_sudoku_hard.txt"
 #         txtfile=TXT_File(self.path,name)
 #         other_grid=self.brute.solve(txtfile.read_file())
+#         txtfile.file_name="Sudoku_brute_hard_solved.txt"
+#         txtfile.output_file(other_grid)
 #         self.assertEqual(self.expected_grid_hard,other_grid)
-#         print self.grid.display(other_grid)
+        #print self.grid.display(other_grid)#  
 
 
 if __name__ == "__main__":
