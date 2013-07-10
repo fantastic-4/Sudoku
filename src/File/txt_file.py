@@ -43,7 +43,7 @@ class TXT_File(File):
 
     '''this method save the file in named file inserted'''
     def output_file(self, values):
-        self.file_name="Solved_sudoku.txt"
+        #self.file_name="Solved_sudoku.txt"
         value_return=""
         value_return+=self.__add_enter_in_line__(values)+"\n\n"+self.grid.display(values)
         self.create_file(value_return)

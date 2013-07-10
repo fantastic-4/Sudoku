@@ -12,4 +12,4 @@ class Validate:
         if len(chars) == 81 and len(full_line)==len(chars):
             return True
         else:
-            return False
+            return False            

@@ -12,6 +12,7 @@ class File:
        Return file opened.'''
     def open_file(self):
         file_to_open = None
+        self.clean_path()
         try:
             file_to_open = open(self.path + "\\" + self.file_name,"r")
         except IOError:
@@ -27,3 +28,8 @@ class File:
         file_to_write = open(self.path + "\\" + self.file_name,"w")
         file_to_write.write(text_to_be_written)
         self.__close_file__(file_to_write)
+        
+    def clean_path(self):
+        if(self.path[len(self.path)-1] == "\\"):
+            self.path = self.path[0:len(self.path)-1]
+            self.clean_path()    

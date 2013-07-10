@@ -29,8 +29,8 @@ class Norvig (Solve_Algorithm):
             return False
         
     def __eliminate__(self,values, s, d):
-        """eliminate d from values[s]; propagate when values or places <= 2.
-        Return values, except return False if a contradiction is detected."""
+        '''eliminate d from values[s]; propagate when values or places <= 2.
+        Return values, except return False if a contradiction is detected.'''
         if d not in values[s]:
             return values ## Already __eliminate__d
         values[s] = values[s].replace(d,'')
@@ -53,16 +53,15 @@ class Norvig (Solve_Algorithm):
         return values
     
 ################ Solve ################
-    def solve(self,gridA):        
+    def solve(self,gridA): 
+        '''verify if the grid is correct then call to search and transform the grid to dict'''
         if self.validate.validate_values(gridA):
-
             return self.__search__(self.__grid_to_dict__(gridA))
         else: 
             print "The grid is not valid"
- 
 ################ __search__ ################   
     def __search__(self,values):
-        "Using depth-first __search__ and propagation, try all possible values."
+        '''Using depth-first __search__ and propagation, try all possible values.'''
         if values is False:
             return False ## Failed earlier
         if all(len(values[s]) == 1 for s in self.grid.squares):
@@ -74,7 +73,7 @@ class Norvig (Solve_Algorithm):
       
     
     def __return_some_value__(self,seq):
-        "Return __return_some_value__ element of seq that is true."
+        '''Return __return_some_value__ element of seq that is true.'''
         for e in seq:
             if e: return e
         return False
