@@ -1,4 +1,3 @@
-from Main.grid import Grid
 from Solver.solve_algorithm import Solve_Algorithm
 
 class Brute (Solve_Algorithm):
