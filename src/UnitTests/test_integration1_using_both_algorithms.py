@@ -20,7 +20,7 @@ class Test_integration_using_norvig(unittest.TestCase):
 
     def test_resolve_string_from_file_using_norvig_easy(self):
         self.name="To_read_sudoku_easy.txt"
-        self.path= "C:\\eclipse\\workspace\\Sudoku\\src\\UnitTests"
+        self.path= "..\UnitTests"
         self.txtfile=TXT_File(self.path,self.name)
         self.iofile_easy=self.txtfile.read_file()
         val=self.iofile_easy
@@ -30,7 +30,7 @@ class Test_integration_using_norvig(unittest.TestCase):
   
     def test_resolve_string_from_file_using_brute_easy(self):
         self.name="To_read_sudoku_easy.txt"
-        self.path= "C:\\eclipse\\workspace\\Sudoku\\src\\UnitTests"
+        self.path= "..\UnitTests"
         self.txtfile=TXT_File(self.path,self.name)
         self.iofile_easy=self.txtfile.read_file()
         val=self.iofile_easy
@@ -41,7 +41,7 @@ class Test_integration_using_norvig(unittest.TestCase):
  
     def test_resolve_string_from_file_using_norvig_hard(self):
         self.name="To_read_sudoku_hard.txt"
-        self.path= "C:\\eclipse\\workspace\\Sudoku\\src\\UnitTests"
+        self.path= "..\UnitTests"
         self.txtfile=TXT_File(self.path,self.name)
         self.iofile_easy=self.txtfile.read_file()
         val=self.iofile_easy
@@ -51,7 +51,7 @@ class Test_integration_using_norvig(unittest.TestCase):
 
 #     def test_resolve_string_from_file_using_brute_hard(self):
 #         self.name="To_read_sudoku_hard.txt"
-#         self.path= "C:\\eclipse\\workspace\\Sudoku\\src\\UnitTests"
+#         self.path= "..\UnitTests"
 #         self.txtfile=TXT_File(self.path,self.name)
 #         self.iofile_easy=self.txtfile.read_file()
 #         val=self.iofile_easy
