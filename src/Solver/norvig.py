@@ -61,8 +61,7 @@ class Norvig (Solve_Algorithm):
             result = self.__search__(self.__grid_to_dict__(gridA))
             self.time_elapsed = time.clock() - self.time_elapsed
             return result
-        else: 
-            print "The grid is not valid"
+
 ################ __search__ ################   
     def __search__(self,values):
         '''Using depth-first __search__ and propagation, try all possible values.'''
@@ -81,4 +80,3 @@ class Norvig (Solve_Algorithm):
         for e in seq:
             if e: return e
         return False
-        

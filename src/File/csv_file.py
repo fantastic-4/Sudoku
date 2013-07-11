@@ -18,7 +18,7 @@ class Csv_file(File):
                 full_line += (self.__line_splitter__(line.strip("\n")))
         
         if(self.validate.validate_values(full_line)): return full_line
-        else: print("ERROR, Invalid file content.")
+
     
     '''Function to split a string of characters according to the 3 principal delimiters on a CSV file.
        Return the line split by common delimiters on CSV files.'''        

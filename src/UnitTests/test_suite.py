@@ -8,7 +8,7 @@ cov=coverage()
 cov.start()
 import unittest
 from UnitTests.test_grid import Test_grid
-from UnitTests.test_config_file import Test_XML_config_file
+from UnitTests.test_config_file_xml import Test_XML_config_file
 from UnitTests.test_csv_file import Test_csv_file
 from UnitTests.test_txt_file import Test_txt_file
 from UnitTests.test_brute import Test_Brute
