@@ -42,6 +42,11 @@ class Test_norvig(unittest.TestCase):
         self.assertEquals(expected_grid2,grid2)
 
 
+
+    def test_if_time_elapsed_solving_is_saved(self):
+        self.gridA='003020600900305001001806400008102900700000008006708200002609500800203009005010300'
+        self.norvig.solve(self.gridA)
+        self.assertTrue(self.norvig.time_elapsed != 0)
     
     
 if __name__ == "__main__":
