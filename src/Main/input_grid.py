@@ -8,17 +8,18 @@ def input_function():
     print("4) Only Numbers are allowed, at any error you will be prompted to start again")
     print("5) To exit this option press Escape key\n")
     
-    while True:
-        input_text = str(raw_input("Start to enter numbers: "))
-        input_text = validate_text(input_text)
-        if(input_text != ""): break
-    
-    validate = Validate()
-    if(validate.validate_values(input_text)):
-        print (input_text)
-    else: print("ERROR, Invalid input content.")
+    flag = False
+    while not flag:
+        input_text = raw_input("Start to enter numbers: ")
+        if(input_text in "qQ"): break
+        input_text,flag = validate_text(input_text)
+    if(flag): print input_text
     
 '''This function could be moved to Validate class.'''
 def validate_text(text):
     while(len(text) < 81): text += "0"
-    return text
+    validate = Validate()
+    flag = validate.validate_values(text)
+    if(not flag):
+        print("ERROR, Invalid input content.")
+    return text,flag
