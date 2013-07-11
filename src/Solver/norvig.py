@@ -1,6 +1,7 @@
 from Solver.solve_algorithm import Solve_Algorithm
 
 """this class is using some attributes from grid like:squares, cols, rows and this needs a value (not a grid) to print""" 
+import time
 class Norvig (Solve_Algorithm):
 
     def __init__(self):
@@ -8,8 +9,8 @@ class Norvig (Solve_Algorithm):
         
     ##########try to fill the grid  with possible values########################    
     def __grid_to_dict__(self,grid):#this resolve the grid inserted and return the grid filled
-        """Convert grid to a dict of possible values, {square: digits}, or
-        return False if a contradiction is detected."""
+        '''Convert grid to a dict of possible values, {square: digits}, or
+        return False if a contradiction is detected.'''
         ## To start, every square can be any digit; then __eliminate_other_value__ values from the grid.
         values = dict((s,self.grid.digits) for s in self.grid.squares)
         for s,d in self.grid.set_values(grid).items():
@@ -20,8 +21,8 @@ class Norvig (Solve_Algorithm):
     ################ Constraint Propagation ################
     
     def __eliminate_other_value__(self, values, s, d):
-        """__eliminate__ all the other values (except d) from values[s] and propagate.
-        Return values, except return False if a contradiction is detected."""
+        '''__eliminate__ all the other values (except d) from values[s] and propagate.
+        Return values, except return False if a contradiction is detected.'''
         other_values = values[s].replace(d, '')
         if all(self.__eliminate__(values, s, d2) for d2 in other_values):
             return values
@@ -56,7 +57,10 @@ class Norvig (Solve_Algorithm):
     def solve(self,gridA): 
         '''verify if the grid is correct then call to search and transform the grid to dict'''
         if self.validate.validate_values(gridA):
-            return self.__search__(self.__grid_to_dict__(gridA))
+            self.time_elapsed = time.clock()
+            result = self.__search__(self.__grid_to_dict__(gridA))
+            self.time_elapsed = time.clock() - self.time_elapsed
+            return result
         else: 
             print "The grid is not valid"
 ################ __search__ ################   

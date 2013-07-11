@@ -17,12 +17,14 @@ class Test_Brute(unittest.TestCase):
         self.numOutOfRow = '7'
         self.numInColumn = '2'
         self.numOutOfColumn = '1'
-        
-
-        
+                
     def test_solve_SUDOKU_grid_using_almost_full_grid_given(self):
         grid1 = self.brute.solve(self.gridA)
         self.assertEqual(grid1, self.expected_gridA)
+        
+    def test_if_time_elapsed_solving_is_saved(self):
+        self.brute.solve(self.gridA)
+        self.assertTrue(self.brute.time_elapsed != 0)
 
 #     def test_solve_SUDOKU_grid_using_gridwith_some_values_given(self):
 #         grid2 = self.brute.solve(self.gridB)
