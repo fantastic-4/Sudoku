@@ -4,8 +4,8 @@ from Solver.solve_algorithm import Solve_Algorithm
 import time
 class Norvig (Solve_Algorithm):
 
-    def __init__(self):
-        Solve_Algorithm.__init__(self)
+    def __init__(self, grid):
+        Solve_Algorithm.__init__(self, grid)
         
     ##########try to fill the grid  with possible values########################    
     def __grid_to_dict__(self,grid):#this resolve the grid inserted and return the grid filled
@@ -56,7 +56,7 @@ class Norvig (Solve_Algorithm):
 ################ Solve ################
     def solve(self,gridA): 
         '''verify if the grid is correct then call to search and transform the grid to dict'''
-        if self.validate.validate_values(gridA):
+        if self.grid.validate_values(gridA):
             self.time_elapsed = time.clock()
             result = self.__search__(self.__grid_to_dict__(gridA))
             self.time_elapsed = time.clock() - self.time_elapsed
