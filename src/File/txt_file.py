@@ -20,11 +20,7 @@ class TXT_File(File):
             if i!="========":
                 value += i
             else:
-                if self.validate.validate_values(value):
-               #if self.grid.validate_values(value):     
-                    return value
-                else: 
-                    print "File is not correct or has more than 81 numbers" 
+                return value
 
     def write_file(self, values):
         '''This method save the game into TXT called Solved_game_timeStamp.txt
