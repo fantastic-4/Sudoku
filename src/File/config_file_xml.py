@@ -9,7 +9,7 @@ class Xml_file(Config_file):
         Config_file.__init__(self, name, path)
         self.file_path=self.path+self.name+".xml"
         """Create the xml configuration file when it does not exist"""
-        if not os.path.isfile("../File/xml_config_file"):
+        if not os.path.isfile("../File/xml_config_file.xml"):
             self._create_xml_config_file()
         self.doc_xml=parse(self.file_path)
         
