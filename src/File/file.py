@@ -1,12 +1,10 @@
-from Main.validate import Validate
-
 class File:
     
     def __init__(self, path, name):
         
         self.path = path
         self.file_name = name
-        self.validate = Validate()
+
         
     '''Function to open a CSV file.
        Return file opened.'''
