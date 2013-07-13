@@ -3,45 +3,41 @@ import time
 
 class Brute (Solve_Algorithm):
     
-    def __init__(self, grid):
+    def __init__(self, dictionary):
         '''Function to set global attributes'''
     
-        Solve_Algorithm.__init__(self, grid)
-        
-        '''Values of unsolved grid'''
-        self.values = None
+        Solve_Algorithm.__init__(self, dictionary)
         
         '''Dictionary with Empty Values only'''
         self.empty_values = None
               
         '''List of lists to register moves for each empty cell'''
-        self.moves_per_cell = None
+        self.moves_per_cell = [[]]
     
-    def solve(self,grid):
+    def solve(self):
         '''Function to initialize global attributes and start the process,
        also calculates the time that takes the algorithm to solve the grid
        Return the grid fulfilled'''
         
-        '''Here we call to display function, but before that
-           we assign to raw_grid var from grid class the value of the input text'''
-        self.grid.raw_grid = grid
-        self.values = self.grid.set_values(grid)
-        self.empty_values = self.__grid_empty_values__(self.values)
-        self.moves_per_cell = [[] for i in range(len(self.empty_values.keys()))]
+        self.empty_values = self.__grid_empty_values__()
+        empties_number = len(self.empty_values.keys())
+        while empties_number > 0:
+            self.moves_per_cell.append([])
+            empties_number -= 1
         
         self.time_elapsed = time.clock()
         self.__start__()
         self.time_elapsed = time.clock() - self.time_elapsed
         
-        return self.values
+        return self.dictionary
         
-    def __grid_empty_values__(self,grid):
+    def __grid_empty_values__(self):
         '''Function to select all the tuples on dictionary with value as Zero
        Return a dictionary with empty values'''
     
         empties = []
-        for key,value in grid.items():
-            if(value == '0'or value == '.'):
+        for key,value in self.dictionary.items():
+            if(value == "0" or value == "."):
                 empties.append((key,value)) 
         return dict(empties)    
     
@@ -57,7 +53,7 @@ class Brute (Solve_Algorithm):
             if(self.__fill_cell__(pos, val)):
                 pos += 1
             else:
-                self.values[val] = "0"
+                self.dictionary[val] = "0"
                 self.moves_per_cell[pos] = []
                 pos -= 1
     
@@ -67,10 +63,11 @@ class Brute (Solve_Algorithm):
     
         cell_set = False
         for n in range(0,9):
-            num = self.grid.digits[n]
-            if(self.grid.check_lines(num, key, self.values) and self.grid.check_square(num, key, self.values) and not(num in self.moves_per_cell[pos])):
+            num = self.validator.digits[n]
+            if(self.validator.check_lines(num, key, self.dictionary) and self.validator.check_square(num, key, self.dictionary) 
+               and not(num in self.moves_per_cell[pos])):
                 cell_set = True
-                self.values[key] = num
+                self.dictionary[key] = num
                 self.moves_per_cell[pos].append(num)
                 break
         return cell_set

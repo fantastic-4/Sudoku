@@ -1,7 +1,7 @@
 import unittest
 from Solver.norvig import Norvig
-from Solver.solve_algorithm import Solve_Algorithm
 from Main.grid import Grid
+from Solver.solve_algorithm import Solve_Algorithm
 
 
 class Test_norvig(unittest.TestCase):
@@ -17,15 +17,15 @@ class Test_norvig(unittest.TestCase):
         grid2=self.norvig.solve(gridA)
         gridA_expected=grid2
         self.assertEquals(gridA_expected,grid2)
-         
-         
-  
+          
+          
+   
     def test_solve_a_Hard_grid_using_norvig(self):
         gridB='52...6.........7.13...........4..8..6......5...........418.........3..2...87.....'
         grid2=self.norvig.solve(gridB)
         gridB_expected=grid2
         self.assertEquals(gridB_expected,grid2)
- 
+  
     def test_return_false_if_cannot_solve_the_grid(self):
         gridB='52...6.........7.13......7....4..8..6......5...........418.........3..2...87.....'
         grid2=self.norvig.__grid_to_dict__(gridB)
@@ -34,14 +34,14 @@ class Test_norvig(unittest.TestCase):
  
     def test_solve_a_list_grid_using_norvig(self):
         gridB="""400000805
-                      030000000
-                      000700000
-                      020000060
-                      000080400
-                      000010000
-                      000603070
-                      500200000
-                      104000000"""
+                       030000000
+                       000700000
+                       020000060
+                       000080400
+                       000010000
+                       000603070
+                       500200000
+                       104000000"""
         grid2=self.norvig.solve(gridB)
         expected_grid2= grid2
         self.assertEquals(expected_grid2,grid2)
@@ -52,7 +52,7 @@ class Test_norvig(unittest.TestCase):
         gridA='003020600900305001001806400008102900700000008006708200002609500800203009005010300'
         self.norvig.solve(gridA)
         self.assertTrue(self.norvig.time_elapsed != 0)
-    
+     
     def test_define_solve_method_from_solve_algorithm_raise_message(self):
         gridA='003020600900305001001806400008102900700000008006708200002609500800203009005010300'
         sa=Solve_Algorithm(self.grid)
@@ -60,5 +60,5 @@ class Test_norvig(unittest.TestCase):
 
     
 if __name__ == "__main__":
-    #import sys;sys.argv = ['', 'Test.testName']
+#     import sys;sys.argv = ['', 'Test.testName']
     unittest.main()

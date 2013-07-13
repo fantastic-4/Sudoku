@@ -2,20 +2,24 @@ from Solver.solve_algorithm import Solve_Algorithm
 
 """this class is using some attributes from grid like:squares, cols, rows and this needs a value (not a grid) to print""" 
 import time
+from Main.grid import Grid
 class Norvig (Solve_Algorithm):
 
-    def __init__(self, grid):
-        Solve_Algorithm.__init__(self, grid)
+    def __init__(self, dictionary):
+        Solve_Algorithm.__init__(self, dictionary)
+        self.grid = Grid() 
         
     ##########try to fill the grid  with possible values########################    
     def __grid_to_dict__(self,grid):#this resolve the grid inserted and return the grid filled
         '''Convert grid to a dict of possible values, {square: digits}, or
         return False if a contradiction is detected.'''
         ## To start, every square can be any digit; then __eliminate_other_value__ values from the grid.
-        values = dict((s,self.grid.digits) for s in self.grid.squares)
-        for s,d in self.grid.set_values(grid).items():
-            if d in self.grid.digits and not self.__eliminate_other_value__(values, s, d):
+        values = dict((s,self.validator.digits) for s in self.validator.squares)
+        self.grid.set_values(grid)
+        for s,d in self.grid.values.items():
+            if d in self.validator.digits and not self.__eliminate_other_value__(values, s, d):
                 return False ## (Fail if we can't __eliminate_other_value__ d to square s.)
+        
         return values
 
     ################ Constraint Propagation ################
@@ -40,7 +44,7 @@ class Norvig (Solve_Algorithm):
             return False ## Contradiction: removed last value
         elif len(values[s]) == 1:
             d2 = values[s]
-            if not all(self.__eliminate__(values, s2, d2) for s2 in self.grid.peers[s]):
+            if not all(self.__eliminate__(values, s2, d2) for s2 in self.dictionary.peers[s]):
                 return False
         ## (2) If a unit u is reduced to only one place for a value d, then put it there.
         for u in self.grid.units[s]:
@@ -56,7 +60,7 @@ class Norvig (Solve_Algorithm):
 ################ Solve ################
     def solve(self,gridA): 
         '''verify if the grid is correct then call to search and transform the grid to dict'''
-        if self.grid.validate_values(gridA):
+        if self.validator.validate_values(gridA):
             self.time_elapsed = time.clock()
             result = self.__search__(self.__grid_to_dict__(gridA))
             self.time_elapsed = time.clock() - self.time_elapsed
@@ -67,10 +71,10 @@ class Norvig (Solve_Algorithm):
         '''Using depth-first __search__ and propagation, try all possible values.'''
         if values is False:
             return False ## Failed earlier
-        if all(len(values[s]) == 1 for s in self.grid.squares):
+        if all(len(values[s]) == 1 for s in self.dictionary.squares):
             return values ## Solved!
         ## Chose the unfilled square s with the fewest possibilities
-        n,s = min((len(values[s]), s) for s in self.grid.squares if len(values[s]) > 1)
+        n,s = min((len(values[s]), s) for s in self.dictionary.squares if len(values[s]) > 1)
         return self.__return_some_value__(self.__search__(self.__eliminate_other_value__(values.copy(), s, d))
                     for d in values[s])
       
