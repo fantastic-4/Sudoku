@@ -15,10 +15,15 @@ class Test_SudokuGame(unittest.TestCase):
     
     
     def test_resolve_a_sudoku_game_with_default_configuration(self):
-        self.assertEqual(self.dict_expected, self.game.solve_sudoku(self.path, self.name))
+        self.assertEqual(self.dict_expected, self.game.solve_sudoku(self.path, self.name)[0])
+    
+    def test_modify_xml_value_for_algorithm_from_Norvig_to_Brute(self):
+        expected_value = "Brute"
+        self.assertEqual(expected_value, self.game.xml_config_file.set_xml_value("Brute","default_algorithm"))
         
+    def tearDown(self):
+        self.game.xml_config_file.set_xml_value("Norvig","default_algorithm")
     
 if __name__ == "__main__":
-    #import sys;sys.argv = ['', 'Test.testName']
     unittest.main()
 
