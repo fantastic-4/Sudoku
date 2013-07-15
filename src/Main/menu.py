@@ -1,45 +1,49 @@
-from File.txt_file import TXT_File
-from Main.grid import Grid
-from Solver.norvig import Norvig
-from Solver.brute import Brute
-from File.config_file_xml import Xml_file
+# from File.txt_file import TXT_File
+# from Main.grid import Grid
+# from Solver.norvig import Norvig
+# from Solver.brute import Brute
+# from File.config_file_xml import Xml_file
+from Main.sudoku_game import SudokuGame 
 
 
-xml_config_file = Xml_file('../File/', 'xml_config_file')    
+# xml_config_file = Xml_file('../File/', 'xml_config_file')    
 def errorMessage():
     print "Incorrect input. Please enter a proper option."
     
 def solve():
-    norvig=Norvig()
-    grid=Grid()
-    brute=Brute()
+#     norvig=Norvig()
+#     grid=Grid()
+#     brute=Brute()
     
     file_path = raw_input("\n Please enter the path where the file is located (Ex: C:\Sudoku) > ")
     file_name = raw_input(" Please enter the file name to read and solve the Sudoku (Ex. sudoku_easy.txt): ")
     
-    txtfile=TXT_File(file_path, file_name)
-    iofile_easy=txtfile.read_file()
+    gamefromfile = SudokuGame()
+    gamefromfile.solve_sudoku(file_path, file_name)
     
-    algorithm = xml_config_file.get_xml_value("default_algorithm").lower()
-    output = xml_config_file.get_xml_value("solver_output_type").lower()
-    print algorithm
-    
-    dict_algorithm = {'norvig': norvig.solve(iofile_easy), 'brute': brute.solve(iofile_easy)}
-    sudoku_resolved=dict_algorithm.get(algorithm, errorMessage)
-    #print sudoku_resolved
-        
-    print "====================================================="    
-    print "The algorithm used to solve is: ", algorithm.upper()
-    print "====================================================="
-    #print grid.display(sudoku_resolved)
-    
-    
-    if (output == 'console'):
-        print grid.display(sudoku_resolved)
-    if (output == 'file'):
-        txtfile.file_name = 'Sudoku_resolved.txt'
-        txtfile.output_file(sudoku_resolved)
-        print "\n.............The solution was exported to the file.............\n"
+#     txtfile=TXT_File(file_path, file_name)
+#     iofile_easy=txtfile.read_file()
+#     
+#     algorithm = xml_config_file.get_xml_value("default_algorithm").lower()
+#     output = xml_config_file.get_xml_value("solver_output_type").lower()
+#     print algorithm
+#     
+#     dict_algorithm = {'norvig': norvig.solve(iofile_easy), 'brute': brute.solve(iofile_easy)}
+#     sudoku_resolved=dict_algorithm.get(algorithm, errorMessage)
+#     #print sudoku_resolved
+#         
+#     print "====================================================="    
+#     print "The algorithm used to solve is: ", algorithm.upper()
+#     print "====================================================="
+#     #print grid.display(sudoku_resolved)
+#     
+#     
+#     if (output == 'console'):
+#         print grid.display(sudoku_resolved)
+#     if (output == 'file'):
+#         txtfile.file_name = 'Sudoku_resolved.txt'
+#         txtfile.output_file(sudoku_resolved)
+#         print "\n.............The solution was exported to the file.............\n"
 
 def read_default_settings():
     pass
