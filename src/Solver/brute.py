@@ -3,10 +3,10 @@ import time
 
 class Brute (Solve_Algorithm):
     
-    def __init__(self, dictionary):
+    def __init__(self):
         '''Function to set global attributes'''
     
-        Solve_Algorithm.__init__(self, dictionary)
+        Solve_Algorithm.__init__(self)
         
         '''Dictionary with Empty Values only'''
         self.empty_values = None
