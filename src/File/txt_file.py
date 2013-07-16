@@ -1,6 +1,6 @@
 import datetime
 from File.file import File
-from Main.grid import Grid
+from Parser.grid import Grid
 
 class TXT_File(File):
     

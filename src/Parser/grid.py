@@ -1,6 +1,9 @@
+from Parser.validator import Validator
 class Grid:
     
     def __init__(self):
+        self.validator = Validator()
+        
         self.dictionary_of_grid = None
         self.digits   = "123456789"
         self.rows     = "ABCDEFGHI"
@@ -30,14 +33,14 @@ class Grid:
         '''Function to validate the string given, if the values,
             size and order of values is correct,
             then it will be converted into a dictionary to be solved'''
-        flag = self.validate_values(grid_string)
+        flag = self.validator.validate_values(grid_string)
         if(flag):
             self.dictionary_of_grid = self.set_values(grid_string)
             for row in self.rows:
                 for column in self.cols:
-                    if(not self.check_lines(self.dictionary_of_grid[row+column],
+                    if(not self.validator.check_lines(self.dictionary_of_grid[row+column],
                         row+column, self.dictionary_of_grid)
-                        and not self.check_square(self.dictionary_of_grid[row+column],
+                        and not self.validator.check_square(self.dictionary_of_grid[row+column],
                         row+column, self.dictionary_of_grid)):
                         flag = False                        
                         break

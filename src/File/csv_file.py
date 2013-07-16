@@ -1,10 +1,12 @@
 from File.file import File
+from Parser.validator import Validator
 
 class Csv_file(File):
     
     def __init__(self,path, name):
         File.__init__(self,path,name)
         self.delimiter = ","
+        self.validator = Validator()
         
     '''Function to read a CSV file.
        Return line ready to be used or prints a message if the file content was not valid.'''
@@ -17,7 +19,7 @@ class Csv_file(File):
             for line in lines:
                 full_line += (self.__line_splitter__(line.strip("\n")))
         
-        if(self.validate.validate_values(full_line)): return full_line
+        if(self.validator.validate_values(full_line)): return full_line
 
     
     '''Function to split a string of characters according to the 3 principal delimiters on a CSV file.

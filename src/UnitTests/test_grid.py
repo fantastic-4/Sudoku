@@ -1,5 +1,5 @@
 import unittest
-from Main.grid import Grid
+from Parser.grid import Grid
 
 class Test_grid(unittest.TestCase):
 
