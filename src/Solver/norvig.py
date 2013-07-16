@@ -1,9 +1,11 @@
-from Solver.solve_algorithm import Solve_Algorithm
-
-"""this class is using some attributes from grid like:squares, cols, rows and this needs a value (not a grid) to print""" 
+from Solver.solve_algorithm import Solve_Algorithm 
 import time
 from Parser.grid import Grid
 class Norvig (Solve_Algorithm):
+    '''
+    this class is using some attributes from grid like:squares,
+     cols, rows and this needs a value (not a grid) to print
+    '''
 
     def __init__(self):
         Solve_Algorithm.__init__(self)
