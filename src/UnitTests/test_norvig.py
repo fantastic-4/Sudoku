@@ -1,6 +1,6 @@
 import unittest
 from Solver.norvig import Norvig
-from Main.grid import Grid
+from Parser.grid import Grid
 from Solver.solve_algorithm import Solve_Algorithm
 
 

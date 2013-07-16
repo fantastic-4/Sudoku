@@ -3,7 +3,6 @@ class Validator:
     def __init__(self):
         self.digits   = "123456789"
         self.rows     = "ABCDEFGHI"
-        self.squares  = self.__set_matrix__(self.rows, self.digits)
     
     def validate_values(self,grid):
         '''Function to validate the values on grid given.
