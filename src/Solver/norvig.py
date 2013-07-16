@@ -3,7 +3,7 @@ import time
 from Parser.grid import Grid
 class Norvig (Solve_Algorithm):
     '''
-    this class is using some attributes from grid like:squares,
+    This class is using some attributes from grid like:squares,
      cols, rows and this needs a value (not a grid) to print
     '''
 
@@ -15,7 +15,7 @@ class Norvig (Solve_Algorithm):
         '''Convert grid to a dict of possible values, {square: digits}, or
         return False if a contradiction is detected.'''
         values = dict((s,self.grid.digits) for s in self.grid.squares)
-        for s,d in self.grid.set_values(grid).items():
+        for s,d in grid.items():
             if d in self.grid.digits and not self.__eliminate_other_value__(values, s, d):
                 return False
         return values
