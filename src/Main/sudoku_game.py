@@ -34,12 +34,9 @@ class SudokuGame():
         while not flag:
             input_text = raw_input("Start to enter numbers: ")
             if(input_text in "qQ"): break
-            print input_text
             input_text,flag = self.validate_text(input_text)
-            print self.grid.display(input_text)
         if(flag): 
             dictionary = input_text
-            print 'testing:  ', dictionary
             algorithm = self.xml_config_file.get_xml_value("default_algorithm").lower()
             dict_algorithm = {'norvig': self.norvig.solve, 'brute': self.brute.solve}
             sudoku_resolved=dict_algorithm.get(algorithm)(dictionary)
