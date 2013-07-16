@@ -19,6 +19,21 @@ def solve_from_a_file():
     file_name = raw_input(" Please enter the file name to read and solve the Sudoku (Ex: sudoku_easy.txt): ")
     
     solved = gamefromfile.solve_sudoku_from_file(file_path, file_name)
+    display_or_export_sudoku_solved(solved)
+    
+def solve_from_console():
+    print("\n***** Input Sudoku Game *****")
+    print("\nInstructions:\n")
+    print("1) Enter 81 numbers and press Enter key.")
+    print("2) Use '0' or '.' to make reference to empty slots.")
+    print("3) Press Enter key, before complete the 81 numbers, to fill the rest with empty slots.")
+    print("4) Only Numbers are allowed, at any error you will be prompted to start again")
+    print("5) To exit this option press Escape key\n")
+    
+    solved = gamefromfile.solve_sudoku_from_console()
+    display_or_export_sudoku_solved(solved)
+
+def display_or_export_sudoku_solved(dictionary):
     alg = gamefromfile.xml_config_file.get_xml_value("default_algorithm").lower()
     output = gamefromfile.xml_config_file.get_xml_value("solver_output_type").lower()
         
@@ -26,14 +41,11 @@ def solve_from_a_file():
     print "The algorithm used to solve is: ", alg.upper()
     print "====================================================="
   
-    if (output == 'console'):
-        print gamefromfile.grid.display(solved)
-    if (output == 'file'):
-        gamefromfile.txtfile.write_file(solved)
-    print "\n.............The solution was exported to the file.............\n"
-
-def solve_from_console():
-    pass
+    if (output == 'display by console'):
+        gamefromfile.display(dictionary)
+    if (output == 'export to file'):
+        gamefromfile.txtfile.write_file(dictionary)
+        print "\n.............The solution was exported to the file.............\n"
 
      
 def play_game():
@@ -77,7 +89,7 @@ def submenu_modify_values():
 
 def display_options(num):
     options1 = ["1: Norvig","2: Brute", "3: Back" ]
-    options2 =  ["1: Console", "2: Export to file", "3: Back"]
+    options2 =  ["1: Display by console", "2: Export to file", "3: Back"]
     options3 =  ["1: Easy", "2: Medium", "3: Hard", "4: Back"]
     
     toSelect = {1:options1, 2: options2, 3:options3 }
