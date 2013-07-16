@@ -1,9 +1,9 @@
 import unittest
-from Main.validate import Validate
+from Main.validator import Validator
 class Test_validate_class(unittest.TestCase):
     
     def setUp(self):
-        self.validate=Validate()
+        self.validate=Validator()
         
     def test_if_grid_is_well(self):
         self.grid='003020600900305001001806400008102900700000008006708200002609500800203009005010300'
