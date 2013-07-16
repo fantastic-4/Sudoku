@@ -1,13 +1,13 @@
 import datetime
 from File.file import File
-from Parser.grid import Grid
+from Main.display import Display
 
 class TXT_File(File):
     
     def __init__(self,path , name):
         File.__init__(self, path, name)
         self.file=File(path,name)
-        self.grid=Grid()
+        self.display=Display()
 
 
     def read_file(self, sep='\n'):
@@ -26,10 +26,10 @@ class TXT_File(File):
         '''This method save the game into TXT called Solved_game_timeStamp.txt
          file where the path will be defined in main class'''
         self.file_name=self.timeStamped("Solved_game")
-        value_r="==================== \n"\
+        value_r="======================== \n"\
         +"    Sudoku Solved:    \n"\
-        +"==================== \n"
-        value_r+=self.grid.display(values)
+        +"======================== \n"
+        value_r+=self.display.display(values)
         self.create_file(value_r)
 
     def timeStamped(self,fname, fmt="{fname}_%Y_%m_%d_%H_%M_%S.txt"):
