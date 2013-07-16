@@ -1,6 +1,5 @@
 import unittest
 from File.txt_file import TXT_File
- 
 from Main.sudoku_game import SudokuGame
 
 class Test_SudokuGame(unittest.TestCase):

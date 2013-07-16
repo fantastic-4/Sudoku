@@ -22,7 +22,7 @@ class Xml_file(Config_file):
         nodo_main = xml_document.createElement("Settings_SUDOKO")
 
         # Adding the elements to node.
-        nodo_main.appendChild(self.add_element(xml_document, "solver_output_type", "Display by console"))
+        nodo_main.appendChild(self.add_element(xml_document, "solver_output_type", "Console"))
         nodo_main.appendChild(self.add_element(xml_document, "default_algorithm", "Norvig"))
         nodo_main.appendChild(self.add_element(xml_document, "difficulty_level", "Easy"))
 
