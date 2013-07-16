@@ -15,7 +15,7 @@ class Test_SudokuGame(unittest.TestCase):
     
     
     def test_resolve_a_sudoku_game_with_default_configuration(self):
-        self.assertEqual(self.dict_expected, self.game.solve_sudoku(self.path, self.name)[0])
+        self.assertEqual(self.dict_expected, self.game.solve_sudoku_from_file(self.path, self.name))
     
     def test_modify_xml_value_for_algorithm_from_Norvig_to_Brute(self):
         expected_value = "Brute"
