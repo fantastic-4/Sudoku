@@ -1,7 +1,5 @@
 # dlx.py
 # Jonas Aramayo <jonas.aramayo@jalasoft.com>
-
-import time
 import string
 import cStringIO
 import math
@@ -111,7 +109,6 @@ class DLXMatrix:
             a = self.dosearch()
             if a is not None: return a
             self.cursolution = self.cursolution[:-1]
-            jonas=self.cursolution
             for j in self.walknodes(r, LEFT):
                 self.uncovercolumn(nodetable[j][COLUMN])
         self.uncovercolumn(c)
@@ -143,7 +140,7 @@ class DLX:
         self.blockcols = 3
 
     def convert_the_array_to_string(self):
-        '''convierte el array a un string'''
+        '''Convert the array to a string list'''
         ret = cStringIO.StringIO()
         for i in xrange(len(self.sarray)):
             ret.write(str(self.sarray[i])) 
@@ -181,7 +178,6 @@ class DLX:
         dlxsolver = dlx.DLXMatrix()
         self.nsolutions = 0
         solution = dlxsolver.solve(dlxones, givenrows)
-        variable=dlxsolver.cursolution
         if solution is not None:
             return self.getsolution(solution)
 
