@@ -1,4 +1,4 @@
-from Main.validate import Validate
+from Parser.validator import Validator
 def input_function():
     print("\n***** Input Sudoku Game *****")
     print("\nInstructions:\n")
@@ -18,8 +18,8 @@ def input_function():
 '''This function could be moved to Validate class.'''
 def validate_text(text):
     while(len(text) < 81): text += "0"
-    validate = Validate()
-    flag = validate.validate_values(text)
+    validator = Validator()
+    flag = validator.validate_values(text)
     if(not flag):
         print("ERROR, Invalid input content.")
     return text,flag

@@ -1,4 +1,5 @@
 from Solver.solve_algorithm import Solve_Algorithm
+from Parser.validator import Validator
 import time
 
 class Brute (Solve_Algorithm):
@@ -7,6 +8,8 @@ class Brute (Solve_Algorithm):
         '''Function to set global attributes'''
     
         Solve_Algorithm.__init__(self)
+        self.validator = Validator()
+        self.dictionary = None
         
         '''Dictionary with Empty Values only'''
         self.empty_values = None
@@ -14,11 +17,11 @@ class Brute (Solve_Algorithm):
         '''List of lists to register moves for each empty cell'''
         self.moves_per_cell = [[]]
     
-    def solve(self):
+    def solve(self, dictionary):
         '''Function to initialize global attributes and start the process,
        also calculates the time that takes the algorithm to solve the grid
        Return the grid fulfilled'''
-        
+        self.dictionary = dictionary
         self.empty_values = self.__grid_empty_values__()
         empties_number = len(self.empty_values.keys())
         while empties_number > 0:

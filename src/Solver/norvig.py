@@ -2,7 +2,7 @@ from Solver.solve_algorithm import Solve_Algorithm
 
 """this class is using some attributes from grid like:squares, cols, rows and this needs a value (not a grid) to print""" 
 import time
-from Main.grid import Grid
+from Parser.grid import Grid
 class Norvig (Solve_Algorithm):
 
     def __init__(self):

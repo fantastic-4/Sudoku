@@ -1,6 +1,7 @@
-from Main.grid import Grid
+from Parser.grid import Grid
 import random
-from Main.validator import Validator
+from Parser.validator import Validator
+from Solver.norvig import Norvig
 class Grid_generator:
     
     def __init__(self):
@@ -16,10 +17,9 @@ class Grid_generator:
         '''
         
         empty_grid_text = "0" * 81
-        self.grid.set_values(empty_grid_text)
-        self.values = self.grid.values
+        self.values = self.grid.set_values(empty_grid_text)
         
-        if(difficulty == "Easy"): numbers_quantity = random.randint(25,30)
+        if(difficulty == "Easy"): numbers_quantity = random.randint(35,40)
         elif(difficulty == "Medium"): numbers_quantity = random.randint(20,25)
         else: numbers_quantity = random.randint(15,20)
         
@@ -29,9 +29,9 @@ class Grid_generator:
             if(self.values[rand_key] == "0"):
                 self.__set_random_number__(rand_key)
                 numbers_quantity -= 1
-                
-        print (self.grid.display(self.values))
-                
+        
+        return self.values
+            
     def __set_random_number__(self, rand_key):
         '''
         Function to set a random number on a specific cell.
