@@ -47,16 +47,4 @@ class Grid:
                 if(not flag): break
         return flag
     
-    def display(self,values):
-        width = 1+max(len(values[s]) for s in self.squares)
-        line = '+'.join(['-'*(width*3)]*3)
-        solved_row = ''
-        for r in self.rows:
-            "Before print on console, add the rows to the output var" 
-            solved_row += ''.join(values[r+c].center(width)+('|' if c in '36' else '')for c in self.cols) 
-            solved_row += '\n'
-            if r in 'CF':
-                "Add to output var"
-                solved_row += (line+'\n')
-        return solved_row
         
