@@ -1,6 +1,6 @@
 import unittest
-from Solver.dlx import DLXMatrix
 from Solver.dlx import DLX
+
 
 class TestDlxMatrix(unittest.TestCase):
 	def setUp(self):
@@ -10,12 +10,11 @@ class TestDlxMatrix(unittest.TestCase):
 		self.string_with_zeros='043980250600425000200001094900004003300608000410209008820500009000040002534890000'
 		
 		self.rows = [[1, [3,5,6]], [2, [1,4,7]], [3, [2,3,6]],[4, [1,4]], [5, [2,7]], [6, [4,5,7]]]
-		self.matrix = DLXMatrix()
 		self.sdk = DLX()
 
 	def test_select_movements_on_dlx_matrix_should_display_the_correct_movements(self):
 		expected=[4,1,5]
-		result=self.matrix.solve(self.rows)
+		result=self.sdk.solve(self.rows)
 		self.assertEqual(expected,result)
 
 	def test_convert_a_string_to_a_array_when_it_has_points_should_display_an_array_equivalent_with_zeros(self):
