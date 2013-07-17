@@ -44,12 +44,11 @@ class SudokuGame():
 
     def validate_text(self, text):
         while(len(text) < 81): text += "0"
-        flag = self.grid.validate_grid(text)
-        if(flag):
-            return self.grid.set_values(text), flag
-        else:
+        grid = Grid()
+        flag = grid.validate_grid(text)
+        if(not flag):
             print("ERROR, Invalid input content.")
-            return text,flag
+        return self.grid.set_values(text),flag
     
     def display(self, dic):
         print self.display_dic.display(dic)

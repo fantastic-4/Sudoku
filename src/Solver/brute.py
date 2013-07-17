@@ -50,16 +50,18 @@ class Brute (Solve_Algorithm):
         pos = 0
         emp_vals = self.empty_values
         empty_keys = sorted(emp_vals.keys())
-        
-        while pos < len(self.empty_values):
-            val = empty_keys[pos]
-            if(self.__fill_cell__(pos, val)):
-                pos += 1
-            else:
-                self.dictionary[val] = "0"
-                self.moves_per_cell[pos] = []
-                pos -= 1
-    
+        try:
+            while pos < len(self.empty_values):
+                val = empty_keys[pos]
+                if(self.__fill_cell__(pos, val)):
+                    pos += 1
+                else:
+                    self.dictionary[val] = "0"
+                    self.moves_per_cell[pos] = []
+                    pos -= 1
+        except IndexError:
+            self.dictionary = False
+                    
     def __fill_cell__(self,pos,key):
         '''Function to iterate numbers from 1 to 9 until set a number that can be fit on the cell
        Return True if a number was set, False otherwise'''        
