@@ -1,7 +1,6 @@
 from Parser.grid import Grid
 import random
 from Parser.validator import Validator
-from Solver.norvig import Norvig
 from Solver.brute import Brute
 
 class Grid_generator:

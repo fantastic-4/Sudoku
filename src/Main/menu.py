@@ -1,6 +1,6 @@
 from Main.sudoku_game import SudokuGame
 
-gamefromfile = SudokuGame()
+game = SudokuGame()
 
 def errorMessage():
     print "Incorrect input. Please enter a proper option."
@@ -18,7 +18,7 @@ def solve_from_a_file():
     file_path = raw_input("\n Please enter the path where the file is located (Ex: C:\Sudoku) > ")
     file_name = raw_input(" Please enter the file name to read and solve the Sudoku (Ex: sudoku_easy.txt): ")
     
-    solved = gamefromfile.solve_sudoku_from_file(file_path, file_name)
+    solved = game.solve_sudoku_from_file(file_path, file_name)
     display_or_export_sudoku_solved(solved)
     
 def solve_from_console():
@@ -30,21 +30,21 @@ def solve_from_console():
     print("4) Only Numbers are allowed, at any error you will be prompted to start again")
     print("5) To exit this option press Escape key\n")
     
-    solved = gamefromfile.solve_sudoku_from_console()
+    solved = game.solve_sudoku_from_console()
     display_or_export_sudoku_solved(solved)
 
 def display_or_export_sudoku_solved(dictionary):
-    alg = gamefromfile.xml_config_file.get_xml_value("default_algorithm").lower()
-    output = gamefromfile.xml_config_file.get_xml_value("solver_output_type").lower()
+    alg = game.xml_config_file.get_xml_value("default_algorithm").lower()
+    output = game.xml_config_file.get_xml_value("solver_output_type").lower()
         
     print "====================================================="    
     print "The algorithm used to solve is: ", alg.upper()
     print "====================================================="
   
     if (output == 'display by console'):
-        gamefromfile.display(dictionary)
+        game.display(dictionary)
     if (output == 'export to file'):
-        gamefromfile.txtfile.write_file(dictionary)
+        game.txtfile.write_file(dictionary)
         print "\n.............The solution was exported to the file.............\n"
 
      
@@ -62,7 +62,7 @@ def configure_settings():
     else:
         option = display_options(num)
         if not (option == 'Back'):
-            gamefromfile.set_xml_value(option,tags.get(num))
+            game.set_xml_value(option,tags.get(num))
             print ".........Value updated....."
         configure_settings()
     
@@ -70,9 +70,9 @@ def display_current_values():
     print "\n ======================================" 
     print "         Current Values "
     print "======================================" 
-    print "Algorithm: ", gamefromfile.get_xml_value("default_algorithm").upper()
-    print "Output type: ", gamefromfile.get_xml_value("solver_output_type").upper()
-    print "level: ", gamefromfile.get_xml_value("difficulty_level").upper()
+    print "Algorithm: ", game.get_xml_value("default_algorithm").upper()
+    print "Output type: ", game.get_xml_value("solver_output_type").upper()
+    print "level: ", game.get_xml_value("difficulty_level").upper()
     print "======================================"    
     
 def submenu_modify_values():
@@ -88,11 +88,11 @@ def submenu_modify_values():
 
 
 def display_options(num):
-    options1 = ["1: Norvig","2: Brute", "3: Back" ]
-    options2 =  ["1: Display by console", "2: Export to file", "3: Back"]
-    options3 =  ["1: Easy", "2: Medium", "3: Hard", "4: Back"]
+    algoritms = ["1: Norvig","2: Brute", "3: Back" ]
+    outputTypes =  ["1: Display by console", "2: Export to file", "3: Back"]
+    levels =  ["1: Easy", "2: Medium", "3: Hard", "4: Back"]
     
-    toSelect = {1:options1, 2: options2, 3:options3 }
+    toSelect = {1:algoritms, 2: outputTypes, 3:levels }
     for option in toSelect.get(num):
         print option
     
