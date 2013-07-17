@@ -7,7 +7,7 @@ class Test_XML_config_file(unittest.TestCase):
         name_xml_file="xml_config_file"
         path_xml_file='../File/'
         self.xml=Xml_file(path_xml_file,name_xml_file)
-        self.outputfile="Console"
+        self.outputfile="Display by console"
         self.algorithm="Norvig"
         self.level="Easy"
         

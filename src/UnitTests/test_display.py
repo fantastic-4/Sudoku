@@ -1,7 +1,7 @@
 import unittest
 from Main.display import Display
 
-class Test_grid(unittest.TestCase):
+class Test_Display(unittest.TestCase):
 
 
     def setUp(self):

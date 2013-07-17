@@ -2,6 +2,7 @@ import unittest
 from Solver.norvig import Norvig
 from Parser.grid import Grid
 from Main.display import Display
+from Solver.solve_algorithm import Solve_Algorithm
 
 
 class Test_norvig(unittest.TestCase):
@@ -11,6 +12,7 @@ class Test_norvig(unittest.TestCase):
         self.grid=Grid()
         self.norvig=Norvig()
         self.display=Display()
+        self.sa=Solve_Algorithm()
 
 
     def test_solve_a_easy_grid_using_norvig(self):
@@ -58,6 +60,10 @@ class Test_norvig(unittest.TestCase):
         gridA='003020600900305001001806400008102900700000008006708200002609500800203009005010300'
         self.assertRaises(self.norvig.solve(self.grid.set_values(gridA)))
 
-    
+    def test_solve_algorithm_solve_method_is_defined(self):
+        gridA='003020600900305001001806400008102900700000008006708200002609500800203009005010300'
+        self.sa.solve(gridA)
+
+        
 if __name__ == "__main__":
     unittest.main()
