@@ -35,4 +35,24 @@ class TXT_File(File):
     def timeStamped(self,fname, fmt="{fname}_%Y_%m_%d_%H_%M_%S.txt"):
         '''Method to add the timestamp to a saved file '''
         return datetime.datetime.now().strftime(fmt).format(fname=fname)
+    
+    def save_game(self, value, tim):
+        '''this method receives the dict and the time in mins:seconds and save 
+        it into saved_game_timestamp.txt file'''
+        self.file_name=self.timeStamped("Saved_game")
+        new_string = ""
+        rows = "ABCDEFGHI"
+        columns = "123456789"
+        for row in rows:
+            for column in columns:
+                new_string += value[row + column]
+
+        new_string+=","+tim
+        self.create_file(new_string)
+            
+            
+
+
+
+
 
