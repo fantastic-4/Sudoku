@@ -1,6 +1,7 @@
 import string
 import cStringIO
 import math
+from Parser.grid import Grid
 
 ROOTNODE = 0
 LEFT   = 0
@@ -13,23 +14,23 @@ COUNT  = 5
 
 class DLX:
     def __init__(self):
-        # Supported block sizes
         self.sizes = {4: [2, 2], 6: [2, 3], 8: [2, 4], 9: [3, 3],
                       10: [2,5], 12:[3, 4], 15: [3, 5], 16: [4, 4],
                       20: [4, 5], 24: [4, 6], 25: [5, 5], 28: [4, 7],
                       30: [5, 6], 32: [4, 8], 35: [5, 7], 36: [6, 6]}
         self.chartable = string.maketrans(
-            '.0123456789',
-            '\x00' + ''.join(map(chr, xrange(0,10))))
+            ".0123456789",
+            "\x00" + "".join(map(chr, xrange(0,10))))
         self.sarray = [0]*81
         self.blockrows = 3
         self.blockcols = 3
+        self.grid=Grid()
 
-    def __init_matrix__(self):
+    def __init_matrix(self):
         self.cursolution = []
         self.solutioncallback = None
         self.nodes = [[0, 0, None, None, None, None]]  
-    def __walknodes__(self, firstnode, direction):
+    def __walknodes(self, firstnode, direction):
         '''Generator for iterating over all nodes in given direction
         (not including firstnode).'''
         nodetable=self.nodes
@@ -37,7 +38,7 @@ class DLX:
         while n != firstnode:
             yield n
             n = nodetable[n][direction]
-    def __constructmatrix__(self, ones, initialsolution=[]):
+    def __constructmatrix(self, ones, initialsolution=[]):
         '''Construct the (sparse) DLX matrix based on list "ones"'''
         self.cursolution = []
         self.nodes = [[ROOTNODE, ROOTNODE, None, None, None, None]]
@@ -70,33 +71,33 @@ class DLX:
                 pruneNodes.append(newind)
         for n in pruneNodes:
             self.cursolution += [nodetable[n][INDEX]]
-            self.__covercolumn__(nodetable[n][COLUMN])
-            for j in self.__walknodes__(n, RIGHT):
-                self.__covercolumn__(nodetable[j][COLUMN])
+            self.__covercolumn(nodetable[n][COLUMN])
+            for j in self.__walknodes(n, RIGHT):
+                self.__covercolumn(nodetable[j][COLUMN])
 
-    def __covercolumn__(self, c):
+    def __covercolumn(self, c):
         '''Cover the correct column of the matrix DLX'''
         nodetable = self.nodes
         nodetable[nodetable[c][RIGHT]][LEFT] = nodetable[c][LEFT]
         nodetable[nodetable[c][LEFT]][RIGHT] = nodetable[c][RIGHT]
-        for i in self.__walknodes__(c, DOWN):
-            for j in self.__walknodes__(i, RIGHT):
+        for i in self.__walknodes(c, DOWN):
+            for j in self.__walknodes(i, RIGHT):
                 nodetable[nodetable[j][DOWN]][UP] = nodetable[j][UP]
                 nodetable[nodetable[j][UP]][DOWN] = nodetable[j][DOWN]
                 nodetable[nodetable[j][COLUMN]][COUNT] -= 1
 
-    def __uncovercolumn__(self, c):
+    def __uncovercolumn(self, c):
         '''Uncover the correct column of the matrix DLX'''
         nodetable = self.nodes
-        for i in self.__walknodes__(c, UP):
-            for j in self.__walknodes__(i, LEFT):
+        for i in self.__walknodes(c, UP):
+            for j in self.__walknodes(i, LEFT):
                 nodetable[nodetable[j][DOWN]][UP] = j
                 nodetable[nodetable[j][UP]][DOWN] = j
                 nodetable[nodetable[j][COLUMN]][COUNT] += 1
         nodetable[nodetable[c][RIGHT]][LEFT] = c
         nodetable[nodetable[c][LEFT]][RIGHT] = c
 
-    def __dosearch__(self):
+    def __dosearch(self):
         '''Internal. The actual recursive searching function.'''
         nodetable = self.nodes # optimization: local variables are faster
         if nodetable[ROOTNODE][RIGHT] == ROOTNODE:
@@ -108,34 +109,34 @@ class DLX:
         a = None
         c = nodetable[ROOTNODE][RIGHT]
         maxcount = nodetable[nodetable[ROOTNODE][RIGHT]][COUNT]
-        for j in self.__walknodes__(ROOTNODE, RIGHT):
+        for j in self.__walknodes(ROOTNODE, RIGHT):
             if nodetable[j][COUNT] < maxcount:
                 c = j
                 maxcount = nodetable[j][COUNT]
-        self.__covercolumn__(c)
-        for r in self.__walknodes__(c, DOWN):
+        self.__covercolumn(c)
+        for r in self.__walknodes(c, DOWN):
             self.cursolution += [nodetable[r][INDEX]]
-            for j in self.__walknodes__(r, RIGHT):
-                self.__covercolumn__(nodetable[j][COLUMN])
-            a = self.__dosearch__()
+            for j in self.__walknodes(r, RIGHT):
+                self.__covercolumn(nodetable[j][COLUMN])
+            a = self.__dosearch()
             if a is not None: return a
             self.cursolution = self.cursolution[:-1]
-            for j in self.__walknodes__(r, LEFT):
-                self.__uncovercolumn__(nodetable[j][COLUMN])
-        self.__uncovercolumn__(c)
+            for j in self.__walknodes(r, LEFT):
+                self.__uncovercolumn(nodetable[j][COLUMN])
+        self.__uncovercolumn(c)
         return None
 
-    def solve(self, ones, initialsolution=[], callback=None):
+    def solve_dlx(self, ones, initialsolution=[], callback=None):
         '''Construct DLX matrix and solve exact cover problem. Returns
         list of row indexes of found solution or None none is found.'''
 
-        self.__constructmatrix__(ones, initialsolution)
+        self.__constructmatrix(ones, initialsolution)
         self.solutioncallback=callback
         
-        return  self.__dosearch__()
+        return  self.__dosearch()
 
     '''Create the Matrix Sudoku with DLX format '''
-    def __convert_the_array_to_string__(self):
+    def __convert_the_array_to_string(self):
         '''Convert the array to a string list'''
         ret = cStringIO.StringIO()
         for i in xrange(len(self.sarray)):
@@ -149,9 +150,10 @@ class DLX:
         self.sarray = map(ord, string.translate(sudokustring, self.chartable))
         return self.sarray
 
-    def generate_matrix_dlx(self):
+    def __get_solution_matrix_dlx__(self):
         '''generate the DLX matrix with rows and columns for sudoku game 
-        i.e for a game of 9 x 9, it generate 729 rows and 324 columns'''
+        i.e for a game of 9 x 9, it generate 729 rows and 324 columns and also
+        given the solution for sudoku game'''
         br = self.blockrows
         bc = self.blockcols
         puzzlerows = br*bc         # number of rows in the puzzle
@@ -172,9 +174,9 @@ class DLX:
                                      bl+digits*r+d+1,       # <d,r>
                                      2*bl+digits*c+d+1,     # <d,c>
                                      3*bl+digits*box+d+1]]) # <d,b>
-        self.__init_matrix__()
+        self.__init_matrix()
         self.nsolutions = 0
-        solution = self.solve(dlxones, givenrows)
+        solution = self.solve_dlx(dlxones, givenrows)
         
         if solution is not None:
             return self.__getsolution__(solution)
@@ -193,5 +195,19 @@ class DLX:
             c = ((s-1)/digits) % puzzlecols
             r = (s-1)/bl
             self.sarray[puzzlecols*r+c] = d
-        return self.__convert_the_array_to_string__()
+        return self.__convert_the_array_to_string()
+    def solve(self, dictionary):
+        self.convert_to_array(self.__convert_dict_to_a_string(dictionary))
+        string=self.__get_solution_matrix_dlx__()
+        return self.grid.set_values(string)
+             
+    def __convert_dict_to_a_string(self,dictionary):
+        '''this method receives the dict and then convert to a string'''
+        new_string = ""
+        rows = "ABCDEFGHI"
+        columns = "123456789"
+        for row in rows:
+            for column in columns:
+                new_string += dictionary[row + column]
+        return new_string
         
