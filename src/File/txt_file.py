@@ -25,21 +25,21 @@ class TXT_File(File):
     def write_file(self, values):
         '''This method save the game into TXT called Solved_game_timeStamp.txt
          file where the path will be defined in main class'''
-        self.file_name=self.timeStamped("Solved_game")
+        self.file_name=self.__timeStamped("Solved_game")
         value_r="======================== \n"\
         +"    Sudoku Solved:    \n"\
         +"======================== \n"
         value_r+=self.display.display(values)
         self.create_file(value_r)
 
-    def timeStamped(self,fname, fmt="{fname}_%Y_%m_%d_%H_%M_%S.txt"):
+    def __timeStamped(self,fname, fmt="{fname}_%Y_%m_%d_%H_%M_%S.txt"):
         '''Method to add the timestamp to a saved file '''
         return datetime.datetime.now().strftime(fmt).format(fname=fname)
     
     def save_game(self, value, tim):
         '''this method receives the dict and the time in mins:seconds and save 
         it into saved_game_timestamp.txt file'''
-        self.file_name=self.timeStamped("Saved_game")
+        self.file_name=self.__timeStamped("Saved_game")
         new_string = ""
         rows = "ABCDEFGHI"
         columns = "123456789"
