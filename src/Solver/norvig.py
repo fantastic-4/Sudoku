@@ -11,25 +11,25 @@ class Norvig (Solve_Algorithm):
         Solve_Algorithm.__init__(self)
         self.grid = Grid() 
 
-    def __grid_to_dict__(self,grid):
+    def grid_to_dict(self,grid):
         '''Convert grid to a dict of possible values, {square: digits}, or
         return False if a contradiction is detected.'''
         values = dict((s,self.grid.digits) for s in self.grid.squares)
         for s,d in grid.items():
-            if d in self.grid.digits and not self.__eliminate_other_value__(values, s, d):
+            if d in self.grid.digits and not self.__eliminate_other_value(values, s, d):
                 return False
         return values
 
-    def __eliminate_other_value__(self, values, s, d):
+    def __eliminate_other_value(self, values, s, d):
         '''Eliminate all the other values (except d) from values[s] and propagate.
         Return values, except return False if a contradiction is detected.'''
         other_values = values[s].replace(d, '')
-        if all(self.__eliminate__(values, s, d2) for d2 in other_values):
+        if all(self.__eliminate(values, s, d2) for d2 in other_values):
             return values
         else:
             return False
         
-    def __eliminate__(self,values, s, d):
+    def __eliminate(self,values, s, d):
         '''eliminate d from values[s]; propagate when values or places <= 2.
         Return values, except return False if a contradiction is detected.'''
         if d not in values[s]:
@@ -39,25 +39,25 @@ class Norvig (Solve_Algorithm):
             return False
         elif len(values[s]) == 1:
             d2 = values[s]
-            if not all(self.__eliminate__(values, s2, d2) for s2 in self.grid.peers[s]):
+            if not all(self.__eliminate(values, s2, d2) for s2 in self.grid.peers[s]):
                 return False
         for u in self.grid.units[s]:
             dplaces = [s for s in u if d in values[s]]
             if len(dplaces) == 0:
                 return False
             elif len(dplaces) == 1:
-                if not self.__eliminate_other_value__(values, dplaces[0], d):
+                if not self.__eliminate_other_value(values, dplaces[0], d):
                     return False
         return values
     
     def solve(self,gridA): 
         '''verify if the grid is correct then call to search and transform the grid to dict'''
         self.time_elapsed = time.clock()
-        result = self.__search__(self.__grid_to_dict__(gridA))
+        result = self.__search(self.grid_to_dict(gridA))
         self.time_elapsed = time.clock() - self.time_elapsed
         return result
  
-    def __search__(self,values):
+    def __search(self,values):
         '''Using depth-first to search and propagate, try all possible values.'''
         if values is False:
             return False
@@ -65,13 +65,13 @@ class Norvig (Solve_Algorithm):
             return values 
         n,s = min((len(values[s]), s) for s 
                   in self.grid.squares if len(values[s]) > 1)
-        return self.__return_some_value__(self.__search__
-                                          (self.__eliminate_other_value__
+        return self.__return_some_value(self.__search
+                                          (self.__eliminate_other_value
                                            (values.copy(), s, d))
                     for d in values[s])
       
     
-    def __return_some_value__(self,seq):
+    def __return_some_value(self,seq):
         '''This method returns some element of seq that is true.'''
         for e in seq:
             if e: return e
