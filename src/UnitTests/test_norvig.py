@@ -29,7 +29,7 @@ class Test_norvig(unittest.TestCase):
    
     def test_return_false_if_cannot_solve_the_grid(self):
         gridB='52...6.........7.13......7....4..8..6......5...........418.........3..2...87.....'
-        grid2=self.norvig.__grid_to_dict__(self.grid.set_values(gridB))
+        grid2=self.norvig.solve(self.grid.set_values(gridB))
         self.assertFalse(grid2)
          
    

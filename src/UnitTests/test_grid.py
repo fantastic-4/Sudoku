@@ -52,8 +52,7 @@ class Test_grid(unittest.TestCase):
     def test_if_set_values_inserts_correct_squares_easy_grid(self):
         grid1 = self.grid.set_values(self.gridA)
         self.assertEqual(self.grid_expected,grid1)
- 
- 
+  
     def test_if_set_values_inserts_correct_squares_hard_grid(self):
         grid1 = self.grid.set_values(self.GridHard)
         self.assertEqual(self.Expected_HardGrid,grid1)
