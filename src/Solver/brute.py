@@ -22,7 +22,7 @@ class Brute (Solve_Algorithm):
        also calculates the time that takes the algorithm to solve the grid
        Return the grid fulfilled'''
         self.dictionary = dictionary
-        self.empty_values = self.__grid_empty_values__()
+        self.empty_values = self.__grid_empty_values()
         empties_number = len(self.empty_values.keys())
         while empties_number > 0:
             self.moves_per_cell.append([])
@@ -34,17 +34,7 @@ class Brute (Solve_Algorithm):
         
         return self.dictionary
         
-    def set_time_elapsed(self,time):
-        '''
-        Function to set the time where the clock will start to run.
-        :param time: Time to start to run the clock.
-        '''
-        self.time_elapsed = time
-        
-    def get_time_elapsed(self):
-        return self.time_elapsed
-        
-    def __grid_empty_values__(self):
+    def __grid_empty_values(self):
         '''Function to select all the tuples on dictionary with value as Zero
        Return a dictionary with empty values'''
     

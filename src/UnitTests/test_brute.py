@@ -19,7 +19,7 @@ class Test_Brute(unittest.TestCase):
         
     def test_if_time_elapsed_solving_is_saved(self):
         self.brute.solve(self.grid.set_values(self.gridA))
-        self.assertTrue(self.brute.get_time_elapsed > 0)
+        self.assertTrue(self.brute.time_elapsed > 0)
 
 if __name__ == "__main__":
     #import sys;sys.argv = ['', 'Test.testName']
