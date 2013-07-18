@@ -15,16 +15,16 @@ class Csv_file(File):
         file_to_read = self.open_file()
         if(file_to_read != None):
             lines = file_to_read.readlines()
-            self.__close_file__(file_to_read)
+            self.__close_file(file_to_read)
             for line in lines:
-                full_line += (self.__line_splitter__(line.strip("\n")))
+                full_line += (self.__line_splitter(line.strip("\n")))
         
         if(self.validator.validate_values(full_line)): return full_line
 
     
     '''Function to split a string of characters according to the 3 principal delimiters on a CSV file.
        Return the line split by common delimiters on CSV files.'''        
-    def __line_splitter__(self,line):
+    def __line_splitter(self,line):
         
         new_line = ""
         if("," in line):
