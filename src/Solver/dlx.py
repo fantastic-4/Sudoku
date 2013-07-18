@@ -120,10 +120,8 @@ class DLX:
         nodetable = self.nodes # optimization: local variables are faster
         a = None
         if nodetable[ROOTNODE][RIGHT] == ROOTNODE:
-            if self.solutioncallback is not None:
-                self.solutioncallback(self.cursolution)
-                return None
-            else: return self.cursolution
+            if self.solutioncallback is None:
+                return self.cursolution
         c=self.__right()
         self.__covercolumn(c)
         for r in self.__walknodes(c, DOWN):
@@ -218,7 +216,8 @@ class DLX:
         '''this method receives the dict and then resolved it'''
         self.convert_to_array(self.__convert_dict_to_a_string(dictionary))
         string=self.__get_solution_matrix_dlx()
-        return self.grid.set_values(string)
+        if string is not None: return self.grid.set_values(string)
+        else: return False
              
     def __convert_dict_to_a_string(self,dictionary):
         '''this method receives the dict and then convert to a string'''

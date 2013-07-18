@@ -48,5 +48,11 @@ class TestDlxMatrix(unittest.TestCase):
 		result=self.dlx.solve(self.grid.set_values(self.gridA))
 		self.assertEqual(self.expected_gridA,result)
 		
+	def test_if_the_grid_does_not_solution(self):
+		var1='700105080008697230206300014362084100001020800084760000090002750005410690040050020'
+		result=self.dlx.solve(self.grid.set_values(var1))
+		self.assertFalse(result)
+		
+		
 if __name__=='__main__':
 	unittest.main()

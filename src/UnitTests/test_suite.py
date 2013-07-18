@@ -19,7 +19,6 @@ from UnitTests.test_DLX import TestDlxMatrix
 from UnitTests.test_integration1_using_both_algorithms import Test_integration_using_norvig
 from UnitTests.test_sudoku_game import Test_SudokuGame
 from UnitTests.test_validator import Test_validator
-# from UnitTests.test_read_xml_config_file import Test_read_the_default_settings_from_an_XML_config_file
 
 
 if __name__=="__main__":

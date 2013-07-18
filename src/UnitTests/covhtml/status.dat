@@ -59,21 +59,18 @@ p27
 (dp28
 g6
 (dp29
-S'html_filename'
-p30
+g8
 S'_eclipse_workspace_Copy of Sudoku_src_Solver_norvig.html'
-p31
-sS'name'
-p32
+p30
+sg10
 S'C:\\eclipse\\workspace\\Copy of Sudoku\\src\\Solver\\norvig'
-p33
-sS'nums'
-p34
+p31
+sg12
 g13
 (g14
 g15
-NtRp35
-(dp36
+NtRp32
+(dp33
 g18
 I1
 sg19
@@ -90,19 +87,22 @@ sg24
 I0
 sbssg25
 S'\x9b\xd5\x1a\xf5\x00P\xa3\xf0\xcf\x99\x92\x8bf\xa0&\x95'
-p37
+p34
 ssS'_eclipse_workspace_Copy of Sudoku_src_Solver_brute'
-p38
-(dp39
+p35
+(dp36
 g6
-(dp40
-g30
+(dp37
+S'html_filename'
+p38
 S'_eclipse_workspace_Copy of Sudoku_src_Solver_brute.html'
-p41
-sg32
+p39
+sS'name'
+p40
 S'C:\\eclipse\\workspace\\Copy of Sudoku\\src\\Solver\\brute'
+p41
+sS'nums'
 p42
-sg34
 g13
 (g14
 g15
@@ -113,7 +113,7 @@ I1
 sg19
 I0
 sg20
-I48
+I51
 sg21
 I0
 sg22
@@ -123,20 +123,20 @@ I0
 sg24
 I0
 sbssg25
-S'\xbc)_\xff\r7+\xe5Y\xd7\xddp\x9a\xc1\x05_'
+S'GN\xf1[W\x8a\xa1?\xb5\xa0\x81\xf9\xcd\xfd\x9e"'
 p45
 ssS'_eclipse_workspace_Copy of Sudoku_src_File_txt_file'
 p46
 (dp47
 g6
 (dp48
-g30
+g8
 S'_eclipse_workspace_Copy of Sudoku_src_File_txt_file.html'
 p49
-sg32
+sg10
 S'C:\\eclipse\\workspace\\Copy of Sudoku\\src\\File\\txt_file'
 p50
-sg34
+sg12
 g13
 (g14
 g15
@@ -164,18 +164,21 @@ p54
 (dp55
 g6
 (dp56
-g30
-S'_eclipse_workspace_Copy of Sudoku_src_File_file.html'
+S'html_filename'
 p57
-sg32
-S'C:\\eclipse\\workspace\\Copy of Sudoku\\src\\File\\file'
+S'_eclipse_workspace_Copy of Sudoku_src_File_file.html'
 p58
-sg34
+sS'name'
+p59
+S'C:\\eclipse\\workspace\\Copy of Sudoku\\src\\File\\file'
+p60
+sS'nums'
+p61
 g13
 (g14
 g15
-NtRp59
-(dp60
+NtRp62
+(dp63
 g18
 I1
 sg19
@@ -191,25 +194,25 @@ I0
 sg24
 I0
 sbssg25
-S'\xda\xbc2\x8d\xa9A\xd5}\x86B\xb8"&F\xab\xbb'
-p61
+S'\xd3\xef"\xc0\x7f\x99m)>\x8beEY\xe3Q\xb9'
+p64
 ssS'_eclipse_workspace_Copy of Sudoku_src_Parser_grid'
-p62
-(dp63
-g6
-(dp64
-g30
-S'_eclipse_workspace_Copy of Sudoku_src_Parser_grid.html'
 p65
-sg32
+(dp66
+g6
+(dp67
+g8
+S'_eclipse_workspace_Copy of Sudoku_src_Parser_grid.html'
+p68
+sg10
 S'C:\\eclipse\\workspace\\Copy of Sudoku\\src\\Parser\\grid'
-p66
-sg34
+p69
+sg12
 g13
 (g14
 g15
-NtRp67
-(dp68
+NtRp70
+(dp71
 g18
 I1
 sg19
@@ -226,24 +229,24 @@ sg24
 I0
 sbssg25
 S'b6O\xbf\xff\x88\xf0[c"\x98\xe9"\xa0_\xfc'
-p69
+p72
 ssS'_eclipse_workspace_Copy of Sudoku_src_Main_display'
-p70
-(dp71
-g6
-(dp72
-g30
-S'_eclipse_workspace_Copy of Sudoku_src_Main_display.html'
 p73
-sg32
+(dp74
+g6
+(dp75
+g8
+S'_eclipse_workspace_Copy of Sudoku_src_Main_display.html'
+p76
+sg10
 S'C:\\eclipse\\workspace\\Copy of Sudoku\\src\\Main\\display'
-p74
-sg34
+p77
+sg12
 g13
 (g14
 g15
-NtRp75
-(dp76
+NtRp78
+(dp79
 g18
 I1
 sg19
@@ -260,56 +263,53 @@ sg24
 I0
 sbssg25
 S'4\xd9\x7fX\xf3\xedV\xc3\xae\xb1\xff\xb0\xe2\x90\xd1\x8a'
-p77
+p80
 ssS'_eclipse_workspace_Copy of Sudoku_src_Main_sudoku_game'
-p78
-(dp79
-g6
-(dp80
-g30
-S'_eclipse_workspace_Copy of Sudoku_src_Main_sudoku_game.html'
 p81
-sg32
+(dp82
+g6
+(dp83
+g8
+S'_eclipse_workspace_Copy of Sudoku_src_Main_sudoku_game.html'
+p84
+sg10
 S'C:\\eclipse\\workspace\\Copy of Sudoku\\src\\Main\\sudoku_game'
-p82
-sg34
+p85
+sg12
 g13
 (g14
 g15
-NtRp83
-(dp84
+NtRp86
+(dp87
 g18
 I1
 sg19
 I0
 sg20
-I50
+I41
 sg21
 I0
 sg22
 I0
 sg23
-I23
+I3
 sg24
 I0
 sbssg25
-S'\xef\x7f\n\x83l\x84\xba\xc4Gt\x05\xd1\xf0\xb4\x84t'
-p85
+S'4\n\x12p\xbe\xedB<\xae\x9eM\xa3GaTY'
+p88
 ssS'_eclipse_workspace_Copy of Sudoku_src_Solver_solve_algorithm'
-p86
-(dp87
-g6
-(dp88
-S'html_filename'
 p89
+(dp90
+g6
+(dp91
+g8
 S'_eclipse_workspace_Copy of Sudoku_src_Solver_solve_algorithm.html'
-p90
-sS'name'
-p91
-S'C:\\eclipse\\workspace\\Copy of Sudoku\\src\\Solver\\solve_algorithm'
 p92
-sS'nums'
+sg10
+S'C:\\eclipse\\workspace\\Copy of Sudoku\\src\\Solver\\solve_algorithm'
 p93
+sg12
 g13
 (g14
 g15
@@ -374,13 +374,13 @@ p108
 (dp109
 g6
 (dp110
-g30
+g8
 S'_eclipse_workspace_Copy of Sudoku_src_File_config_file.html'
 p111
-sg32
+sg10
 S'C:\\eclipse\\workspace\\Copy of Sudoku\\src\\File\\config_file'
 p112
-sg34
+sg12
 g13
 (g14
 g15
@@ -408,13 +408,13 @@ p116
 (dp117
 g6
 (dp118
-g30
+g57
 S'_eclipse_workspace_Copy of Sudoku_src_File_csv_file.html'
 p119
-sg32
+sg59
 S'C:\\eclipse\\workspace\\Copy of Sudoku\\src\\File\\csv_file'
 p120
-sg34
+sg61
 g13
 (g14
 g15
@@ -435,51 +435,54 @@ I0
 sg24
 I0
 sbssg25
-S'\xe8\x9e\xe4\xc9\x8ay\xcb\xc8\xe4\x83s\xa3&\xed\x88\xd5'
+S'\\\x9d\x19fb\x00DQ`\x0b\x08\x87\xe9\x12\x14\xe6'
 p123
 ssS'_eclipse_workspace_Copy of Sudoku_src_Solver_dlx'
 p124
 (dp125
 g6
 (dp126
-g30
-S'_eclipse_workspace_Copy of Sudoku_src_Solver_dlx.html'
+S'html_filename'
 p127
-sg32
-S'C:\\eclipse\\workspace\\Copy of Sudoku\\src\\Solver\\dlx'
+S'_eclipse_workspace_Copy of Sudoku_src_Solver_dlx.html'
 p128
-sg34
+sS'name'
+p129
+S'C:\\eclipse\\workspace\\Copy of Sudoku\\src\\Solver\\dlx'
+p130
+sS'nums'
+p131
 g13
 (g14
 g15
-NtRp129
-(dp130
+NtRp132
+(dp133
 g18
 I1
 sg19
 I0
 sg20
-I158
+I178
 sg21
 I0
 sg22
 I0
 sg23
-I2
+I0
 sg24
 I0
 sbssg25
-S'G\x8bN-\x07\x9a\x1eqp\xb2\x9a\xc8\x81\x81\xfe\x92'
-p131
-sssS'version'
-p132
-S'3.6'
-p133
-sS'settings'
+S'\xc9\x14\xba\x03\x88\xbc\xbeytb5+\x1bf\xdf\xd5'
 p134
-S'\x89M\xc0\n\xb1\xe3J\x90\x90\xa05\x9c\x8c\xbev\x83'
+sssS'version'
 p135
-sS'format'
+S'3.6'
 p136
+sS'settings'
+p137
+S'\x89M\xc0\n\xb1\xe3J\x90\x90\xa05\x9c\x8c\xbev\x83'
+p138
+sS'format'
+p139
 I1
 s.

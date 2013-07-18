@@ -1,3 +1,5 @@
+import glob
+import os
 import unittest
 from File.txt_file import TXT_File
 
@@ -5,12 +7,9 @@ class Test_txt_file(unittest.TestCase):
     
     def setUp(self):
         self.name="To_read_sudoku_easy.txt"
-        self.path= "..\UnitTests"
-#        self.file=File(self.path,self.name)
+        self.path= "..\\UnitTests\\"
         self.txtfile=TXT_File(self.path,self.name)
-        
 
-        
     def test_txt_file_has_correct_value_read_from_TXT_file_class(self):
         var1='003020600900305001001806400008102900700000008006708200002609500800203009005010300'
         self.assertEqual(var1,self.txtfile.read_file())
@@ -38,6 +37,16 @@ class Test_txt_file(unittest.TestCase):
         tim='20:30'
         self.txtfile.save_game(x,tim)
         self.assertEqual(self.txtfile.file_name,self.txtfile.file_name)
-        
+
+    def tearDown(self):
+        directory='..\\UnitTests\\'
+        os.chdir(directory)
+        files=glob.glob('Saved*')
+        files1=glob.glob('Solved*')
+        for filename in files:
+            os.unlink(filename)
+        for filename in files1:
+            os.unlink(filename)
+                    
 if __name__ == "__main__":
     unittest.main()

@@ -20,6 +20,10 @@ class Test_Brute(unittest.TestCase):
     def test_if_time_elapsed_solving_is_saved(self):
         self.brute.solve(self.grid.set_values(self.gridA))
         self.assertTrue(self.brute.time_elapsed > 0)
+        
+    def test_if_the_grid_does_not_solution(self):
+        var1='700105080008697230206300014362084100001020800084760000090002750005410690040050020'
+        self.assertFalse(self.brute.solve(self.grid.set_values(var1)))
 
 if __name__ == "__main__":
     #import sys;sys.argv = ['', 'Test.testName']
