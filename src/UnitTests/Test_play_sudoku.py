@@ -24,7 +24,7 @@ class Test(unittest.TestCase):
         self.expected_wrong_verify_message = "ERROR, The grid is not fulfilled as expected."
         
         self.wrong_move_to_play = "Z6:20"
-        self.expected_wrong_coordinate_message = "ERROR, Wrong Coordinate"
+        self.expected_wrong_coordinate_message = "ERROR, Wrong Square"
         
         self.solve_command = "SoLvE"
         self.expected_solve_message = "The grid was solved"
@@ -37,48 +37,48 @@ class Test(unittest.TestCase):
         self.path = "c:\\sudoku\\save\\"
         
     def test_if_a_number_can_be_set_as_move_played(self):
-        ps = Play_sudoku(self.dictA, self.algorithm)
+        ps = Play_sudoku(self.dictA, self.algorithm, self.path)
         ps.play(self.move_to_play)
         self.assertDictEqual(ps.dictionary,self.expected_dictA)
         
     def test_if_a_wrong_move_returns_false(self):
-        ps = Play_sudoku(self.dictA, self.algorithm)
+        ps = Play_sudoku(self.dictA, self.algorithm, self.path)
         self.assertTrue(ps.play(self.wrong_move_to_play), self.expected_wrong_coordinate_message)
         
     def test_if_hint_is_displayed(self):
-        ps = Play_sudoku(self.dictA, self.algorithm)
+        ps = Play_sudoku(self.dictA, self.algorithm, self.path)
         m = ps.play(self.hint_command)
         self.assertEquals(m,self.expected_hint_message)
         
     def test_if_verify_command_validates_current_grid(self):
-        ps = Play_sudoku(self.dict_complete, self.algorithm)
+        ps = Play_sudoku(self.dict_complete, self.algorithm, self.path)
         m = ps.play(self.verify_command)
         self.assertEquals(m,self.expected_verify_message)
         
     def test_if_verify_command_validates_wrong_current_grid(self):
-        ps = Play_sudoku(self.dictA, self.algorithm)
+        ps = Play_sudoku(self.dictA, self.algorithm, self.path)
         m = ps.play(self.verify_command)
         self.assertEquals(m,self.expected_wrong_verify_message)
     
     def test_if_current_grid_can_be_solved(self):
-        ps = Play_sudoku(self.dictA, self.algorithm)
+        ps = Play_sudoku(self.dictA, self.algorithm, self.path)
         m = ps.play(self.solve_command)
         self.assertEquals(m,self.expected_solve_message)
         
     def test_if_current_grid_cannot_be_solved(self):
-        ps = Play_sudoku(self.wrong_dict, self.algorithm)
+        ps = Play_sudoku(self.wrong_dict, self.algorithm, self.path)
         m = ps.play(self.solve_command)
         self.assertEquals(m,self.expected_wrong_solve_message)
         
     def test_if_time_elapsed_can_be_retrieved(self):
-        ps = Play_sudoku(self.dictA, self.algorithm)
+        ps = Play_sudoku(self.dictA, self.algorithm, self.path)
         m = ps.play(self.time_command)
         m = m.split(":")
         time_in_seconds = (float(m[1])*60) + float(m[2])
         self.assertTrue(time_in_seconds > 0)
         
     def test_if_time_elapsed_can_be_retrieved_after_load_previous_time(self):
-        ps = Play_sudoku(self.dictA, self.algorithm)
+        ps = Play_sudoku(self.dictA, self.algorithm, self.path)
         ps.set_start_time(self.time_elapsed)
         m = ps.play(self.time_command)
         m = m.split(":")
@@ -86,11 +86,15 @@ class Test(unittest.TestCase):
         self.assertTrue(time_in_seconds > 90)
         
     def test_if_current_grid_can_be_saved(self):
-        ps = Play_sudoku(self.wrong_dict, self.algorithm)
+        ps = Play_sudoku(self.wrong_dict, self.algorithm, self.path)
+        first_files = os.listdir(self.path)
         files_saved = len([name for name in os.listdir(self.path) if os.path.isfile(self.path+name)])
         ps.play(self.save_command)
+        current_files = os.listdir(self.path)
         new_files_saved = len([name for name in os.listdir(self.path) if os.path.isfile(self.path+name)])
         self.assertTrue((files_saved + 1) == new_files_saved)
+        for f in current_files:
+            if not f in first_files: os.remove(self.path + f)
         
 if __name__ == "__main__":
     #import sys;sys.argv = ['', 'Test.testName']

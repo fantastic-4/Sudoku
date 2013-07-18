@@ -6,7 +6,7 @@ from File.txt_file import TXT_File
 
 class Play_sudoku:
     
-    def __init__(self, dictionary, algorithm):
+    def __init__(self, dictionary, algorithm, save_path):
         
         self.validator = Validator()
         self.dictionary = dictionary
@@ -21,7 +21,7 @@ class Play_sudoku:
         self.time_elapsed = 0
         self.start_time = time.clock()
         
-        self.path = "C:\sudoku\save"
+        self.path = save_path
         self.file_name = ""
     
     def __play_move(self, key, num):
@@ -103,17 +103,25 @@ class Play_sudoku:
         self.time_elapsed = (int(minutes)*60) + int(seconds)
     
     def __save(self):
+        '''
+        Function to save current game with the current time elapsed.
+        '''
         file_to_save = TXT_File(self.path,self.file_name)
         file_to_save.save_game(self.dictionary, self.__get_time())
         return ("The grid was saved")
         
     def play(self,command):
+        '''
+        Function to read a command given and perform a method
+        according to that command.
+        :param command: command to be executed.
+        '''
         message = ""
         if(":" in command):
             key,num = command.split(":")
             if(num.upper() == "HINT"): message = "Hint for: " + key + " -> " + self.__get_hint(key)
             elif(self.__play_move(key, num)): message = "Number: " + num + "was added to: " + key
-            else: message = "ERROR, Wrong Coordinate"
+            else: message = "ERROR, Wrong Square"
         else:
             if(command.upper() == "VERIFY"): 
                 if(self.__verify_game()): message = "Congratulations, the You solved the Grid!!"
@@ -123,5 +131,6 @@ class Play_sudoku:
                 else: message = "Current grid cannot be solved."
             elif(command.upper() == "TIME"): message = "Time elapsed: " + self.__get_time()
             elif(command.upper() == "SAVE"): message = self.__save()
+            else: message = "ERROR, command not valid."
                 
         return message
