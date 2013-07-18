@@ -17,7 +17,7 @@ class Validator:
         else:
             return False
         
-    def __set_matrix__(self, A, B):
+    def set_matrix(self, A, B):
         '''__set_matrix__ product of elements in A and elements in B.'''
         
         return [a+b for a in A for b in B]
