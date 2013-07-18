@@ -15,7 +15,7 @@ class Csv_file(File):
         file_to_read = self.open_file()
         if(file_to_read != None):
             lines = file_to_read.readlines()
-            self.__close_file(file_to_read)
+            self.close_file(file_to_read)
             for line in lines:
                 full_line += (self.__line_splitter(line.strip("\n")))
         
