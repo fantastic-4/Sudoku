@@ -30,7 +30,15 @@ def solve_from_console():
     print("4) Only Numbers are allowed, at any error you will be prompted to start again")
     print("5) To exit this option press Escape key\n")
     
-    solved = game.solve_sudoku_from_console()
+    flag = False
+    while not flag:
+        input_text = raw_input("Start to enter numbers: ")
+        if(input_text in "qQ"): break
+        input_text,flag = game.validate_text(input_text)
+    if(flag):
+        dictionary = input_text
+    
+    solved = game.solve_sudoku_from_console(dictionary)
     display_or_export_sudoku_solved(solved)
 
 def display_or_export_sudoku_solved(dictionary):

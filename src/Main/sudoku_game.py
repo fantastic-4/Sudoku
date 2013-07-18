@@ -26,20 +26,12 @@ class SudokuGame():
         algorithm = self.xml_config_file.get_xml_value("default_algorithm").lower()
         dict_algorithm = {'norvig': self.norvig.solve, 'brute': self.brute.solve}
         sudoku_resolved=dict_algorithm.get(algorithm)(self.grid.set_values(iofile_easy))
-        
         return sudoku_resolved
     
-    def solve_sudoku_from_console (self):
-        flag = False
-        while not flag:
-            input_text = raw_input("Start to enter numbers: ")
-            if(input_text in "qQ"): break
-            input_text,flag = self.validate_text(input_text)
-        if(flag): 
-            dictionary = input_text
-            algorithm = self.xml_config_file.get_xml_value("default_algorithm").lower()
-            dict_algorithm = {'norvig': self.norvig.solve, 'brute': self.brute.solve}
-            sudoku_resolved=dict_algorithm.get(algorithm)(dictionary)
+    def solve_sudoku_from_console (self, dictionary):
+        algorithm = self.xml_config_file.get_xml_value("default_algorithm").lower()
+        dict_algorithm = {'norvig': self.norvig.solve, 'brute': self.brute.solve}
+        sudoku_resolved=dict_algorithm.get(algorithm)(dictionary)
         return sudoku_resolved
 
     def validate_text(self, text):
@@ -62,6 +54,4 @@ class SudokuGame():
     
     def get_xml_value(self, tag):
         return self.xml_config_file.get_xml_value(tag)
-        
-    def errorMessage(self):
-        print "Incorrect input. Please enter a proper option."
+    
