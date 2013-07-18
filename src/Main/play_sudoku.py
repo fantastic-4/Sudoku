@@ -1,6 +1,8 @@
 from Parser.validator import Validator
 from Solver.norvig import Norvig
 from Solver.brute import Brute
+import time
+from File.txt_file import TXT_File
 
 class Play_sudoku:
     
@@ -15,7 +17,12 @@ class Play_sudoku:
         self.norvig = Norvig()
         self.brute = Brute()
         
-        self.squares = [a+b for a in self.validator.rows for b in self.validator.digits]        
+        self.squares = [a+b for a in self.validator.rows for b in self.validator.digits]
+        self.time_elapsed = 0
+        self.start_time = time.clock()
+        
+        self.path = "C:\sudoku\save"
+        self.file_name = ""
     
     def __play_move(self, key, num):
         '''
@@ -68,17 +75,38 @@ class Play_sudoku:
         self.__grid_empty_values()
     
     def __solve(self):
+        '''
+        Function to Solve the current grid using the default algorithm
+        '''
         dict_algorithm = {"norvig": self.norvig.solve, "brute": self.brute.solve}
         dict_solved = dict_algorithm.get(self.algorithm)(self.dictionary)
         
         return (dict_solved)
         
     def __get_time(self):
-        pass
+        '''
+        Function to retrieve the time elapsed so far
+        '''
+        self.time_elapsed += (time.clock() - self.start_time)
+        minutes = 0
+        while self.time_elapsed >= 60:
+            minutes += 1
+            self.time_elapsed -= 60
+        return (str(minutes) + ":" + str(self.time_elapsed))
+    
+    def set_start_time(self,new_time):
+        '''
+        Function to set the time where the clock will start to run.
+        :param time: Time to start to run the clock.
+        '''
+        minutes,seconds = new_time.split(":")
+        self.time_elapsed = (int(minutes)*60) + int(seconds)
     
     def __save(self):
-        pass
-    
+        file_to_save = TXT_File(self.path,self.file_name)
+        file_to_save.save_game(self.dictionary, self.__get_time())
+        return ("The grid was saved")
+        
     def play(self,command):
         message = ""
         if(":" in command):
@@ -93,7 +121,7 @@ class Play_sudoku:
             elif(command.upper() == "SOLVE"):
                 if(self.__solve() != False): message = "The grid was solved"
                 else: message = "Current grid cannot be solved."
-            elif(command.upper() == "TIME"): message = self.__solve()
-            elif(command.upper() == "SAVE"): message = "The grid was saved"
+            elif(command.upper() == "TIME"): message = "Time elapsed: " + self.__get_time()
+            elif(command.upper() == "SAVE"): message = self.__save()
                 
         return message
