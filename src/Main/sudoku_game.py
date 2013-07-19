@@ -50,7 +50,7 @@ class SudokuGame():
         print "\n.............The solution was exported to the file.............\n"
         
     def set_xml_value(self, new_value, tag):
-        self.xml_config_file.set_xml_value(new_value,tag)
+        self.xml_config_file.set_xml_value(new_value, tag)
     
     def get_xml_value(self, tag):
         return self.xml_config_file.get_xml_value(tag)
