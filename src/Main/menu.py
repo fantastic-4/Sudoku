@@ -1,4 +1,5 @@
-import os
+import os, sys
+sys.path.append("../../src")
 from Main.sudoku_game import SudokuGame
 
 game = SudokuGame()
@@ -29,6 +30,7 @@ def solve_from_a_file():
     
     solved = game.solve_sudoku_from_file(file_path, file_name)
     display_or_export_sudoku_solved(solved)
+    os.system("cls")
     
 def solve_from_console():
     print "====================================================="    
@@ -130,12 +132,12 @@ def display_options(num):
         return toSelect.get(num)[int(option)-1][3:]
         
 
-def enter_option(len,text,error="Incorrect input!. Please enter a proper option."):
+def enter_option(length,text,error="Incorrect input!. Please enter a proper option."):
     while True:
         num= raw_input(text)
         try:
-            num=float(num)
-            if (num <= len):
+            num=int(num)
+            if (num <= length):
                 return num
                 break
             else:
@@ -148,13 +150,12 @@ def enter_option(len,text,error="Incorrect input!. Please enter a proper option.
     
 def exit_game():
     print "............Exist.............\n"
-    os.system("cls")
-
-options = {1: solve, 2: play_game, 3: configure_settings, 4: exit_game}
 
 
 
+options = {1: solve, 2: play_game, 3: configure_settings}
 def menu_ini():
+    os.system("cls")
     while (True):
         print "======================================"    
         print "Administration Console for Sudoku Game"
@@ -168,10 +169,13 @@ def menu_ini():
         
         num = enter_option(4, "\n Please enter an option: \n")
         
-        options.get(num, errorMessage)()
+        
         if (num == 4): 
-            os.system('cls')
+            print "............Exist.............\n"
+            break
+        else:
+            
+            options.get(num, errorMessage)()
             break
         
-       
 menu_ini()
