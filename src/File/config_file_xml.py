@@ -9,7 +9,9 @@ class Xml_file(Config_file):
         Config_file.__init__(self, name, path)
         self.file_path=self.path+self.name+".xml"
         """Create the xml configuration file when it does not exist"""
-        if not os.path.isfile("../File/xml_config_file.xml"):
+        if not os.path.isfile("c:\\sudoku\\config\\xml_config_file.xml"):
+            self.ensure_dir("c:\\sudoku\\config\\")
+            self.ensure_dir("c:\\sudoku\\save\\")
             self._create_xml_config_file()
         self.doc_xml=parse(self.file_path)
         
@@ -19,12 +21,14 @@ class Xml_file(Config_file):
         implementacion_DOM = minidom.getDOMImplementation()
         xml_document = implementacion_DOM.createDocument(None, "Sudoku_game", None)
         raiz_documento = xml_document.documentElement
-        nodo_main = xml_document.createElement("Settings_SUDOKO")
+        nodo_main = xml_document.createElement("Settings_SUDOKU")
 
         # Adding the elements to node.
         nodo_main.appendChild(self.add_element(xml_document, "solver_output_type", "Display by console"))
         nodo_main.appendChild(self.add_element(xml_document, "default_algorithm", "Norvig"))
         nodo_main.appendChild(self.add_element(xml_document, "difficulty_level", "Easy"))
+        nodo_main.appendChild(self.add_element(xml_document, "save_game", "c:\\sudoku\\save\\"))
+        nodo_main.appendChild(self.add_element(xml_document, "save_game_number", "10"))
 
         # adding the node.
         raiz_documento.appendChild(nodo_main)            
@@ -39,7 +43,7 @@ class Xml_file(Config_file):
 
     def get_xml_value(self, tag_name):
         for n in self.doc_xml.getElementsByTagName(tag_name):
-            value= n.firstChild.data
+            value= n.firstChild.data 
         return value
     
     """Modify the default solver output type, algorithm and difficulty levels from the xml configuration file"""
