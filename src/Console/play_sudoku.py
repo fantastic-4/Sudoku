@@ -4,7 +4,7 @@ from Solver.brute import Brute
 import time
 from File.txt_file import TXTFile
 
-class Play_sudoku:
+class PlaySudoku:
     
     def __init__(self, dictionary, algorithm, save_path):
         
@@ -99,7 +99,7 @@ class Play_sudoku:
         while self.time_elapsed >= 60:
             minutes += 1
             self.time_elapsed -= 60
-        return (str(minutes) + ":" + str(self.time_elapsed))
+        return (str(minutes) + ":" + "{0:.5f}".format(self.time_elapsed))
     
     def set_start_time(self,new_time):
         '''
@@ -187,7 +187,7 @@ class Play_sudoku:
         :param command: command to be executed.
         '''
         if(":" in command):
-            key,num = command.split(":")
+            key,num = command.upper().split(":")
             if(num.upper() == "HINT"):
                 message = "Hint for: " + key + " -> " + self.__get_hint(key)
             elif(self.__play_move(key, num)):

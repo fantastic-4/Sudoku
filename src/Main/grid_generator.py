@@ -5,7 +5,6 @@ from Parser.grid import Grid
 import random
 from Parser.validator import Validator
 from Solver.brute import Brute
-from Main.display import Display
 
 class GridGenerator:
     '''
@@ -17,7 +16,6 @@ class GridGenerator:
         self.grid = Grid()
         self.validator = Validator()
         self.values = None
-        self.display = Display()
         
     def generate_grid(self):
         '''
@@ -28,14 +26,13 @@ class GridGenerator:
         
         for column in self.validator.digits:
             key = "A" + column
-            self.__set_random_number__(key)
+            self.__set_random_number(key)
         brute = Brute()
         self.values = brute.solve(self.values)
-        print(self.display.display(self.values))
         
         return self.values
                     
-    def __set_random_number__(self, rand_key):
+    def __set_random_number(self, rand_key):
         '''
         Function to set a random number on a specific cell.
         :param rand_key:
@@ -70,10 +67,10 @@ class GridGenerator:
                 values_displayed.append(rand_key)
                 numbers_quantity -= 1
                 
-        self.__grid_cleaner__(values_displayed)
+        self.__grid_cleaner(values_displayed)
         return self.values
     
-    def __grid_cleaner__(self, values_displayed):
+    def __grid_cleaner(self, values_displayed):
         '''
         Function to clean Grid setting '0' to coordinates that were not selected s hints. 
         :param values_displayed:
