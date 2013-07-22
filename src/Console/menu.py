@@ -3,14 +3,16 @@ Sudoku
 '''
 import os, sys
 sys.path.append("../../src")
+from Main.sudoku_game import SudokuGame
 from Console.solve_console import SolveConsole
 from Console.configure_sudoku import ConfigureSudoku
 
 class Menu():
         
     def __init__(self):
-        self.solve = SolveConsole()
-        self.configure_settings = ConfigureSudoku()
+        self.game = SudokuGame()
+        self.solve = SolveConsole(self.game)
+        self.configure_settings = ConfigureSudoku(self.game)
         self.options = {1: self.solve.solve, 2: self.play_game,\
                          3: self.configure_settings.configure_settings}
     

@@ -3,12 +3,11 @@ Created on Jul, 2013
 
 '''
 import os
-from Main.sudoku_game import SudokuGame
 
 class SolveConsole():
     
-    def __init__(self):
-        self.Game_console = SudokuGame()
+    def __init__(self, sudoku):
+        self.Game_console = sudoku
            
     def solve(self):
         '''

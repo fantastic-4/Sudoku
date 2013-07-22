@@ -1,9 +1,9 @@
 import os
-from Main.sudoku_game import SudokuGame
+
 '''This class handle all configuration stuff'''
 class ConfigureSudoku:
-    def __init__(self):
-        self.settings = SudokuGame()
+    def __init__(self, sudoku):
+        self.settings = sudoku
         
     def configure_settings(self):
         ''' This function is the main, this will be called from menu'''
