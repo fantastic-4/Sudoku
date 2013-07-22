@@ -22,7 +22,8 @@ class SolveConsole():
         print "3: Back"
         option = self.enter_option(3,"\n Please enter an option: ")
         
-        options_solve = {1: self.solve_from_a_file, 2: self.solve_from_console, 3: self.menu_ini}
+        options_solve = {1: self.solve_from_a_file, 2: self.solve_from_console,\
+                          3: self.menu_ini}
         options_solve.get(option)()
     
     def menu_ini(self):
@@ -32,12 +33,41 @@ class SolveConsole():
         '''
         Solve a Sudoku with data from a file
         '''
-        file_path = raw_input("\n Enter the path where the file is located: ")
-        file_name = raw_input(" Enter the file name to read and solve the Sudoku: ")
+         
+        while True:
+            valuepath = raw_input("\nEnter the path where\
+ the file is located: ")
+            if self.verify_path(valuepath):
+                file_path=valuepath
+                break
+            else: 
+                print "The path does not exist, try again.."
+                
+        while True:
+            valuename = raw_input("\nEnter the file name to\
+ read and solve the Sudoku: ")
+            if self.verify_file(file_path+"\\"+valuename):
+                file_name=valuename
+                break
+            else:
+                print "The file does not exist, try again.."            
+        
         
         solved = self.Game_console.solve_sudoku_from_file(file_path, file_name)
         self.display_or_export_sudoku_solved(solved)
-        input("Press any key to continue...")
+        raw_input("Press any key to continue...")
+        
+    def verify_path(self,path):
+        if os.path.exists(path):
+           return True
+        else: 
+            return False
+        
+    def verify_file(self,file):
+        if os.path.isfile(file):
+           return True
+        else: 
+            return False
         
     def solve_from_console(self):
         '''
@@ -70,9 +100,11 @@ class SolveConsole():
         '''
         Print and/or export the solution
         '''
-        alg =self.Game_console.xml_config_file.get_xml_value("default_algorithm")
+        alg =self.Game_console.xml_config_file.\
+        get_xml_value("default_algorithm")
         print 'testing..', alg
-        output =self.Game_console.xml_config_file.get_xml_value("solver_output_type")
+        output =self.Game_console.xml_config_file.\
+        get_xml_value("solver_output_type")
         output = output.lower()
             
         print "====================================================="    
@@ -84,12 +116,13 @@ class SolveConsole():
         if (output == 'export to file'):
             self.Game_console.display(dictionary)
             self.Game_console.txtfile.write_file(dictionary)
-            print "\n...........The solution was exported to the file...........\n"
+            print "\n...........The solution was \
+            exported to the file...........\n"
             os.system("cls")
                       
     
     def enter_option(self, length,text,error="Incorrect input!. \
-        \nPlease enter a proper option."):
+ \nPlease enter a proper option."):
         while True:
             num = raw_input(text)
             try:
