@@ -3,8 +3,8 @@ from Parser.grid import Grid
 from Solver.norvig import Norvig
 from Solver.brute import Brute
 
-from File.config_file_xml import Xml_file
-from File.txt_file import TXT_File
+from File.config_file_xml import Xmlfile
+from File.txt_file import TXTFile
 
 from Main.display import Display 
 
@@ -14,13 +14,13 @@ class SudokuGame():
         self.norvig=Norvig()
         self.grid=Grid()
         self.brute=Brute()
-        self.xml_config_file = Xml_file('../File/', 'xml_config_file')
+        self.xml_config_file = Xmlfile('../File/', 'xml_config_file')
         self.display_dic= Display()
         
     
     
     def solve_sudoku_from_file (self, path, filename):
-        self.txtfile=TXT_File(path, filename)
+        self.txtfile=TXTFile(path, filename)
         iofile_easy=self.txtfile.read_file()
         
         algorithm = self.xml_config_file.get_xml_value("default_algorithm").lower()
