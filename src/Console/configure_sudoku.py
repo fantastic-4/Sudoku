@@ -25,7 +25,7 @@ class ConfigureSudoku:
 
     def display_options(self,num):
         ''' Displays all option for configuration that will be changed'''
-        algoritms = ["1: Norvig","2: Brute", "3: Back" ]
+        algoritms = ["1: Norvig","2: Brute", "3: Dlx", "4: Back" ]
         outputTypes =  ["1: Display by console", "2: Export to file", "3: Back"]
         levels =  ["1: Easy", "2: Medium", "3: Hard", "4: Back"]   
         toSelect = {1:algoritms, 2: outputTypes, 3:levels}

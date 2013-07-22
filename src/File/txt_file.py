@@ -56,11 +56,11 @@ class TXTFile(File):
         
     def load_Game(self, name):
         '''Load the string and time from file in order to start the game'''
-        tim=""
+
         self.file_name=name
         self.path=self.xml.get_xml_value('save_game')
-        file=self.open_file()
-        new_line=file.read().strip().split(",")
+        file_game=self.open_file()
+        new_line=file_game.read().strip().split(",")
         return (new_line[0],new_line[1])
     
 

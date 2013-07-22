@@ -78,6 +78,7 @@ class SolveConsole():
         Print and/or export the solution
         '''
         alg =self.Game_console.xml_config_file.get_xml_value("default_algorithm")
+        print 'testing..', alg
         output =self.Game_console.xml_config_file.get_xml_value("solver_output_type")
         output = output.lower()
             
