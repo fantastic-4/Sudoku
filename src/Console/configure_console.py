@@ -1,7 +1,7 @@
 import os
 
 '''This class handle all configuration stuff'''
-class ConfigureSudoku:
+class ConfigureConsole:
     def __init__(self, sudoku):
         self.settings = sudoku
         

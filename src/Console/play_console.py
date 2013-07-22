@@ -1,15 +1,11 @@
-from Console.play_sudoku import PlaySudoku
+from Main.play_sudoku import PlaySudoku
 from Main.grid_generator import GridGenerator
-from Main.sudoku_game import SudokuGame
-import sys
 
-sys.path.append("../../src")
-
-class PlayInterface:
+class PlayConsole:
     
-    def __init__(self):
+    def __init__(self, sudoku):
  
-        self.game = SudokuGame()
+        self.game = sudoku
         self.difficulty = self.game.get_xml_value("difficulty_level")
         self.algorithm = self.game.get_xml_value("default_algorithm")
         self.save_path = self.game.get_xml_value("save_game")
@@ -98,6 +94,4 @@ class PlayInterface:
             command = raw_input("Enter a command: ")
             if(command.upper() == "EXIT"): break
             else: print(self.play.play(command))
-        
-pi = PlayInterface()
-pi.display_menu()
+
