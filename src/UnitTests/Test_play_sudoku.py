@@ -1,5 +1,5 @@
 import unittest
-from Main.play_sudoku import Play_sudoku
+from Console.play_sudoku import PlaySudoku
 import os
 import time
 
@@ -47,48 +47,49 @@ class TestPlaySudoku(unittest.TestCase):
         self.last_good_square_command = "ReTuRn"
         
     def test_if_a_number_can_be_set_as_move_played(self):
-        ps = Play_sudoku(self.dictA, self.algorithm, self.path)
+        ps = PlaySudoku(self.dictA, self.algorithm, self.path)
         ps.play(self.move_to_play)
         self.assertDictEqual(ps.dictionary,self.expected_dictA)
            
     def test_if_a_wrong_move_returns_false(self):
-        ps = Play_sudoku(self.dictA, self.algorithm, self.path)
+        ps = PlaySudoku(self.dictA, self.algorithm, self.path)
         self.assertTrue(ps.play(self.wrong_move_to_play), self.expected_wrong_coordinate_message)
            
     def test_if_specific_hint_is_displayed(self):
-        ps = Play_sudoku(self.dictA, self.algorithm, self.path)
+        ps = PlaySudoku(self.dictA, self.algorithm, self.path)
         m = ps.play(self.specific_hint_command)
         self.assertEquals(m,self.expected_specific_hint_message)
            
     def test_if_verify_command_validates_current_grid(self):
-        ps = Play_sudoku(self.dict_complete, self.algorithm, self.path)
+        ps = PlaySudoku(self.dict_complete, self.algorithm, self.path)
         m = ps.play(self.verify_command)
         self.assertEquals(m,self.expected_verify_message)
            
     def test_if_verify_command_validates_wrong_current_grid(self):
-        ps = Play_sudoku(self.dictA, self.algorithm, self.path)
+        ps = PlaySudoku(self.dictA, self.algorithm, self.path)
         m = ps.play(self.verify_command)
         self.assertEquals(m,self.expected_wrong_verify_message)
        
     def test_if_current_grid_can_be_solved(self):
-        ps = Play_sudoku(self.dictA, self.algorithm, self.path)
+        ps = PlaySudoku(self.dictA, self.algorithm, self.path)
         m = ps.play(self.solve_command)
         self.assertEquals(m,self.expected_solve_message)
            
     def test_if_current_grid_cannot_be_solved(self):
-        ps = Play_sudoku(self.wrong_dict, self.algorithm, self.path)
+        ps = PlaySudoku(self.wrong_dict, self.algorithm, self.path)
         m = ps.play(self.solve_command)
         self.assertEquals(m,self.expected_wrong_solve_message)
            
     def test_if_time_elapsed_can_be_retrieved(self):
-        ps = Play_sudoku(self.dictA, self.algorithm, self.path)
+        ps = PlaySudoku(self.dictA, self.algorithm, self.path)
+        time.sleep(1)
         m = ps.get_time()
         m = m.split(":")
-        time_in_seconds = (float(m[0])*60) + float(m[1])
+        time_in_seconds = (float(m[0])*60) + (float(m[1]))
         self.assertTrue(time_in_seconds > 0)
            
     def test_if_time_elapsed_can_be_retrieved_after_load_previous_time(self):
-        ps = Play_sudoku(self.dictA, self.algorithm, self.path)
+        ps = PlaySudoku(self.dictA, self.algorithm, self.path)
         ps.set_start_time(self.time_elapsed)
         m = ps.get_time()
         m = m.split(":")
@@ -96,7 +97,7 @@ class TestPlaySudoku(unittest.TestCase):
         self.assertTrue(time_in_seconds > 90)
            
     def test_if_current_grid_can_be_saved(self):
-        ps = Play_sudoku(self.wrong_dict, self.algorithm, self.path)
+        ps = PlaySudoku(self.wrong_dict, self.algorithm, self.path)
         first_files = os.listdir(self.path)
         files_saved = len([name for name in os.listdir(self.path) if os.path.isfile(self.path+name)])
         ps.play(self.save_command)
@@ -107,17 +108,17 @@ class TestPlaySudoku(unittest.TestCase):
             if not f in first_files: os.remove(self.path + f)
           
     def test_if_hint_is_displayed(self):
-        ps = Play_sudoku(self.dictB, self.algorithm, self.path)
+        ps = PlaySudoku(self.dictB, self.algorithm, self.path)
         self.assertTrue(ps.play(self.hint_command),self.expected_hint_message)
           
     def test_if_reset_command_restart_the_grid(self):
-        ps = Play_sudoku(self.dictB, self.algorithm, self.path)
+        ps = PlaySudoku(self.dictB, self.algorithm, self.path)
         ps.play(self.move_to_play)
         ps.play(self.reset_command)
         self.assertTrue(ps.dictionary,self.dictB)
          
     def test_if_reset_command_restart_the_time(self):
-        ps = Play_sudoku(self.dictB, self.algorithm, self.path)
+        ps = PlaySudoku(self.dictB, self.algorithm, self.path)
         ps.play(self.move_to_play)
         time.sleep(self.time_playing)
         ps.play(self.reset_command)
@@ -127,13 +128,13 @@ class TestPlaySudoku(unittest.TestCase):
         self.assertTrue(time_in_seconds < self.time_playing)
         
     def test_if_undo_remove_last_move_played(self):
-        ps = Play_sudoku(self.dictA, self.algorithm, self.path)
+        ps = PlaySudoku(self.dictA, self.algorithm, self.path)
         ps.play(self.move_to_play)
         ps.play(self.undo_command)
         self.assertDictEqual(ps.dictionary,self.dictA)
         
     def test_if_game_can_be_returned_to_last_good_state(self):
-        ps = Play_sudoku(self.dictA, self.algorithm, self.path)
+        ps = PlaySudoku(self.dictA, self.algorithm, self.path)
         ps.play(self.move_to_play)
         ps.play("I2:9")
         ps.play("I8:9")
