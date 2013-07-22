@@ -1,16 +1,20 @@
+'''This class is a subclass of File class'''
 from File.file import File
 from Parser.validator import Validator
 
-class Csv_file(File):
+class Csvfile(File):
     
     def __init__(self,path, name):
+        ''' Start some variables that we need to CSV file
+        this is subclass from File'''
+        
         File.__init__(self,path,name)
         self.delimiter = ","
         self.validator = Validator()
         
-    '''Function to read a CSV file.
-       Return line ready to be used or prints a message if the file content was not valid.'''
+
     def read_file(self):
+        '''Function to read a CSV file.'''
         full_line = ""
         file_to_read = self.open_file()
         if(file_to_read != None):
@@ -22,9 +26,11 @@ class Csv_file(File):
         if(self.validator.validate_values(full_line)): return full_line
 
     
-    '''Function to split a string of characters according to the 3 principal delimiters on a CSV file.
-       Return the line split by common delimiters on CSV files.'''        
+      
     def __line_splitter(self,line):
+        '''Function to split a string of characters according\
+         to the 3 principal delimiters on a CSV file.
+       Return the line split by common delimiters on CSV files.'''  
         
         new_line = ""
         if("," in line):
@@ -41,8 +47,10 @@ class Csv_file(File):
         
         return new_line
     
-    '''Function to export result in a csv file by preparing the result in the same format as it was read'''
+    
     def write_file(self, dictionary):
+        '''Function to export result in a csv file by preparing\
+         the result in the same format as it was read'''
         
         text_to_be_written = ""
         rows = "ABCDEFGHI"

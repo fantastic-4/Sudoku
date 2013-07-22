@@ -1,53 +1,61 @@
+'''This class create new xml file'''
 import os
-from File.config_file import Config_file
+from File.config_file import Configfile
 from xml.dom import minidom
 from xml.dom.minidom import parse
 
-class Xml_file(Config_file):
-    """method to start the attributes for xml_file"""
+class Xmlfile(Configfile):
+
     def __init__(self, name,path):
-        Config_file.__init__(self, name, path)
+        ''' Start the attributes for xml_file also create the xml 
+        configuration file when it does not exist'''
+        Configfile.__init__(self, name, path)
         self.file_path=self.path+self.name+".xml"
-        """Create the xml configuration file when it does not exist"""
         if not os.path.isfile("c:\\sudoku\\config\\xml_config_file.xml"):
             self.ensure_dir("c:\\sudoku\\config\\")
             self.ensure_dir("c:\\sudoku\\save\\")
             self._create_xml_config_file()
         self.doc_xml=parse(self.file_path)
-        
-    """Creating a xml file if it doesn't exist then the xml file is created"""    
+            
     def _create_xml_config_file(self):
-        # Create the object Document.
+        '''Create the object'''
         implementacion_DOM = minidom.getDOMImplementation()
-        xml_document = implementacion_DOM.createDocument(None, "Sudoku_game", None)
-        raiz_documento = xml_document.documentElement
+        xml_document = implementacion_DOM.\
+        createDocument(None, "Sudoku_game", None)
+        main_document = xml_document.documentElement
         nodo_main = xml_document.createElement("Settings_SUDOKU")
 
-        # Adding the elements to node.
-        nodo_main.appendChild(self.add_element(xml_document, "solver_output_type", "Display by console"))
-        nodo_main.appendChild(self.add_element(xml_document, "default_algorithm", "Norvig"))
-        nodo_main.appendChild(self.add_element(xml_document, "difficulty_level", "Easy"))
-        nodo_main.appendChild(self.add_element(xml_document, "save_game", "c:\\sudoku\\save\\"))
-        nodo_main.appendChild(self.add_element(xml_document, "save_game_number", "10"))
+        nodo_main\
+        .appendChild(self.add_element(xml_document, "solver_output_type",\
+                                       "Display by console"))
+        nodo_main\
+        .appendChild(self.add_element(xml_document, "default_algorithm",\
+                                       "Norvig"))
+        nodo_main.appendChild(self.add_element(xml_document,\
+                                                "difficulty_level", "Easy"))
+        nodo_main\
+        .appendChild(self.add_element(xml_document, \
+                                      "save_game", "c:\\sudoku\\save\\"))
+        nodo_main.appendChild(self.add_element(xml_document, \
+                                               "save_game_number", "10"))
 
-        # adding the node.
-        raiz_documento.appendChild(nodo_main)            
-        
-        # opening the xml file and writing the data
+        main_document.appendChild(nodo_main)            
         xml_file = open(self.file_path, "w")  
         xml_document.writexml(xml_file, encoding='utf-8')
         xml_file.close()
         return self.file_path
 
-    """Read the default solver output type, algorithm and difficulty levels from the xml configuration file"""
 
     def get_xml_value(self, tag_name):
+        '''Read the default solver output type, algorithm and difficulty \
+        levels from the xml configuration file'''
         for n in self.doc_xml.getElementsByTagName(tag_name):
             value= n.firstChild.data 
         return value
     
-    """Modify the default solver output type, algorithm and difficulty levels from the xml configuration file"""
     def set_xml_value(self, new_value, tag_name):
+        '''Modify the default solver output type, algorithm and difficulty\
+         levels from the xml configuration file'''
         node = self.doc_xml.getElementsByTagName(tag_name)
         node[0].firstChild.nodeValue = new_value
         xml_file = open(self.file_path, "w")
@@ -55,8 +63,9 @@ class Xml_file(Config_file):
         xml_file.close()
         return node[0].firstChild.nodeValue
     
-    """Add a element to the xml configuration file"""   
+
     def add_element(self, xml_document, element, value):
+        '''Add values to the xml configuration file'''
         element_added = xml_document.createElement(element)
         element_added.appendChild(xml_document.createTextNode(value))
         return element_added

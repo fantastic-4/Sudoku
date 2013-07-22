@@ -15,7 +15,7 @@ class ConfigureSudoku:
         else:
             option = self.display_options(num)
             if not (option == 'Back'):
-                self.xmlfile.set_xml_value(option,tags.get(num))
+                self.settings.set_xml_value(option,tags.get(num))
                 print ".........Value updated....."
                 os.system("cls")
             self.configure_settings()

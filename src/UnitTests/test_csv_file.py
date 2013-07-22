@@ -1,7 +1,7 @@
-from File.csv_file import Csv_file
+from File.csv_file import Csvfile
 import unittest, os, filecmp
 
-class Test_csv_file(unittest.TestCase):
+class TestCsvFile(unittest.TestCase):
     
     def setUp(self):
         
@@ -27,7 +27,7 @@ class Test_csv_file(unittest.TestCase):
         self.test_file = open(self.test_file_name,"w+")
         self.test_file.write(self.grid_to_solve_with_comma)
         self.test_file.close()
-        cf = Csv_file(os.getcwd(),self.test_file_name)
+        cf = Csvfile(os.getcwd(),self.test_file_name)
         res = cf.read_file()
          
         self.assertTrue(res == self.expected_grid_to_solve_parsed)
@@ -37,7 +37,7 @@ class Test_csv_file(unittest.TestCase):
         self.test_file = open(self.test_file_name,"w+")
         self.test_file.write(self.grid_to_solve_with_dot_and_comma)
         self.test_file.close()
-        cf = Csv_file(os.getcwd(),self.test_file_name)
+        cf = Csvfile(os.getcwd(),self.test_file_name)
         res = cf.read_file()
          
         self.assertTrue(res == self.expected_grid_to_solve_parsed)
@@ -47,7 +47,7 @@ class Test_csv_file(unittest.TestCase):
         self.test_file = open(self.test_file_name,"w+")
         self.test_file.write(self.grid_to_solve_with_tab)
         self.test_file.close()
-        cf = Csv_file(os.getcwd(),self.test_file_name)
+        cf = Csvfile(os.getcwd(),self.test_file_name)
         res = cf.read_file()
          
         self.assertTrue(res == self.expected_grid_to_solve_parsed)
@@ -57,7 +57,7 @@ class Test_csv_file(unittest.TestCase):
         self.test_file = open(self.test_file_name,"w+")
         self.test_file.write(self.grid_to_solve_with_comma)
         self.test_file.close()
-        cf = Csv_file(os.getcwd(),self.test_file_name)
+        cf = Csvfile(os.getcwd(),self.test_file_name)
         cf.read_file()
         
         self.test_file = open(self.test_file_name,"w+")
@@ -75,7 +75,7 @@ class Test_csv_file(unittest.TestCase):
         self.test_file = open(self.test_file_name,"w+")
         self.test_file.write(self.grid_to_solve_with_dot_and_comma)
         self.test_file.close()
-        cf = Csv_file(os.getcwd(),self.test_file_name)
+        cf = Csvfile(os.getcwd(),self.test_file_name)
         cf.read_file()
         
         self.test_file = open(self.test_file_name,"w+")
@@ -93,7 +93,7 @@ class Test_csv_file(unittest.TestCase):
         self.test_file = open(self.test_file_name,"w+")
         self.test_file.write(self.grid_to_solve_with_tab)
         self.test_file.close()
-        cf = Csv_file(os.getcwd(),self.test_file_name)
+        cf = Csvfile(os.getcwd(),self.test_file_name)
         cf.read_file()
         
         self.test_file = open(self.test_file_name,"w+")

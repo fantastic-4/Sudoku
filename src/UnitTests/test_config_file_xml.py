@@ -1,13 +1,13 @@
 import os
 import unittest
-from File.config_file_xml import Xml_file
+from File.config_file_xml import Xmlfile
 
-class Test_XML_config_file(unittest.TestCase):
+class TestXMLconfigfile(unittest.TestCase):
 
     def setUp(self):
         name_xml_file="xml_config_file"
         path_xml_file="c:\\sudoku\\config\\"
-        self.xml=Xml_file(path_xml_file,name_xml_file)
+        self.xml=Xmlfile(path_xml_file,name_xml_file)
         self.outputfile="Display by console"
         self.algorithm="Norvig"
         self.level="Easy"
