@@ -8,10 +8,10 @@ cov=coverage(omit=['*__.py', '*test*.py'])
 cov.start()
 import unittest
 
-from UnitTests.test_config_file_xml import Test_XML_config_file
+from UnitTests.test_config_file_xml import TestXMLconfigfile
 from UnitTests.test_grid import Test_grid
-from UnitTests.test_csv_file import Test_csv_file
-from UnitTests.test_txt_file import Test_txt_file
+from UnitTests.test_csv_file import TestCsvFile
+from UnitTests.test_txt_file import Testtxtfile
 from UnitTests.test_brute import Test_Brute
 from UnitTests.test_norvig import Test_norvig
 from UnitTests.test_display import Test_Display
@@ -27,9 +27,9 @@ if __name__=="__main__":
     suite=unittest.TestSuite()
     
     suite.addTest(unittest.makeSuite(Test_grid))
-    suite.addTest(unittest.makeSuite(Test_XML_config_file))
-    suite.addTest(unittest.makeSuite(Test_csv_file))
-    suite.addTest(unittest.makeSuite(Test_txt_file))
+    suite.addTest(unittest.makeSuite(TestXMLconfigfile))
+    suite.addTest(unittest.makeSuite(TestCsvFile))
+    suite.addTest(unittest.makeSuite(Testtxtfile))
     suite.addTest(unittest.makeSuite(Test_Brute))
     suite.addTest(unittest.makeSuite(Test_norvig))
     suite.addTest(unittest.makeSuite(Test_Display))

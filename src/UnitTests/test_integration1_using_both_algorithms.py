@@ -3,7 +3,7 @@ import time
 from Solver.norvig import Norvig
 from Solver.brute import Brute
 from Parser.grid import Grid
-from File.txt_file import TXT_File
+from File.txt_file import TXTFile
 
 
 
@@ -21,7 +21,7 @@ class Test_integration_using_norvig(unittest.TestCase):
 
     def test_resolve_string_from_file_using_norvig_easy(self):
         name="To_read_sudoku_easy.txt"
-        txtfile=TXT_File(self.path,name)
+        txtfile=TXTFile(self.path,name)
         other_grid=self.norvig.solve(self.grid.set_values(txtfile.read_file()))
         txtfile.write_file(other_grid)
         self.assertEqual(self.grid_expected,other_grid)
@@ -30,7 +30,7 @@ class Test_integration_using_norvig(unittest.TestCase):
   
     def test_resolve_string_from_file_using_brute_easy(self):
         name="To_read_sudoku_easy.txt"
-        txtfile=TXT_File(self.path,name)
+        txtfile=TXTFile(self.path,name)
         other_grid=self.brute.solve(self.grid.set_values(txtfile.read_file()))
         txtfile.write_file(other_grid)
         self.assertEqual(self.grid_expected,other_grid)
@@ -39,7 +39,7 @@ class Test_integration_using_norvig(unittest.TestCase):
 
     def test_resolve_string_from_file_using_norvig_hard(self):
         name="To_read_sudoku_hard.txt"
-        txtfile=TXT_File(self.path,name)
+        txtfile=TXTFile(self.path,name)
         other_grid=self.norvig.solve(self.grid.set_values(txtfile.read_file()))
         txtfile.write_file(other_grid)
         self.assertEqual(self.expected_grid_hard,other_grid)
