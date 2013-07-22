@@ -1,9 +1,9 @@
-from File.config_file_xml import Xml_file
 import os
-import Main.menu
+from Main.sudoku_game import SudokuGame
+
 class ConfigureSudoku:
     def __init__(self):
-        self.xmlfile=Xml_file()
+        self.settings = SudokuGame()
         
     def configure_settings(self):
         self.display_current_values()
@@ -11,7 +11,7 @@ class ConfigureSudoku:
         tags = {1: "default_algorithm", 2: "solver_output_type", 3: "difficulty_level", 4:"save_game_number"}
         
         if (num == 5):
-            Main.menu.menu_ini()
+            return
         else:
             option = self.display_options(num)
             if not (option == 'Back'):
@@ -39,10 +39,10 @@ class ConfigureSudoku:
         print "\n ======================================" 
         print "         Current Values "
         print "======================================" 
-        print "Algorithm: ", self.xmlfile.get_xml_value("default_algorithm").upper()
-        print "Output type: ", self.xmlfile.get_xml_value("solver_output_type").upper()
-        print "level: ", self.xmlfile.get_xml_value("difficulty_level").upper()
-        print "Number of saved games: ", self.xmlfile.get_xml_value("save_game_number")
+        print "Algorithm: ", self.settings.get_xml_value("default_algorithm").upper()
+        print "Output type: ", self.settings.get_xml_value("solver_output_type").upper()
+        print "level: ", self.settings.get_xml_value("difficulty_level").upper()
+        print "Number of saved games: ", self.settings.get_xml_value("save_game_number")
         print "======================================"    
         
     def submenu_modify_values(self):   
@@ -56,12 +56,12 @@ class ConfigureSudoku:
         print "5: Back"
         return self.enter_option(5,"\n Please enter an option: \n")
 
-    def enter_option(self,len,text,error="Incorrect input!. Please enter a proper option."):
+    def enter_option(self,length,text,error="Incorrect input!. Please enter a proper option."):
         while True:
             num= raw_input(text)
             try:
                 num=int(num)
-                if (num <= len):
+                if (num <= length):
                     return num
                     break
                 else:
@@ -72,5 +72,3 @@ class ConfigureSudoku:
                 pass
     def errorMessage(self,text):
         print text
-
-ConfigureSudoku()
