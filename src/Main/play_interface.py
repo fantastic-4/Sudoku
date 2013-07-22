@@ -2,6 +2,7 @@ from Console.play_sudoku import PlaySudoku
 from Main.grid_generator import GridGenerator
 from Main.sudoku_game import SudokuGame
 import sys
+
 sys.path.append("../../src")
 
 class PlayInterface:
