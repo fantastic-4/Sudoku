@@ -4,8 +4,8 @@ Sudoku
 import os, sys
 sys.path.append("../../src")
 from Main.sudoku_game import SudokuGame
-from Main.solve_console import SolveConsole
-from Main.configure_sudoku import ConfigureSudoku
+from Console.solve_console import SolveConsole
+from Console.configure_sudoku import ConfigureSudoku
 
 class Menu():
         

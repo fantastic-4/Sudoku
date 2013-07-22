@@ -2,7 +2,7 @@ from Parser.validator import Validator
 from Solver.norvig import Norvig
 from Solver.brute import Brute
 import time
-from File.txt_file import TXT_File
+from File.txt_file import TXTFile
 
 class Play_sudoku:
     
@@ -114,7 +114,7 @@ class Play_sudoku:
         '''
         Function to save current game with the current time elapsed.
         '''
-        file_to_save = TXT_File(self.path,self.file_name)
+        file_to_save = TXTFile(self.path,self.file_name)
         file_to_save.save_game(self.dictionary, self.get_time())
         return ("The grid was saved")
     
