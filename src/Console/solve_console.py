@@ -9,19 +9,13 @@ class SolveConsole():
     
     def __init__(self):
         self.Game_console = SudokuGame()
-
-    def error_message(self, text):
-        '''
-        display an error
-        '''
-        print text
-            
+           
     def solve(self):
         '''
         Options to solve sudoku class need to start
         '''
            
-        print "\n ======================================" 
+        print "\n======================================" 
         print "         Solve Sudoku "
         print "======================================" 
         print "\n1: Enter the Sudoku by file"
@@ -96,7 +90,7 @@ class SolveConsole():
                       
     
     def enter_option(self, length,text,error="Incorrect input!. \
-                                        Please enter a proper option."):
+        \nPlease enter a proper option."):
         while True:
             num = raw_input(text)
             try:
@@ -111,6 +105,11 @@ class SolveConsole():
                 self.error_message(error)
                 pass
     
-        
+    def error_message(self, text):
+        '''
+        display an error
+        '''
+        print text
+    
     def exit_game(self):
         print "............Exist.............\n"
