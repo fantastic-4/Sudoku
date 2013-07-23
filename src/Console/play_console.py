@@ -1,10 +1,7 @@
-import os,sys
-sys.path.append("../../src")
-
+import os
 from Main.grid_generator import GridGenerator
-from Main.sudoku_game import SudokuGame
 from Main.play_sudoku import PlaySudoku
-from File.txt_file import TXTFile
+
 
 class PlayConsole:
     
@@ -17,7 +14,6 @@ class PlayConsole:
         
         self.generator = GridGenerator()
         self.play = None
-#         self.txtfile = TXTFile()
     
     def display_menu(self):
         '''
@@ -112,6 +108,4 @@ separated by ':'.\nExample: A3:hint")
         print("\nDifficulty: " + self.difficulty +
                   "\nTime elapsed: " + self.play.get_time() + "\n")
         self.game.display(self.play.dictionary)
-    
-pi = PlayConsole(SudokuGame())
-pi.display_menu()
+        

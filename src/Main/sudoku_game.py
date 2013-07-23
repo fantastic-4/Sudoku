@@ -8,6 +8,7 @@ from File.config_file_xml import Xmlfile
 from File.txt_file import TXTFile
 
 from Main.display import Display 
+from File.csv_file import Csvfile
 
 
 class SudokuGame():
@@ -22,8 +23,12 @@ class SudokuGame():
         self.dict_algorithm = {'norvig': self.norvig.solve, 'brute': self.brute.solve, 'dlx': self.dlx.solve}
         
     def solve_sudoku_from_file (self, path, filename):
-        self.txtfile=TXTFile(path, filename)
-        iofile_easy=self.txtfile.read_file()
+        if (filename[3:]== 'txt'): 
+            self.file_read=TXTFile(path, filename)
+            iofile_easy=self.file_read.read_file()
+        else:
+            self.file_read=Csvfile(path, filename)
+            iofile_easy=self.file_read.read_file()
         
         algorithm = self.xml_config_file.get_xml_value("default_algorithm").lower()
         sudoku_resolved=self.dict_algorithm.get(algorithm)(self.grid.set_values(iofile_easy))
@@ -46,7 +51,7 @@ class SudokuGame():
         print self.display_dic.display(dic)
         
     def export_to_file(self, dic):
-        self.txtfile.write_file(dic)
+        self.file_read.write_file(dic)
         print "\n.............The solution was exported to the file.............\n"
         
     def set_xml_value(self, new_value, tag):
