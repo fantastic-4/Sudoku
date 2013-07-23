@@ -94,7 +94,7 @@ class PlaySudoku:
         
     def __calculate_time(self,parsed_time):
         minutes,seconds = parsed_time.split(":")
-        return ((int(minutes)*60) + int(seconds))
+        return ((int(minutes)*60) + float(seconds))
         
     def get_time(self):
         '''
@@ -116,7 +116,7 @@ class PlaySudoku:
         '''
         self.initial_time = new_time
         minutes,seconds = new_time.split(":")
-        self.time_elapsed = (int(minutes)*60) + int(seconds)
+        self.time_elapsed = (int(minutes)*60) + float(seconds)
     
     def __save(self):
         '''

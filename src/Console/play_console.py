@@ -38,10 +38,12 @@ class PlayConsole:
                 if(option == 1):
                     self.__start(self.__new_game(), "00:00")
                 elif(option == 2):
-                    self.__start(self.__load_game()[0],
-                                 self.__load_game()[1])
+                    grid, time_elapsed = self.__choose_saved_games()
+                    self.__start(grid, time_elapsed)
                 elif(option == 3):
-                    self.__start(self.__enter_grid(), "00:00")
+                    result = self.__enter_grid()
+                    if(result == None): break
+                    self.__start(result, "00:00")
                 elif(option == 4):
                     break
                 else: message = "\nNo option from menu was typed, please try again.\n"
@@ -70,12 +72,13 @@ class PlayConsole:
             print "\t\tSaved Games"
             print "=====================================================\n"
             for key in keys_from_files:
-                print(key + ") " + keys_from_files[key])
+                print(str(key) + ") " + files_to_open[key])
             print(message)
             try:
                 option = int(raw_input("Insert the option number of game saved: "))
                 if(option in keys_from_files):
-                    self.__load_game(keys_from_files[key])
+                    grid, time_elapsed = self.__load_game(files_to_open[key])
+                    return(grid, time_elapsed)
                 else:
                     message = "\nNo option from menu was typed, please try again.\n"
             except ValueError:
@@ -110,26 +113,27 @@ class PlayConsole:
         '''
         Read a Sudoku grid entered from console
         '''
-        os.system("cls")
-        print "====================================================="    
-        print "\t\tInput Sudoku Grid instructions"
-        print "=====================================================\n"
-        print("1) Enter 81 numbers and press Enter key.")
-        print("2) Use '0' or '.' to make reference to empty slots.")
-        print("3) Press Enter key, to fill the rest with empty slots")
-        print("4) Only numbers are allowed")
-        print("5) To exit this option press Q key\n")
-        
+        message = ""
         flag = False
         while not flag:
+            os.system("cls")
+            print "====================================================="    
+            print "\t\tInput Sudoku Grid instructions"
+            print "=====================================================\n"
+            print("- Enter 81 numbers and press Enter key.")
+            print("- Use '0' or '.' to make reference to empty slots.")
+            print("- Press Enter key, to fill the rest with empty slots")
+            print("- Only numbers are allowed")
+            print("- To exit this option press 'Q' or just 'Enter' key.\n")
+            print(message)
             input_text = raw_input("Start to enter numbers: ")
             if(input_text in "qQ"):
                 flag = False
                 break
             input_text, flag = self.game.validate_text(input_text)
-            
-        if(flag):
-            return (input_text)
+            if(flag):
+                return (input_text)
+            else: message = "\nERROR, wrong grid and/or option, please try again.\n"
             
     def __start(self, dictionary, start_time):
         '''
@@ -145,8 +149,8 @@ class PlayConsole:
             print(message + "\n\n")
             command = raw_input("Enter a command: ")
             if(command.upper() == "EXIT"): break
-            elif(command.upper() == "SOLVE"): message = self.play.play(command)+\
-"\n\nType 'EXIT' to back to menu."
+            elif(command.upper() == "SOLVE"):
+                message = self.play.play(command)+ "\n\nType 'EXIT' to back to menu."
             else: message = self.play.play(command)
 
     def __display_commands(self):
