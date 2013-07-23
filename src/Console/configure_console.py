@@ -19,7 +19,7 @@ class ConfigureConsole:
             option = self.display_options(num)
             if not (option == 'Back'):
                 self.settings.set_xml_value(option,tags.get(num))
-                print ".........Value updated....."
+                print "............Value updated............"
                 os.system("cls")
             self.configure_settings()
 
@@ -31,14 +31,16 @@ class ConfigureConsole:
         toSelect = {1:algoritms, 2: outputTypes, 3:levels}
         if num==4:
             value=self.enter_option(100, "\n Please enter new value: \n",\
-                                     "Incorrect input!. Please enter correct\
-                                      value")
+"Incorrect input!. Please enter correct value")
             option=value
             return int(value)
         else:
-            for option in toSelect.get(num):
+            for option in toSelect.get(num):  
                 print option
-            option = self.enter_option(4,"\n Please enter an option: \n")
+            if num==2:
+                option = self.enter_option(3,"\n Please enter an option****:\n")
+            else:
+                option = self.enter_option(4,"\n Please enter an option...:\n")
             return toSelect.get(num)[int(option)-1][3:]
 
     def display_current_values(self):
@@ -61,7 +63,7 @@ class ConfigureConsole:
         '''Displays all options that has the config file xml\
          that we can change'''
          
-        print "Modify Values"
+        print "\tModify Values"
         print "======================================"    
               
         print "1: Change algorithm"

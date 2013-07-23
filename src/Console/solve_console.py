@@ -1,7 +1,3 @@
-'''
-Created on Jul, 2013
-
-'''
 import os
 
 class SolveConsole():
@@ -37,8 +33,14 @@ class SolveConsole():
         while True:
             valuepath = raw_input("\nEnter the path where\
  the file is located: ")
-            if self.verify_path(valuepath):
-                file_path=valuepath
+            head= os.path.split(valuepath)
+            newhead=head[0]+ head[1]
+            if head[1]=="":
+                newhead=head[0]
+            elif(head[1][-4:-3]=="."):
+                newhead=head[0]
+            if self.verify_path(newhead):
+                file_path=newhead
                 break
             else: 
                 print "The path does not exist, try again.."
@@ -57,15 +59,15 @@ class SolveConsole():
         self.display_or_export_sudoku_solved(solved)
         raw_input("Press any key to continue...")
         
-    def verify_path(self,path):
-        if os.path.exists(path):
-           return True
+    def verify_path(self,ispath):
+        if os.path.exists(ispath):
+            return True
         else: 
             return False
         
-    def verify_file(self,file):
-        if os.path.isfile(file):
-           return True
+    def verify_file(self,isfile):
+        if os.path.isfile(isfile):
+            return True
         else: 
             return False
         
@@ -102,14 +104,13 @@ class SolveConsole():
         '''
         alg =self.Game_console.xml_config_file.\
         get_xml_value("default_algorithm")
-        print 'testing..', alg
         output =self.Game_console.xml_config_file.\
         get_xml_value("solver_output_type")
         output = output.lower()
             
-        print "====================================================="    
-        print "The algorithm used to solve is: ", alg.upper()
-        print "====================================================="
+        print "================================================"    
+        print "    The algorithm used to solve is: ", alg.upper()
+        print "================================================"
       
         if (output == 'display by console'):
             self.Game_console.display(dictionary)
@@ -121,7 +122,7 @@ class SolveConsole():
             os.system("cls")
                       
     
-    def enter_option(self, length,text,error="Incorrect input!. \
+    def enter_option(self, length,text,error="Incorrect input!.\
  \nPlease enter a proper option."):
         while True:
             num = raw_input(text)
@@ -144,4 +145,4 @@ class SolveConsole():
         print text
     
     def exit_game(self):
-        print "............Exist.............\n"
+        print "............Exist............\n"
