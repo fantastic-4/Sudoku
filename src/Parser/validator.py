@@ -12,10 +12,7 @@ class Validator:
         for line in grid:
             full_line += (line.strip(" ").strip("\n"))
         chars = [c for c in grid if c in self.digits or c in "0."]
-        if len(chars) == 81 and len(full_line)==len(chars):
-            return True
-        else:
-            return False
+        return (len(chars) == 81 and len(full_line) == len(chars))
         
     def set_matrix(self, A, B):
         '''__set_matrix__ product of elements in A and elements in B.'''

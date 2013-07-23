@@ -1,32 +1,27 @@
-from Parser.validator import Validator
-from Solver.norvig import Norvig
-from Solver.brute import Brute
-from Solver.dlx import DLX
 import time
 from File.txt_file import TXTFile
 
 class PlaySudoku:
     
-    def __init__(self, dictionary, algorithm, save_path):
+    def __init__(self, game, dictionary, algorithm, save_path):
         
-        self.validator = Validator()
+        self.game = game
+        self.grid = self.game.grid
         self.dictionary = dictionary
         self.initial_state = dictionary
-        self.algorithm = algorithm
         self.empties = self.__grid_empty_values([])
+        self.algorithm = algorithm
         
-        self.norvig = Norvig()
-        self.brute = Brute()
-        self.dlx = DLX()
-        
-        self.squares = [a+b for a in self.validator.rows for b in self.validator.digits]
+        self.squares = [a+b for a in self.validator.rows\
+                        for b in self.validator.digits]
         self.time_elapsed = 0
         self.start_time = time.clock()
         self.initial_time = "00:00"
+        
         self.path = save_path
         self.file_name = ""
         self.moves_played = []
-    
+            
     def __play_move(self, key, num):
         '''
         Function to add numbers to the grid as move played.
@@ -54,7 +49,7 @@ class PlaySudoku:
         Function to get possible numbers in a specific position.
         :param key: Position to provide for hints. 
         '''
-        current_values = self.norvig.grid_to_dict(self.dictionary)
+        current_values = self.game.norvig.grid_to_dict(self.dictionary)
         return current_values[key]
     
     def __verify_game(self):
@@ -62,8 +57,12 @@ class PlaySudoku:
         Function to validate if the current grid is valid.
         '''
         for square in self.squares:
-            if(not self.validator.check_lines(self.dictionary[square], square, self.dictionary)
-               or not self.validator.check_square(self.dictionary[square], square, self.dictionary)
+            if(not self.game.grid.validator.check_lines(self.dictionary[square],
+                                              square,
+                                              self.dictionary)
+               or not self.game.grid.validator.check_square(self.dictionary[square],
+                                                  square,
+                                                  self.dictionary)
                or self.dictionary[square] in "0."):
                 return False
         return True
@@ -75,7 +74,6 @@ class PlaySudoku:
         '''
         self.time_elapsed = 0
         self.start_time = time.clock()
-        self.set_start_time(self.initial_time)
         self.dictionary = self.initial_state
         self.empties = self.__grid_empty_values([])
     
@@ -83,9 +81,11 @@ class PlaySudoku:
         '''
         Function to Solve the current grid using the default algorithm
         '''
-        if(self.algorithm == "Norvig"): dict_solved = self.norvig.solve(dict_to_solve)
-        elif(self.algorithm == "Brute"): dict_solved = self.brute.solve(dict_to_solve)
-        else: dict_solved = self.dlx.solve(dict_to_solve)
+        if(self.algorithm == "Norvig"):
+            dict_solved = self.game.norvig.solve(dict_to_solve)
+        elif(self.algorithm == "Brute"):
+            dict_solved = self.game.brute.solve(dict_to_solve)
+        else: dict_solved = self.game.dlx.solve(dict_to_solve)
         return (dict_solved)
         
     def __calculate_time(self,parsed_time):
@@ -96,14 +96,16 @@ class PlaySudoku:
         '''
         Function to retrieve the time elapsed so far
         '''
-        self.time_elapsed += (time.clock() - self.start_time)
+        self.time_elapsed = (time.clock() - self.start_time)
         minutes = 0
-        while self.time_elapsed >= 60:
+        current_seconds = self.time_elapsed +\
+                          self.__calculate_time(self.initial_time)
+        while current_seconds >= 60:
             minutes += 1
-            self.time_elapsed -= 60
-        return (str(minutes) + ":" + "{0:.5f}".format(self.time_elapsed))
+            current_seconds -= 60
+        return (str(minutes) + ":" + "{0:.5f}".format(current_seconds))
     
-    def set_start_time(self,new_time):
+    def set_elapsed_time(self,new_time):
         '''
         Function to set the time where the clock will start to run.
         :param time: Time to start to run the clock.
@@ -122,23 +124,36 @@ class PlaySudoku:
     
     def __hint(self):
         '''
-        Function to get a hint with the minor number of possibilities.
+        Function to get a hint to solve the grid.
         '''
-        if(self.norvig.solve(self.dictionary) != False):
-            current_values = self.norvig.grid_to_dict(self.dictionary)
+        if(self.game.norvig.solve(self.dictionary) != False):
+            current_values = self.game.norvig.grid_to_dict(self.dictionary)
             current_empties = self.__grid_empty_values([])
             if(len(current_empties)>0):
-                len_poss = 10
-                for pos in current_values.keys():
-                    if (pos in current_empties.keys()
-                        and len(current_values[pos]) < len_poss):
-                        len_poss = len(current_values[pos])
-                        min_pos = pos
+                len_poss, min_pos = self.__get_possibilities_and_their_position(
+                                                                                current_empties,
+                                                                                current_values)
                 hint = self.__calculate_hint(current_values, len_poss, min_pos)
                 return ("Hint: " + min_pos + ":" + hint)
             else: return ("No hints to give.")
         else: return ("ERROR, Current Grid has no Solution")
-        
+    
+    def __get_possibilities_and_their_position(self,
+                                                     current_empties,
+                                                     current_values):
+        '''
+        Function to get a hint's minor number of possibilities and its position.
+        :param current_empties: All the blanks on the current grid.
+        :param current_values: A dictionary with all the possibilities.
+        '''
+        len_poss = 10
+        for position in current_values.keys():
+            if (position in current_empties.keys()
+                and len(current_values[position]) < len_poss):
+                len_poss = len(current_values[position])
+                min_pos = position
+        return (len_poss, min_pos)
+    
     def __calculate_hint(self,current_values, len_poss, min_pos):
         '''
         Function to calculate the hint according to parameters given.
@@ -147,17 +162,24 @@ class PlaySudoku:
         :param min_pos: Position where the minor possibilities are.
         '''
         if(len_poss > 1):
-            len_poss -=1
-            aux = self.dictionary
-            aux[min_pos] = current_values[min_pos][len_poss]
-            while(self.__solve(aux) == False):
+            len_poss -= 1
+            copy_dictionary = self.duplicate_dictionary(self.dictionary)
+            copy_dictionary[min_pos] = current_values[min_pos][len_poss]
+            while(self.__solve(copy_dictionary) == False):
                 len_poss -= 1
-                aux = self.dictionary
-                aux[min_pos] = current_values[min_pos][len_poss]
+                copy_dictionary = self.duplicate_dictionary(self.dictionary)
+                copy_dictionary[min_pos] = current_values[min_pos][len_poss]
             hint = len_poss
         else: hint = len_poss - 1
         return (current_values[min_pos][hint])
             
+    def duplicate_dictionary(self, dictionary):
+        dictionary_as_list = dictionary.items()
+        new_dictionary = []
+        for element in dictionary_as_list:
+            new_dictionary.append(element)
+        return dict(new_dictionary)
+        
     def __undo(self):
         '''
         Function to undo moves played before.
@@ -173,7 +195,7 @@ class PlaySudoku:
         '''
         Function to return to last solvable game.
         '''
-        if(self.norvig.solve(self.dictionary) != False):
+        if(self.game.norvig.solve(self.dictionary) != False):
             while(len(self.moves_played)>0):
                 if(not self.__verify_game()):
                     self.__undo()
@@ -201,7 +223,8 @@ class PlaySudoku:
                 else:
                     message = "ERROR, The grid is not fulfilled as expected."
             elif(command.upper() == "SOLVE"):
-                if(self.__solve(self.dictionary) != False):
+                self.dictionary = self.__solve(self.dictionary)
+                if(self.dictionary != False):
                     message = "The grid was solved"
                 else: message = "Current grid cannot be solved."
             elif(command.upper() == "SAVE"): message = self.__save()
