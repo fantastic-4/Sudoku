@@ -1,6 +1,7 @@
 from Parser.validator import Validator
 from Solver.norvig import Norvig
 from Solver.brute import Brute
+from Solver.dlx import DLX
 import time
 from File.txt_file import TXTFile
 
@@ -16,6 +17,7 @@ class PlaySudoku:
         
         self.norvig = Norvig()
         self.brute = Brute()
+        self.dlx = DLX()
         
         self.squares = [a+b for a in self.validator.rows for b in self.validator.digits]
         self.time_elapsed = 0
@@ -81,9 +83,9 @@ class PlaySudoku:
         '''
         Function to Solve the current grid using the default algorithm
         '''
-        dict_algorithm = {"norvig": self.norvig.solve, "brute": self.brute.solve}
-        dict_solved = dict_algorithm.get(self.algorithm)(dict_to_solve)
-        
+        if(self.algorithm == "Norvig"): dict_solved = self.norvig.solve(dict_to_solve)
+        elif(self.algorithm == "Brute"): dict_solved = self.brute.solve(dict_to_solve)
+        else: dict_solved = self.dlx.solve(dict_to_solve)
         return (dict_solved)
         
     def __calculate_time(self,parsed_time):
@@ -133,7 +135,7 @@ class PlaySudoku:
                         len_poss = len(current_values[pos])
                         min_pos = pos
                 hint = self.__calculate_hint(current_values, len_poss, min_pos)
-                return ("Hint: " + min_pos + ":" + current_values[min_pos][hint])
+                return ("Hint: " + min_pos + ":" + hint)
             else: return ("No hints to give.")
         else: return ("ERROR, Current Grid has no Solution")
         
@@ -144,7 +146,6 @@ class PlaySudoku:
         :param len_poss: Minor length of possibilities 
         :param min_pos: Position where the minor possibilities are.
         '''
-        hint = 0
         if(len_poss > 1):
             len_poss -=1
             aux = self.dictionary
@@ -155,7 +156,7 @@ class PlaySudoku:
                 aux[min_pos] = current_values[min_pos][len_poss]
             hint = len_poss
         else: hint = len_poss - 1
-        return (hint)
+        return (current_values[min_pos][hint])
             
     def __undo(self):
         '''
@@ -189,9 +190,9 @@ class PlaySudoku:
         if(":" in command):
             key,num = command.upper().split(":")
             if(num.upper() == "HINT"):
-                message = "Hint for: " + key + " -> " + self.__get_hint(key)
+                message = "Hint: " + key + ":" + self.__get_hint(key)
             elif(self.__play_move(key, num)):
-                message = "Number: " + num + "was added to: " + key
+                message = "Number: " + num + " was added to: " + key
             else: message = "ERROR, Wrong Square"
         else:
             if(command.upper() == "VERIFY"): 

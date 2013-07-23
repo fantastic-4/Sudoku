@@ -1,5 +1,5 @@
 import unittest
-from Console.play_sudoku import PlaySudoku
+from Console.play_console import PlaySudoku
 import os
 import time
 
