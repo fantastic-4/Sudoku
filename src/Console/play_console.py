@@ -1,5 +1,10 @@
-from Main.play_sudoku import PlaySudoku
+import os,sys
+sys.path.append("../../src")
+
 from Main.grid_generator import GridGenerator
+from Main.sudoku_game import SudokuGame
+from Main.play_sudoku import PlaySudoku
+from File.txt_file import TXTFile
 
 class PlayConsole:
     
@@ -12,13 +17,17 @@ class PlayConsole:
         
         self.generator = GridGenerator()
         self.play = None
+#         self.txtfile = TXTFile()
     
     def display_menu(self):
         '''
         Function to display menu and load specific functions.
         '''
         while True:
-            print("***** Play Sudoku *****\n")
+            os.system("cls")
+            print "====================================================="
+            print("\t\tPlay Sudoku")
+            print "=====================================================\n"
             print("1) Generate random Sudoku grid.")
             print("2) Load Sudoku game from file.")
             print("3) Enter a grid manually.")
@@ -39,7 +48,8 @@ class PlayConsole:
         :Return: Dictionary generateed.
         '''
         self.generator.generate_grid()
-        return(self.generator.values_chooser(self.difficulty))
+        dictionary = self.generator.values_chooser(self.difficulty)
+        return(dictionary)
         
     def __load_game(self):
         pass
@@ -74,24 +84,34 @@ class PlayConsole:
         Function to start the game.
         :param dictionary: dictionary to solve the grid.
         '''
+        self.play = PlaySudoku(dictionary, self.algorithm, self.save_path)
+        message = "Messages will be printed here."
         while True:
-            print("***** Commands to Play Sudoku *****\n")
+            os.system("cls")
+            print "====================================================="
+            print("\t\tCommands to Play Sudoku")
+            print "=====================================================\n"
             print("a) To insert a number into Sudoku grid,\n\
-            type the coordinate and the number separated by ':'.\n\
-            Example: A3:1")
-            print("b) For an specific hint type the coordinate and 'hint'\
-            separated by ':'.\n\
-            Example: A3:hint")
+type the coordinate and the number separated by ':'.\nExample: A3:1")
+            print("b) For an specific hint type the coordinate and 'hint'\n\
+separated by ':'.\nExample: A3:hint")
             print("c) For a random hint just type: 'hint'")
             print("d) To solve the current grid type: 'solve'")
             print("e) To validate the current grid, type: 'validate'")
             print("f) To save the game, type: 'save'")
             print("g) To exit of the game type: 'exit'\n")
-            self.play = PlaySudoku(dictionary, self.algorithm, self.save_path)
-            print("\nDifficulty: " + self.difficulty +
-                  "\nTime elapsed: " + self.play.get_time() + "\n")
-            self.game.display(self.play.dictionary)
+            self.__display_board()
+            print(message + "\n\n")
             command = raw_input("Enter a command: ")
             if(command.upper() == "EXIT"): break
-            else: print(self.play.play(command))
+            elif(command.upper() == "SOLVE"): message = self.play.play(command)+\
+"\n\nType 'EXIT' to back to menu."
+            else: message = self.play.play(command)
 
+    def __display_board(self):
+        print("\nDifficulty: " + self.difficulty +
+                  "\nTime elapsed: " + self.play.get_time() + "\n")
+        self.game.display(self.play.dictionary)
+    
+pi = PlayConsole(SudokuGame())
+pi.display_menu()
