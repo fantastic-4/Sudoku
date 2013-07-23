@@ -22,6 +22,11 @@ class Menu():
     def main(self):
         while (True):
             os.system("cls")
+            print"   __          _           _   _      _ _  "
+            print"  / _|__ _ _ _| |_ __ _ __| |_(_)__  | | | "
+            print" |  _/ _` | ' |  _/ _` (_-|  _| / _| |_  _|"
+            print" |_| \__,_|_||_\__\__,_/__/\__|_\__|   |_| "
+            
             print "============================================"    
             print "    Administration Console for Sudoku Game"
             print "============================================"
@@ -34,7 +39,7 @@ class Menu():
             num = self.solve.enter_option(4, "\nPlease enter an option: ")
             
             if (num == 4): 
-                print "............Exist.............\n"
+                print "............ Bye !............\n"
                 break
             else:
                 self.options.get(num)()
