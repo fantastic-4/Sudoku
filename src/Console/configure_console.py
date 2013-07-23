@@ -18,30 +18,30 @@ class ConfigureConsole:
         else:
             option = self.display_options(num)
             if not (option == 'Back'):
-                self.settings.set_xml_value(option,tags.get(num))
+                self.settings.set_xml_value(option, tags.get(num))
                 print "............Value updated............"
                 os.system("cls")
             self.configure_settings()
 
-    def display_options(self,num):
+    def display_options(self, num):
         ''' Displays all option for configuration that will be changed'''
         algoritms = ["1: Norvig", "2: Brute", "3: Dlx", "4: Back" ]
-        outputTypes =  ["1: Display by console", "2: Export to file", "3: Back"]
+        output_types =  ["1: Display by console", "2: Export to file", "3: Back"]
         levels =  ["1: Easy", "2: Medium", "3: Hard", "4: Back"]   
-        toSelect = {1: algoritms, 2: outputTypes, 3: levels}
-        if num==4:
+        to_select = {1: algoritms, 2: output_types, 3: levels}
+        if num == 4:
             value=self.enter_option(100, "\n Please enter new value: ", \
                    "\nIncorrect input!. Please enter correct value")
-            option=value
+            option = value
             return int(value)
         else:
-            for option in toSelect.get(num):  
+            for option in to_select.get(num):  
                 print option
-            if num==2:
+            if num == 2:
                 option = self.enter_option(3, "\n Please enter an option****:\n")
             else:
                 option = self.enter_option(4, "\n Please enter an option...:\n")
-            return toSelect.get(num)[int(option)-1][3:]
+            return to_select.get(num)[int(option)-1][3:]
 
     def display_current_values(self):
         ''' Displays current values in config file xml'''
@@ -73,10 +73,10 @@ class ConfigureConsole:
         print "5: Back"
         return self.enter_option(5,"\n Please enter an option: \n")
 
-    def enter_option(self,length,text, \
+    def enter_option(self, length, text, \
                      error="Incorrect input!. Please enter a proper option."):
         ''' asks for an value from input and validate 
-        if this option is correct, this use errorMessage function'''
+        if this option is correct, this use error_message function'''
         
         while True:
             num = raw_input(text)
@@ -86,10 +86,12 @@ class ConfigureConsole:
                     return num
                     break
                 else:
-                    self.errorMessage(error)
-                    pass
+                    self.error_message(error)
             except ValueError:
-                self.errorMessage(error)
-                pass
-    def errorMessage(self, text):
+                self.error_message(error)
+                
+    def error_message(self, text):
+        '''
+        To display an error message
+        '''
         print text
