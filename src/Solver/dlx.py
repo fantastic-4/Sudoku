@@ -2,7 +2,7 @@ import string
 import cStringIO
 import math
 from Parser.grid import Grid
-from Solver.solve_algorithm import Solve_Algorithm
+from Solver.solve_algorithm import SolveAlgorithm
 
 ROOTNODE = 0
 LEFT   = 0
@@ -13,10 +13,10 @@ COLUMN = 4
 INDEX  = 5
 COUNT  = 5
 
-class DLX (Solve_Algorithm):
+class DLX (SolveAlgorithm):
     
     def __init__(self):
-        Solve_Algorithm.__init__(self)
+        SolveAlgorithm.__init__(self)
         
         self.sizes = {4: [2, 2], 6: [2, 3], 8: [2, 4], 9: [3, 3],
                       10: [2,5], 12:[3, 4], 15: [3, 5], 16: [4, 4],

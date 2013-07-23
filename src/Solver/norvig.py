@@ -1,14 +1,14 @@
-from Solver.solve_algorithm import Solve_Algorithm 
+from Solver.solve_algorithm import SolveAlgorithm 
 import time
 from Parser.grid import Grid
-class Norvig (Solve_Algorithm):
+class Norvig (SolveAlgorithm):
     '''
     This class is using some attributes from grid like:squares,
      cols, rows and this needs a value (not a grid) to print
     '''
 
     def __init__(self):
-        Solve_Algorithm.__init__(self)
+        SolveAlgorithm.__init__(self)
         self.grid = Grid() 
 
     def grid_to_dict(self,grid):

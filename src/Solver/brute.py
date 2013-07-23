@@ -1,13 +1,13 @@
-from Solver.solve_algorithm import Solve_Algorithm
+from Solver.solve_algorithm import SolveAlgorithm
 from Parser.validator import Validator
 import time
 
-class Brute (Solve_Algorithm):
+class Brute (SolveAlgorithm):
     
     def __init__(self):
         '''Function to set global attributes'''
     
-        Solve_Algorithm.__init__(self)
+        SolveAlgorithm.__init__(self)
         self.validator = Validator()
         self.dictionary = None
         

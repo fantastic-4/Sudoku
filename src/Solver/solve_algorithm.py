@@ -1,4 +1,4 @@
-class Solve_Algorithm:
+class SolveAlgorithm:
     def __init__(self):
 
         self.time_elapsed = 0
