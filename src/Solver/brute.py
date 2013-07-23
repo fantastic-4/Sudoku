@@ -1,13 +1,13 @@
-from Solver.solve_algorithm import Solve_Algorithm
+from Solver.solve_algorithm import SolveAlgorithm
 from Parser.validator import Validator
 import time
 
-class Brute (Solve_Algorithm):
+class Brute (SolveAlgorithm):
     
     def __init__(self):
         '''Function to set global attributes'''
     
-        Solve_Algorithm.__init__(self)
+        SolveAlgorithm.__init__(self)
         self.validator = Validator()
         self.dictionary = None
         
@@ -45,7 +45,8 @@ class Brute (Solve_Algorithm):
         return dict(empties)    
     
     def __start__(self):
-        '''Function to start the process of set numbers on cell using Brute Force Algorithm'''
+        '''Function to start the process of set numbers on cell using 
+        Brute Force Algorithm'''
         
         pos = 0
         emp_vals = self.empty_values
@@ -63,13 +64,15 @@ class Brute (Solve_Algorithm):
             self.dictionary = False
                     
     def __fill_cell__(self,pos,key):
-        '''Function to iterate numbers from 1 to 9 until set a number that can be fit on the cell
-       Return True if a number was set, False otherwise'''        
+        '''Function to iterate numbers from 1 to 9 until set a number that 
+        can be fit on the cell and return True if a number was set, False
+         otherwise'''        
     
         cell_set = False
         for n in range(0,9):
             num = self.validator.digits[n]
-            if(self.validator.check_lines(num, key, self.dictionary) and self.validator.check_square(num, key, self.dictionary) 
+            if(self.validator.check_lines(num, key, self.dictionary) and \
+               self.validator.check_square(num, key, self.dictionary) 
                and not(num in self.moves_per_cell[pos])):
                 cell_set = True
                 self.dictionary[key] = num
