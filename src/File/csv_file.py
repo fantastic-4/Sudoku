@@ -21,9 +21,10 @@ class Csvfile(File):
             lines = file_to_read.readlines()
             self.close_file(file_to_read)
             for line in lines:
-                full_line += (self.__line_splitter(line.strip("\n")))
-        
-        if(self.validator.validate_values(full_line)): return full_line
+                if (line != '\n'):              
+                    full_line += (self.__line_splitter(line.strip("\n")))
+        if(self.validator.validate_values(full_line)): 
+            return full_line
 
     
       
@@ -43,8 +44,8 @@ class Csvfile(File):
             line_splitted = (line.split("\t"))
             self.delimiter = "\t"
         
-        for character in line_splitted: new_line += character
-        
+        for character in line_splitted: 
+            new_line += character
         return new_line
     
     

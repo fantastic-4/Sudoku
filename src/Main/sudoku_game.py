@@ -20,22 +20,24 @@ class SudokuGame():
         self.dlx= DLX()
         self.xml_config_file = Xmlfile('c:\\sudoku\\config\\', 'xml_config_file')
         self.display_dic= Display()
-        self.dict_algorithm = {'norvig': self.norvig.solve, 'brute': self.brute.solve, 'dlx': self.dlx.solve}
+        self.dict_algorithm = {'norvig': self.norvig.solve, \
+                               'brute': self.brute.solve, 'dlx': self.dlx.solve}
         
     def solve_sudoku_from_file (self, path, filename):
-        if (filename[3:]== 'txt'): 
+        if (filename[-3:]== 'txt'): 
             self.file_read=TXTFile(path, filename)
             iofile_easy=self.file_read.read_file()
         else:
             self.file_read=Csvfile(path, filename)
             iofile_easy=self.file_read.read_file()
-        
-        algorithm = self.xml_config_file.get_xml_value("default_algorithm").lower()
-        sudoku_resolved=self.dict_algorithm.get(algorithm)(self.grid.set_values(iofile_easy))
+            
+        algorithm = self.get_xml_value("default_algorithm").lower()
+        sudoku_resolved=self.dict_algorithm.get(algorithm)\
+        (self.grid.set_values(iofile_easy))
         return sudoku_resolved
     
     def solve_sudoku_from_console (self, dictionary):
-        algorithm = self.xml_config_file.get_xml_value("default_algorithm").lower()
+        algorithm = self.get_xml_value("default_algorithm").lower()
         sudoku_resolved=self.dict_algorithm.get(algorithm)(dictionary)
         return sudoku_resolved
 
@@ -52,7 +54,7 @@ class SudokuGame():
         
     def export_to_file(self, dic):
         self.file_read.write_file(dic)
-        print "\n.............The solution was exported to the file.............\n"
+        print "\n..........The solution was exported to the file........\n"
         
     def set_xml_value(self, new_value, tag):
         self.xml_config_file.set_xml_value(new_value, tag)
