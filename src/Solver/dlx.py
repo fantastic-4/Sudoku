@@ -2,6 +2,7 @@ import string
 import cStringIO
 import math
 from Parser.grid import Grid
+from Solver.solve_algorithm import Solve_Algorithm
 
 ROOTNODE = 0
 LEFT   = 0
@@ -12,8 +13,11 @@ COLUMN = 4
 INDEX  = 5
 COUNT  = 5
 
-class DLX:
+class DLX (Solve_Algorithm):
+    
     def __init__(self):
+        Solve_Algorithm.__init__(self)
+        
         self.sizes = {4: [2, 2], 6: [2, 3], 8: [2, 4], 9: [3, 3],
                       10: [2,5], 12:[3, 4], 15: [3, 5], 16: [4, 4],
                       20: [4, 5], 24: [4, 6], 25: [5, 5], 28: [4, 7],
@@ -78,7 +82,8 @@ class DLX:
         while len(headers) <= columns[-1]:
                 lastheader = headers[-1]
                 newind = len(nodetable)
-                nodetable.append([lastheader, ROOTNODE, newind, newind, None, 0])
+                nodetable.append([lastheader, ROOTNODE, newind, \
+                                  newind, None, 0])
                 nodetable[ROOTNODE][LEFT] = newind
                 nodetable[lastheader][RIGHT] = newind
                 headers.append(newind)
@@ -179,12 +184,14 @@ class DLX:
         puzzlecols = puzzlerows    
         digits = puzzlerows        
         bl = puzzlerows*puzzlecols 
-        dlxones, givenrows=self.__generate_matrix_dlx(br,bc,puzzlerows,puzzlecols,digits,bl)
+        dlxones, givenrows=self.__generate_matrix_dlx(br,bc,puzzlerows,\
+                                                      puzzlecols,digits,bl)
         self.__init_matrix()
         self.nsolutions = 0
         solution = self.solve_dlx(dlxones, givenrows)
         
-        if solution is not None: return self.__getsolution(solution,br,bc,puzzlerows,puzzlecols,digits,bl)
+        if solution is not None: return \
+        self.__getsolution(solution,br,bc,puzzlerows,puzzlecols,digits,bl)
     def __generate_matrix_dlx(self,br,bc,puzzlerows,puzzlecols,digits,bl):
         '''this method generates the matrix DLX'''
         givenrows = []
@@ -193,7 +200,8 @@ class DLX:
             for c in xrange(0, puzzlecols):
                 for d in xrange(0, digits):
                     dlxrow = bl*r + puzzlerows*c + d + 1
-                    if self.sarray[puzzlecols*r+c]-1 == d: givenrows.append(dlxrow)
+                    if self.sarray[puzzlecols*r+c]-1 == d: \
+                    givenrows.append(dlxrow)
                     box = br*(r/br)+c/bc
                     dlxones.append([dlxrow,
                                     [puzzlecols*r+c+1,      # <r,c> constrain

@@ -16,12 +16,13 @@ class Norvig (Solve_Algorithm):
         return False if a contradiction is detected.'''
         values = dict((s,self.grid.digits) for s in self.grid.squares)
         for s,d in grid.items():
-            if d in self.grid.digits and not self.__eliminate_other_value(values, s, d):
+            if d in self.grid.digits and not \
+            self.__eliminate_other_value(values, s, d):
                 return False
         return values
 
     def __eliminate_other_value(self, values, s, d):
-        '''Eliminate all the other values (except d) from values[s] and propagate.
+        '''Eliminate all other values (except d) from values[s] and propagate.
         Return values, except return False if a contradiction is detected.'''
         other_values = values[s].replace(d, '')
         if all(self.__eliminate(values, s, d2) for d2 in other_values):
@@ -39,7 +40,8 @@ class Norvig (Solve_Algorithm):
             return False
         elif len(values[s]) == 1:
             d2 = values[s]
-            if not all(self.__eliminate(values, s2, d2) for s2 in self.grid.peers[s]):
+            if not all(self.__eliminate(values, s2, d2)\
+                        for s2 in self.grid.peers[s]):
                 return False
         for u in self.grid.units[s]:
             dplaces = [s for s in u if d in values[s]]
@@ -51,14 +53,16 @@ class Norvig (Solve_Algorithm):
         return values
     
     def solve(self,gridA): 
-        '''verify if the grid is correct then call to search and transform the grid to dict'''
+        '''verify if the grid is correct then call to search and transform 
+        the grid to dict'''
         self.time_elapsed = time.clock()
         result = self.__search(self.grid_to_dict(gridA))
         self.time_elapsed = time.clock() - self.time_elapsed
         return result
  
     def __search(self,values):
-        '''Using depth-first to search and propagate, try all possible values.'''
+        '''Using depth-first to search and propagate, try all possible 
+        values.'''
         if values is False:
             return False
         if all(len(values[s]) == 1 for s in self.grid.squares):
