@@ -157,17 +157,17 @@ class PlayConsole:
         print "====================================================="
         print("\t\tCommands to Play Sudoku")
         print "=====================================================\n"
-        print("<Coordinate>:<number> -> To insert a number into Sudoku grid.\
-                \nExample: 'A3:1'")
-        print("'hint' -> For an specific or random hint.\
-                \nExample: 'A3:hint', 'hint'\n")
-        print("'solve' -> To solve the current grid.")
-        print("'validate' -> To validate the current grid.")
-        print("'save' -> To save the game.")
-        print("'undo' -> To back to last move played")
-        print("'reset' -> To reset the current game to initial state.")
-        print("'return' -> To back to last move where the grid was solvable.")
-        print("'exit' -> To exit of the game.\n")
+        print("<Coordinate>:<number>\t: To insert a number into Sudoku grid.\
+                \n\t\t\t  Example: 'A3:1'")
+        print("'hint'\t\t\t: For an specific or random hint.\
+                \n\t\t\t  Example: 'A3:hint', 'hint'\n")
+        print("'solve'\t\t\t: To solve the current grid.")
+        print("'validate'\t\t: To validate the current grid.")
+        print("'save'\t\t\t: To save the game.")
+        print("'undo'\t\t\t: To back to last move played")
+        print("'reset'\t\t\t: To reset the current game to initial state.")
+        print("'return'\t\t: To back to last move where the grid was solvable.")
+        print("'exit'\t\t\t: To exit of the game.\n")
         
     def __display_board(self):
         '''

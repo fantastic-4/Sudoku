@@ -56,7 +56,7 @@ class PlaySudoku:
             return hint
         else: return ("ERROR, Current Grid has no Solution")
     
-    def __verify_game(self):
+    def __validate_game(self):
         '''
         Function to validate if the current grid is valid.
         '''
@@ -124,7 +124,7 @@ class PlaySudoku:
         '''
         file_to_save = TXTFile(self.path,self.file_name)
         file_to_save.save_game(self.dictionary, self.get_time())
-        return ("The grid was saved")
+        return ("The game was saved")
     
     def __hint(self):
         '''
@@ -221,8 +221,8 @@ class PlaySudoku:
                 message = "Number: " + num + " was added to: " + key
             else: message = "ERROR, Wrong Square"
         else:
-            if(command.upper() == "VERIFY"): 
-                if(self.__verify_game()):
+            if(command.upper() == "VALIDATE"): 
+                if(self.__validate_game()):
                     message = "Congratulations, You solved the Grid!!"
                 else:
                     message = "ERROR, The grid is not fulfilled as expected."
