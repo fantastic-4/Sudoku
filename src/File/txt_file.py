@@ -1,7 +1,6 @@
 '''This class is a subclass of File class'''
 import datetime
 from File.file import File
-from File.config_file_xml import Xmlfile
 from Main.display import Display
 
 class TXTFile(File):
@@ -11,7 +10,7 @@ class TXTFile(File):
         File.__init__(self, path, name)
         self.file=File(path,name)
         self.display=Display()
-        self.xml=Xmlfile("c:\\sudoku\\config\\","xml_config_file")
+
 
 
     def read_file(self, sep='\n'):
@@ -54,11 +53,11 @@ class TXTFile(File):
         new_string+=","+tim
         self.create_file(new_string)
         
-    def load_Game(self, name):
+    def load_Game(self,mypath, myname):
         '''Load the string and time from file in order to start the game'''
 
-        self.file_name=name
-        self.path=self.xml.get_xml_value('save_game')
+        self.file_name=myname
+        self.path=mypath
         file_game=self.open_file()
         new_line=file_game.read().strip().split(",")
         return (new_line[0],new_line[1])

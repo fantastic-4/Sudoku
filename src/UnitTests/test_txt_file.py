@@ -40,7 +40,7 @@ class Testtxtfile(unittest.TestCase):
     
     def test_if_load_game_method_loads_the_file_correctly(self):
         expected=('003020600900305001001806400008102900700000098006708200002609500809203909095019300', '0:0.00016964823776')
-        value=self.txtfile.load_Game("Saved_game_2013_07_18_16_21_57.txt")
+        value=self.txtfile.load_Game("c:\\sudoku\\save\\","Saved_game_2013_07_18_16_21_57.txt")
         self.assertEqual(expected, value)
 
     def tearDown(self):
