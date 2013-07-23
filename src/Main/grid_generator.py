@@ -53,11 +53,11 @@ class GridGenerator:
         :return values: return Sudoku grid to be fulfilled as dictionary.
         '''
         if(difficulty == "Easy"):
-            numbers_quantity = random.randint(25, 30)
+            numbers_quantity = random.randint(30, 35)
         elif(difficulty == "Medium"):
-            numbers_quantity = random.randint(20, 25)
+            numbers_quantity = random.randint(25, 30)
         else: 
-            numbers_quantity = random.randint(15, 20)
+            numbers_quantity = random.randint(20, 25)
         
         values_displayed = []
         while numbers_quantity > 0:

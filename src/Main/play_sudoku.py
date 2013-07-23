@@ -12,8 +12,8 @@ class PlaySudoku:
         self.empties = self.__grid_empty_values([])
         self.algorithm = algorithm
         
-        self.squares = [a+b for a in self.validator.rows\
-                        for b in self.validator.digits]
+        self.squares = [a+b for a in self.game.grid.validator.rows\
+                        for b in self.game.grid.validator.digits]
         self.time_elapsed = 0
         self.start_time = time.clock()
         self.initial_time = "00:00"
@@ -32,6 +32,7 @@ class PlaySudoku:
         '''
         if(key in self.squares and key in self.empties):
             self.dictionary[key] = num
+            self.moves_played.append(key)
             return True
         else: return False
     
@@ -49,8 +50,11 @@ class PlaySudoku:
         Function to get possible numbers in a specific position.
         :param key: Position to provide for hints. 
         '''
-        current_values = self.game.norvig.grid_to_dict(self.dictionary)
-        return current_values[key]
+        if(self.game.norvig.solve(self.dictionary) != False):
+            current_values = self.game.norvig.grid_to_dict(self.dictionary)
+            hint = self.__calculate_hint(current_values, len(current_values[key]), key)
+            return hint
+        else: return ("ERROR, Current Grid has no Solution")
     
     def __verify_game(self):
         '''
@@ -195,13 +199,13 @@ class PlaySudoku:
         '''
         Function to return to last solvable game.
         '''
-        if(self.game.norvig.solve(self.dictionary) != False):
+        if(len(self.moves_played)>0):
             while(len(self.moves_played)>0):
                 if(not self.__verify_game()):
                     self.__undo()
                 else: break
             else: return ("Game returned to last good game.")
-        else: return ("ERROR, Current Grid has no Solution")
+        else: return ("ERROR, Current Grid has no point to return.")
          
     def play(self,command):
         '''
