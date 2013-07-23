@@ -14,7 +14,7 @@ class SolveConsole():
         print "         Solve Sudoku "
         print "======================================" 
         print "\n1: Enter the Sudoku by file"
-        print "2: Enter the Sudoku by consola"
+        print "2: Enter the Sudoku by console"
         print "3: Back"
         option = self.enter_option(3,"\n Please enter an option: ")
         
