@@ -1,6 +1,5 @@
 '''This class is a subclass of File class'''
 from File.file import File
-from Parser.validator import Validator
 
 class Csvfile(File):
     
@@ -10,7 +9,6 @@ class Csvfile(File):
         
         File.__init__(self,path,name)
         self.delimiter = ","
-        self.validator = Validator()
         
 
     def read_file(self):
@@ -23,7 +21,6 @@ class Csvfile(File):
             for line in lines:
                 if (line != '\n'):              
                     full_line += (self.__line_splitter(line.strip("\n")))
-        if(self.validator.validate_values(full_line)): 
             return full_line
 
     
