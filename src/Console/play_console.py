@@ -30,13 +30,13 @@ class PlayConsole:
         message = ""
         while True:
             os.system("cls")
-            print "====================================================="
+            print "============================================"
             print("\t\tPlay Sudoku")
-            print "=====================================================\n"
-            print("1) Generate random Sudoku grid.")
-            print("2) Load Sudoku game from file.")
-            print("3) Enter a grid manually.")
-            print("4) Back")
+            print "============================================\n"
+            print("1: Generate random Sudoku grid.")
+            print("2: Load Sudoku game from file.")
+            print("3: Enter a grid manually.")
+            print("4: Back")
             print(message)
             try:
                 option = int(raw_input("Enter a option number: "))
@@ -51,7 +51,7 @@ class PlayConsole:
                     self.__start(result, "00:00")
                 elif(option == 4):
                     break
-                else: message = "\nNo option from menu was typed, please try again.\n"
+                else: message = "\nWrong option, please try again.\n"
             except ValueError:
                 message = "\nWrong option, please try again.\n"
     
@@ -73,22 +73,22 @@ class PlayConsole:
         message = ""
         while True:
             os.system("cls")
-            print "====================================================="    
-            print "\t\tSaved Games"
-            print "=====================================================\n"
+            print "================================================"    
+            print "                Saved Games"
+            print "================================================\n"
             for key in keys_from_files:
-                print(str(key) + ") " + files_to_open[key])
+                print(str(key) + ":\t" + files_to_open[key])
             print(message)
             try:
-                option = int(raw_input("Insert the option number of game saved: "))
+                option = int(raw_input("Insert the option number for game saved: "))
                 if(option in keys_from_files):
                     grid, time_elapsed = self.__load_game(files_to_open[key])
                     return(grid, time_elapsed)
                 else:
-                    message = "\nNo option from menu was typed, please try again.\n"
+                    message = "\nWrong option, please try again.\n"
             except ValueError:
                 message = "\nWrong option, please try again.\n"
-#         self.txtfile.load_Game(self.save_path, file_name)
+
     
     def __load_game(self, file_name):
         '''
@@ -166,17 +166,19 @@ class PlayConsole:
         print "====================================================="
         print("\t\tCommands to Play Sudoku")
         print "=====================================================\n"
-        print("<Coordinate>:<number>\t: To insert a number into Sudoku grid.\
-                \n\t\t\t  Example: 'A3:1'")
-        print("'hint'\t\t\t: For an specific or random hint.\
-                \n\t\t\t  Example: 'A3:hint', 'hint'\n")
-        print("'solve'\t\t\t: To solve the current grid.")
-        print("'validate'\t\t: To validate the current grid.")
-        print("'save'\t\t\t: To save the game.")
-        print("'undo'\t\t\t: To back to last move played")
-        print("'reset'\t\t\t: To reset the current game to initial state.")
-        print("'return'\t\t: To back to last move where the grid was solvable.")
-        print("'exit'\t\t\t: To exit of the game.\n")
+        print("<square>:<value>: To insert a number into Sudoku grid.\
+                \n\t\t  Example: 'A3:1'")
+        print("'hint'\t\t: For an specific or random hint.\
+                \n\t\t  Example: 'A3:hint', 'hint'\n")
+        print("'solve'\t\t: To solve the current grid.")
+        print("'validate'\t: To validate the current grid.")
+        print("'save'\t\t: To save the game.")
+        print("'undo'\t\t: To back to last move played")
+        print("'reset'\t\t: To reset the current game to initial\
+         \n\t\t  state.")
+        print("'return'\t: To back to last move where the grid\
+        \n\t\t  was solvable.")
+        print("'exit'\t\t: To exit of the game.\n")
         
     def __display_board(self):
         '''
