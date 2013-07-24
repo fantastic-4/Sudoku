@@ -208,7 +208,7 @@ class PlaySudoku:
         '''
         if(len(self.moves_played)>0):
             while(len(self.moves_played)>0):
-                if(not self.__verify_game()):
+                if(not self.__validate_game()):
                     self.__undo()
                 else: break
             else: return ("Game returned to last good game.")
