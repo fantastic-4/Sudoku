@@ -102,6 +102,7 @@ class PlayConsole:
         Function to display the list of the saved games files.
         '''
         files = os.listdir(self.game.get_xml_value("save_game"))
+        files = files[::-1]
         dict_of_files = {}
         counter = 1
         for file_read in files:
