@@ -63,6 +63,8 @@ class SolveConsole():
         
         
         solved = self.game_console.solve_sudoku_from_file(file_path, file_name)
+    #    original1=self.game_console.get_original_string(file_path, file_name)
+
         self.display_or_export_sudoku_solved(solved)
         raw_input("Press any key to continue...")
         
@@ -120,7 +122,11 @@ class SolveConsole():
         output = self.game_console.xml_config_file.\
         get_xml_value("solver_output_type")
         output = output.lower()
-            
+        
+        print "================================================"
+        print "            Original Game: "
+        print "================================================"
+        self.game_console.display(self.game_console.original)
         print "================================================"    
         print "    The algorithm used to solve is: ", alg.upper()
         print "================================================"
