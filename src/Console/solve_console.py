@@ -135,7 +135,7 @@ class SolveConsole():
             self.game_console.display(dictionary)
         if (output == 'export to file'):
             self.game_console.display(dictionary)
-            self.game_console.txtfile.write_file(dictionary)
+            self.game_console.file_read.write_file(dictionary)
             print "\n...........The solution was\
  exported to the file...........\n"
             os.system("cls")

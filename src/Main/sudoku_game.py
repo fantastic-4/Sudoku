@@ -23,8 +23,9 @@ class SudokuGame():
         self.norvig = Norvig()
         self.brute = Brute()
         self.dlx = DLX()
-        self.xml_config_file = Xmlfile('c:\\sudoku\\config\\', 'xml_config_file')
+        self.xml_config_file = Xmlfile("c:\\sudoku\\config\\", "xml_config_file")
         self.display_dic = Display()
+        self.file_read = TXTFile("c:\\Sudoku\\", "")
         self.dict_algorithm = {'norvig': self.norvig.solve, \
                                'brute': self.brute.solve, 'dlx': self.dlx.solve}
         
@@ -40,8 +41,8 @@ class SudokuGame():
             iofile_easy = self.file_read.read_file()
             
         algorithm = self.get_xml_value("default_algorithm").lower()
-        sudoku_resolved = self.dict_algorithm.get(algorithm)\
-        (self.grid.set_values(iofile_easy))
+        self.original = self.grid.set_values(iofile_easy)
+        sudoku_resolved = self.dict_algorithm.get(algorithm)(self.original)
         return sudoku_resolved
     
     def solve_sudoku_from_console (self, dictionary):
@@ -49,6 +50,7 @@ class SudokuGame():
         Return dictionary solved with data typed from console
         '''
         algorithm = self.get_xml_value("default_algorithm").lower()
+        self.original = dictionary
         sudoku_resolved = self.dict_algorithm.get(algorithm)(dictionary)
         return sudoku_resolved
 
