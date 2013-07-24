@@ -9,17 +9,22 @@ from Console.configure_console import ConfigureConsole
 from Console.play_console import PlayConsole
 
 class Menu():
-        
+    '''
+    Class main menu
+    '''        
     def __init__(self):
         self.game = SudokuGame()
         self.solve = SolveConsole(self.game)
         self.configure_settings = ConfigureConsole(self.game)
         self.play_game = PlayConsole(self.game)
-        self.options = {1: self.solve.solve, 2: self.play_game.display_menu,\
+        self.options = {1: self.solve.solve, 2: self.play_game.display_menu, \
                          3: self.configure_settings.configure_settings}
 
     
     def main(self):
+        '''
+        Options of Sudoku game
+        '''
         while (True):
             os.system("cls")
             print"   __          _           _   _      _ _  "
@@ -45,5 +50,5 @@ class Menu():
                 self.options.get(num)()
             
 if __name__ == "__main__":
-    main = Menu()
-    main.main()
+    main_menu = Menu()
+    main_menu.main()
