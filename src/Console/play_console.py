@@ -73,6 +73,10 @@ class PlayConsole:
             print "================================================"    
             print "                Saved Games"
             print "================================================\n"
+            if(len(files_to_open) == 0):
+                print("No games saved.\n")
+                raw_input(".....Press Enter to Continue.....")
+                break
             while key <= int(self.game.get_xml_value("save_game_number")):
                 print(str(key) + ":\t" + files_to_open[key][:-4])
                 key += 1
