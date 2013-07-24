@@ -14,7 +14,7 @@ class SolveConsole():
         '''
         Options to solve sudoku class need to start
         '''
-           
+        os.system("cls")   
         print "\n======================================" 
         print "         Solve Sudoku "
         print "======================================" 
@@ -136,8 +136,8 @@ class SolveConsole():
         if (output == 'export to file'):
             self.game_console.display(dictionary)
             self.game_console.file_read.write_file(dictionary)
-            print "\n...........The solution was\
- exported to the file...........\n"
+            print "\n...The solution was exported successfully to the path: %s\
+             \n" %self.game_console.file_read.path
             os.system("cls")
                       
     
