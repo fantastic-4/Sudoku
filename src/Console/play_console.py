@@ -1,3 +1,6 @@
+'''
+Submenu to play Sudoku 
+'''
 import os
 
 from Main.play_sudoku import PlaySudoku
@@ -5,7 +8,9 @@ from Main.grid_generator import GridGenerator
 from File.txt_file import TXTFile
 
 class PlayConsole:
-    
+    '''
+    Play a Sudoku game from console
+    '''
     def __init__(self, sudoku):
  
         self.game = sudoku
@@ -85,7 +90,7 @@ class PlayConsole:
                 message = "\nWrong option, please try again.\n"
 #         self.txtfile.load_Game(self.save_path, file_name)
     
-    def __load_game(self,file_name):
+    def __load_game(self, file_name):
         '''
         Function to load game.
         :param file_name: name of the file to be loaded.
@@ -102,9 +107,9 @@ class PlayConsole:
         files = os.listdir(self.save_path)
         dict_of_files = {}
         counter = 1
-        for f in files:
+        for file_read in files:
             if(counter < self.maximum_files_displayed):
-                dict_of_files[counter] = f
+                dict_of_files[counter] = file_read
                 counter += 1
             else: break
         return dict_of_files
