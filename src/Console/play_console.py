@@ -38,8 +38,9 @@ class PlayConsole:
                 if(option == 1):
                     self.__start(self.__new_game(), "00:00")
                 elif(option == 2):
-                    grid, time_elapsed = self.__choose_saved_games()
-                    self.__start(grid, time_elapsed)
+                    results = self.__choose_saved_games()
+                    if(results != None):
+                        self.__start(results[0], results[1])
                 elif(option == 3):
                     result = self.__enter_grid()
                     if(result == None): break
@@ -65,24 +66,25 @@ class PlayConsole:
         '''
         files_to_open = self.__get_saved_files()
         keys_from_files = files_to_open.keys()
+        key = 1
         message = ""
         while True:
             os.system("cls")
             print "================================================"    
             print "                Saved Games"
             print "================================================\n"
-            for key in keys_from_files:
-                print(str(key) + ":\t" + files_to_open[key])
+            while key <= int(self.game.get_xml_value("save_game_number")):
+                print(str(key) + ":\t" + files_to_open[key][:-4])
+                key += 1
             print(message)
             try:
-                option = int(raw_input("Insert the option number for game saved: "))
+                option = int(raw_input("Insert option number for game saved: "))
                 if(option in keys_from_files):
-                    grid, time_elapsed = self.__load_game(files_to_open[key])
+                    grid, time_elapsed = self.__load_game(files_to_open[option])
                     return(grid, time_elapsed)
                 else:
                     message = "\nWrong option, please try again.\n"
-            except ValueError:
-                message = "\nWrong option, please try again.\n"
+            except ValueError: break
 
     
     def __load_game(self, file_name):
@@ -103,10 +105,9 @@ class PlayConsole:
         dict_of_files = {}
         counter = 1
         for file_read in files:
-            if(counter < self.game.get_xml_value("save_game_number")):
+            if(file_read[:10] == "Saved_game"):
                 dict_of_files[counter] = file_read
                 counter += 1
-            else: break
         return dict_of_files
     
     def __enter_grid(self):
