@@ -29,18 +29,18 @@ class Grid:
         return dict(zip(self.squares, chars))
 
     def validate_grid(self, grid_string):
-        '''Function to validate the string given, if the values,
-            size and order of values is correct,
-            then it will be converted into a dictionary to be solved'''
+        '''Function to validate the string given'''
         flag = self.validator.validate_values(grid_string)
         if(flag):
             self.dictionary_of_grid = self.set_values(grid_string)
             for row in self.rows:
                 for column in self.cols:
                     if(not self.validator.check_lines(self.dictionary_of_grid[row+column],
-                        row+column, self.dictionary_of_grid)
-                        and not self.validator.check_square(self.dictionary_of_grid[row+column],
-                        row+column, self.dictionary_of_grid)):
+                                                      row+column,
+                                                      self.dictionary_of_grid)
+                        or not self.validator.check_square(self.dictionary_of_grid[row+column],
+                                                            row+column,
+                                                            self.dictionary_of_grid)):
                         flag = False                        
                         break
                 if(not flag): break
