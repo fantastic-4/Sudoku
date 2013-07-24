@@ -25,7 +25,7 @@ class SudokuGame():
         self.dlx = DLX()
         self.xml_config_file = Xmlfile("c:\\sudoku\\config\\", "xml_config_file")
         self.display_dic = Display()
-        self.file_read = TXTFile("c:\\Sudoku\\", "")
+        self.file_read = TXTFile("c:\\sudoku\\", "")
         self.dict_algorithm = {'norvig': self.norvig.solve, \
                                'brute': self.brute.solve, 'dlx': self.dlx.solve}
         
