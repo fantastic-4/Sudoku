@@ -27,14 +27,18 @@ class PlaySudoku:
         Function to add numbers to the grid as move played.
         :param key: position to insert a number
         :param num: number to insert in a specific position
-        :return boolean: True if the number was added in a empty slot,
-        False otherwise.
         '''
         if(key in self.squares and key in self.empties):
-            self.dictionary[key] = num
-            self.moves_played.append(key)
-            return True
-        else: return False
+            try:
+                integer = int(num)
+            except:
+                return ("ERROR, value is not a number.")
+            if(integer > 0 and integer < 10):
+                self.dictionary[key] = str(integer)
+                self.moves_played.append(key)
+            else: return ("ERROR, Value is not a valid number.(1-9)")
+            return ("Number: " + num + " was added to: " + key)
+        else: return ("ERROR, " + key + ":" + num + " cannot be modified.")
     
     def __grid_empty_values(self,empty_grid):
         '''
@@ -217,15 +221,14 @@ class PlaySudoku:
             key,num = command.upper().split(":")
             if(num.upper() == "HINT"):
                 message = "Hint: " + key + ":" + self.__get_hint(key)
-            elif(self.__play_move(key, num)):
-                message = "Number: " + num + " was added to: " + key
-            else: message = "ERROR, Wrong Square"
+            else:
+                message = self.__play_move(key, num)
         else:
             if(command.upper() == "VALIDATE"): 
                 if(self.__validate_game()):
                     message = "Congratulations, You solved the Grid!!"
                 else:
-                    message = "ERROR, The grid is not fulfilled as expected."
+                    message = "ERROR, The Sudoku game was not completed yet."
             elif(command.upper() == "SOLVE"):
                 self.dictionary = self.__solve(self.dictionary)
                 if(self.dictionary != False):
@@ -237,6 +240,7 @@ class PlaySudoku:
                 self.__reset_game()
                 message = "The game was reset to initial state."
             elif(command.upper() == "UNDO"): message = self.__undo()
-            elif(command.upper() == "RETURN"): message = self.__last_good_square()
-            else: message = "ERROR, command not valid."
+            elif(command.upper() == "RETURN"):
+                message = self.__last_good_square()
+            else: message = "ERROR, '" + command + "' is not a valid command."
         return message
