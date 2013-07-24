@@ -1,5 +1,5 @@
 '''
-Sudoku
+Sudoku Game
 '''
 class Display:
     '''

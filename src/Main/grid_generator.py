@@ -1,5 +1,5 @@
 '''
-Sudoku
+Sudoku Game
 '''
 from Parser.grid import Grid
 import random
