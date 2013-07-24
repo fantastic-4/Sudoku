@@ -28,17 +28,20 @@ class PlaySudoku:
         :param key: position to insert a number
         :param num: number to insert in a specific position
         '''
-        if(key in self.squares and key in self.empties):
-            try:
-                integer = int(num)
-            except:
-                return ("ERROR, value is not a number.")
-            if(integer > 0 and integer < 10):
-                self.dictionary[key] = str(integer)
-                self.moves_played.append(key)
-            else: return ("ERROR, Value is not a valid number.(1-9)")
-            return ("Number: " + num + " was added to: " + key)
-        else: return ("ERROR, " + key + ":" + num + " cannot be modified.")
+        if(key in self.squares):
+            if(key in self.empties):
+                try:
+                    integer = int(num)
+                except:
+                    return ("ERROR, value is not a number.")
+                if(integer > 0 and integer < 10):
+                    self.dictionary[key] = str(integer)
+                    self.moves_played.append(key)
+                else: return ("ERROR, " + num + " is not a valid number.(1-9)")
+                return ("Number: " + num + " was added to: " + key)
+            else: 
+                return ("ERROR, " + key + ":" + num + " cannot be modified.")
+        else: return ("ERROR, " + key + " is not a valid square.")
     
     def __grid_empty_values(self,empty_grid):
         '''
