@@ -1,5 +1,5 @@
 '''
-Submenu to solve a sudoku game
+Submenu to solve a Sudoku game
 '''
 import os
 

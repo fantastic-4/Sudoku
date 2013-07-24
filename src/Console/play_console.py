@@ -1,5 +1,5 @@
 '''
-Submenu to play Sudoku 
+Submenu to play Sudoku game
 '''
 import os
 

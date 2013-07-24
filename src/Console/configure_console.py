@@ -1,7 +1,13 @@
+'''
+Submenu to configure settings of Sudoku game 
+'''
 import os
 
-'''This class handle all configuration stuff'''
+
 class ConfigureConsole:
+    '''
+    This class handle all configuration stuff
+    '''
     def __init__(self, sudoku):
         self.settings = sudoku
         
@@ -30,7 +36,7 @@ class ConfigureConsole:
         levels =  ["1: Easy", "2: Medium", "3: Hard", "4: Back"]   
         to_select = {1: algoritms, 2: output_types, 3: levels}
         if num == 4:
-            value=self.enter_option(100, "\n Please enter new value: ", \
+            value = self.enter_option(100, "\n Please enter new value: ", \
                    "\nIncorrect input!. Please enter correct value")
             option = value
             return int(value)
