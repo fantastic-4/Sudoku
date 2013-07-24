@@ -66,11 +66,11 @@ class SudokuGame():
             print("ERROR, Invalid input content.")
         return self.grid.set_values(text), flag
     
-    def display(self, dic):
+    def display_string(self, dic):
         '''
         Display the Sudoku board
         '''
-        print self.display_dic.display(dic)
+        print dic
         
     def export_to_file(self, dic):
         '''

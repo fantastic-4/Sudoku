@@ -123,19 +123,20 @@ class SolveConsole():
         get_xml_value("solver_output_type")
         output = output.lower()
         
-        print "================================================"
-        print "            Original Game: "
-        print "================================================"
-        self.game_console.display(self.game_console.original)
-        print "================================================"    
-        print "    The algorithm used to solve is: ", alg.upper()
-        print "================================================"
+        print "==========================\t\t" + \
+        "=========================="  
+        print "      Original Game: \t\t\t" + \
+        " solved using: ", alg.upper()
+        print "==========================\t\t" + \
+        "=========================="
+        sudoku_solved = self.game_console.display_dic.\
+        display_sudoku_before_and_after_solved_it(self.game_console.original, dictionary)
       
         if (output == 'display by console'):
-            self.game_console.display(dictionary)
+            self.game_console.display_string(sudoku_solved)
         if (output == 'export to file'):
-            self.game_console.display(dictionary)
-            self.game_console.file_read.write_file(dictionary)
+            self.game_console.display_string(sudoku_solved)
+            self.game_console.file_read.write_file(sudoku_solved)
             print "\n...The solution was exported successfully to the path: %s\
              \n" %self.game_console.file_read.path
             os.system("cls")

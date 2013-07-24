@@ -32,7 +32,7 @@ class TXTFile(File):
         value_r="======================== \n"\
         +"    Sudoku Solved:    \n"\
         +"======================== \n"
-        value_r+=self.display.display(values)
+        value_r+=values
         self.create_file(value_r)
 
     def __timeStamped(self,fname, fmt="{fname}_%Y_%m_%d_%H_%M_%S.txt"):
