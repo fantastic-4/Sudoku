@@ -137,6 +137,9 @@ class SolveConsole():
     
     def enter_option(self, length, text, error = "Incorrect input!.\
         \nPlease enter a proper option."):
+        '''
+        Verify if the option is correct
+        '''
         while True:
             num = raw_input(text)
             try:
