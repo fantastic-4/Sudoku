@@ -14,11 +14,6 @@ class PlayConsole:
     def __init__(self, sudoku):
  
         self.game = sudoku
-        self.difficulty = self.game.get_xml_value("difficulty_level")
-        self.algorithm = self.game.get_xml_value("default_algorithm")
-        self.save_path = self.game.get_xml_value("save_game")
-        self.maximum_files_displayed = self.game.get_xml_value("save_game_number")
-        
         self.generator = GridGenerator()
         self.play = None
         self.txtfile = TXTFile("", "")
@@ -61,7 +56,7 @@ class PlayConsole:
         :Return: Dictionary generated.
         '''
         self.generator.generate_grid()
-        dictionary = self.generator.values_chooser(self.difficulty)
+        dictionary = self.generator.values_chooser(self.game.get_xml_value("difficulty_level"))
         return(dictionary)
         
     def __choose_saved_games(self):
@@ -95,7 +90,7 @@ class PlayConsole:
         Function to load game.
         :param file_name: name of the file to be loaded.
         '''
-        grid, time_elapsed = self.txtfile.load_Game(self.save_path,
+        grid, time_elapsed = self.txtfile.load_Game(self.game.get_xml_value("save_game"),
                                                     file_name)
         
         return(self.game.grid.set_values(grid), time_elapsed)
@@ -104,11 +99,11 @@ class PlayConsole:
         '''
         Function to display the list of the saved games files.
         '''
-        files = os.listdir(self.save_path)
+        files = os.listdir(self.game.get_xml_value("save_game"))
         dict_of_files = {}
         counter = 1
         for file_read in files:
-            if(counter < self.maximum_files_displayed):
+            if(counter < self.game.get_xml_value("save_game_number")):
                 dict_of_files[counter] = file_read
                 counter += 1
             else: break
@@ -145,7 +140,9 @@ class PlayConsole:
         Function to start the game.
         :param dictionary: dictionary to solve the grid.
         '''
-        self.play = PlaySudoku(self.game, dictionary, self.algorithm, self.save_path)
+        self.play = PlaySudoku(self.game, dictionary, \
+                               self.game.get_xml_value("default_algorithm"), \
+                               self.game.get_xml_value("save_game"))
         self.play.set_elapsed_time(start_time)
         message = ""
         while True:
@@ -184,6 +181,6 @@ class PlayConsole:
         '''
         Function to display the current grid.
         '''
-        print("\nDifficulty: " + self.difficulty +
+        print("\nDifficulty: " + self.game.get_xml_value("difficulty_level") +
                   "\nTime elapsed: " + self.play.get_time() + "\n")
         self.game.display(self.play.dictionary)
