@@ -19,6 +19,8 @@ from UnitTests.test_DLX import TestDlxMatrix
 from UnitTests.test_integration1_using_both_algorithms import Test_integration_using_norvig
 from UnitTests.test_sudoku_game import Test_SudokuGame
 from UnitTests.test_validator import Test_validator
+from UnitTests.test_play_sudoku import TestPlaySudoku
+from UnitTests.test_sudoku_game import Test_SudokuGame
 
 
 if __name__=="__main__":
@@ -37,6 +39,8 @@ if __name__=="__main__":
     suite.addTest(unittest.makeSuite(Test_integration_using_norvig)) 
     suite.addTest(unittest.makeSuite(Test_SudokuGame))   
     suite.addTest(unittest.makeSuite(Test_validator))
+    suite.addTest(unittest.makeSuite(TestPlaySudoku))
+    suite.addTest(unittest.makeSuite(Test_SudokuGame))
 #     suite.addTest(unittest.makeSuite(Test_read_the_default_settings_from_an_XML_config_file))
 
 

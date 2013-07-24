@@ -2,7 +2,7 @@ import unittest
 from Solver.norvig import Norvig
 from Parser.grid import Grid
 from Main.display import Display
-from Solver.solve_algorithm import Solve_Algorithm
+from Solver.solve_algorithm import SolveAlgorithm
 
 
 class Test_norvig(unittest.TestCase):
@@ -12,7 +12,7 @@ class Test_norvig(unittest.TestCase):
         self.grid=Grid()
         self.norvig=Norvig()
         self.display=Display()
-        self.sa=Solve_Algorithm()
+        self.sa=SolveAlgorithm()
 
 
     def test_solve_a_easy_grid_using_norvig(self):
