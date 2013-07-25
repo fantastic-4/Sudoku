@@ -13,6 +13,7 @@ class TestXMLconfigfile(unittest.TestCase):
         self.level="Easy"
         self.save_game="c:\\sudoku\\save\\"
         self.save_game_number="10"
+        os.remove("c:\\sudoku\\config\\xml_config_file.xml")
 
     def test_if_path_does_not_exit_it_is_created(self):
         new_path="c:\\sudoku\\config\\"
