@@ -1,5 +1,8 @@
 import unittest
+import os
+import glob
 from File.txt_file import TXTFile
+from File.csv_file import Csvfile
  
 from Main.sudoku_game import SudokuGame
 
@@ -7,9 +10,13 @@ class Test_SudokuGame(unittest.TestCase):
 
 
     def setUp(self):
-        self.path= "..\UnitTests"
-        self.name="To_read_sudoku_easy.txt"
-        self.txtfile=TXTFile(self.path,self.name)
+        self.path= "..\UnitTests\\"
+        self.txt_name="To_read_sudoku_easy.txt"
+        self.csv_name="sudoku.csv"
+        self.txtfile=TXTFile(self.path,self.txt_name)
+        self.csvfile=Csvfile(self.path,self.csv_name)
+        self.game = SudokuGame()
+        self.level="Easy"
         self.dict_expected={'I6': '7', 'H9': '9', 'I2': '9', 'E8': '3', \
 'H3': '4', 'H7': '7', 'I7': '3', 'I4': '4', 'H5': '5', 'F9': '5', 'G7': '5', \
 'G6': '9', 'G5': '8', 'E1': '7', 'G3': '2', 'G2': '7', 'G1': '3', 'I1': '6', \
@@ -22,7 +29,7 @@ class Test_SudokuGame(unittest.TestCase):
 'D2': '4', 'H1': '8', 'H6': '3', 'H2': '1', 'H4': '2', 'D3': '8', 'B4': '3', \
 'B5': '4', 'B6': '5', 'B7': '8', 'E9': '8', 'B1': '9', 'B2': '6', 'B3': '7', \
 'D6': '2', 'D7': '9', 'D4': '1', 'D5': '3', 'B8': '2', 'B9': '1', 'D1': '5'}
-        self.game = SudokuGame()
+
         
         self.wrong_entry = "abcdef"        
         self.one_character = "1"
@@ -33,17 +40,25 @@ class Test_SudokuGame(unittest.TestCase):
         self.expected_text_with_fifty_characters = "74236815939657124858149236\
 7814753926975286431263140000000000000000000000000000000"
         
-        self.level="Easy"
+
     
     
-    def test_resolve_sudoku_game_with_default_configuration_from_a_file(self):
+    def test_resolve_sudoku_game_with_default_configuration_from_TxtFile(self):
         self.assertEqual(self.dict_expected, self.game.\
-                         solve_sudoku_from_file(self.path, self.name))
+                         solve_sudoku_from_file(self.path, self.txt_name))
+    
+    def test_resolve_sudoku_game_with_default_configuration_from_CsvFile(self):
+        self.assertEqual(self.dict_expected, self.game.\
+                         solve_sudoku_from_file(self.path, self.csv_name))
     
     def test_modify_xml_value_for_algorithm_from_Norvig_to_Brute(self):
         expected_value = "Brute"
         self.assertEqual(expected_value, self.game.xml_config_file.\
                          set_xml_value("Brute","default_algorithm"))
+    
+    def test_export_sudoku_solved_to_TxtFile(self):
+        self.game.file_read.path = self.path
+        self.assertEqual(self.game.export_to_file("Testing", "Norvig"), self.game.export_to_file("Testing", "Norvig"))
     
     def test_resolve_sudoku_game_with_default_configuration_from_console(self):
         self.assertEqual(self.dict_expected, self.game.\
@@ -84,6 +99,7 @@ class Test_SudokuGame(unittest.TestCase):
         
     def tearDown(self):
         self.game.xml_config_file.set_xml_value("Norvig","default_algorithm")
+        self.game.xml_config_file.set_xml_value("Easy","difficulty_level")
     
 if __name__ == "__main__":
     unittest.main()

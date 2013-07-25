@@ -75,11 +75,11 @@ class SudokuGame():
     def display(self, dic):
         print(self.display_dic.display(dic))
          
-    def export_to_file(self, dic):
+    def export_to_file(self, dic, alg):
         '''
         Export the Sudoku board to file
         '''
-        self.file_read.write_file(dic)
+        self.file_read.write_file(dic,alg)
         print "\n..........The solution was exported to the file........\n"
         
     def set_xml_value(self, new_value, tag):
