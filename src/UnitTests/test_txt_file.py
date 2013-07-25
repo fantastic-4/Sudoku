@@ -20,8 +20,8 @@ class Testtxtfile(unittest.TestCase):
 
         grid_expected1=""
         self.assertEqual(self.txtfile.\
-                         write_file(grid_expected1),self.\
-                         txtfile.write_file(grid_expected))
+                         write_file(grid_expected1,"alg"),self.\
+                         txtfile.write_file(grid_expected,"alg"))
          
     def test_if_the_path_is_wrong_that_validates_File(self):
         self.txtfile.file_name="WrongFile.XX"
@@ -54,14 +54,13 @@ class Testtxtfile(unittest.TestCase):
         self.assertEqual(self.txtfile.file_name,self.txtfile.file_name)
     
     def test_if_load_game_method_loads_the_file_correctly(self):
-        expected=('0030206009003050010018064000081029007000000980067082000026\
-09500809203909095019300', '0:0.00016964823776')
-        value=self.txtfile.load_Game("c:\\sudoku\\save\\",\
-                                     "Saved_game_2013_07_18_16_21_57.txt")
+        expected=('003020600900305001001806400008102900700000098006708\
+200002609500809203909095019300', '0:0.00016964823776')
+        value=self.txtfile.load_Game(self.path,"testsavegame.txt")
         self.assertEqual(expected, value)
 
     def tearDown(self):
-        directory='..\\UnitTests\\'
+        directory='../UnitTests'
         os.chdir(directory)
         files=glob.glob('Saved*')
         files1=glob.glob('Solved*')

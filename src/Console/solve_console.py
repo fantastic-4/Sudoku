@@ -130,16 +130,17 @@ class SolveConsole():
         print "==========================\t\t" + \
         "=========================="
         sudoku_solved = self.game_console.display_dic.\
-        display_sudoku_before_and_after_solved_it(self.game_console.original, dictionary)
+        display_sudoku_before_and_after_solved_it(self.game_console.original\
+                                                  , dictionary)
       
         if (output == 'display by console'):
             self.game_console.display_string(sudoku_solved)
         if (output == 'export to file'):
             self.game_console.display_string(sudoku_solved)
-            self.game_console.file_read.write_file(sudoku_solved)
+            self.game_console.file_read.write_file(sudoku_solved,alg)
             print "\n...The solution was exported successfully to the path: %s\
              \n" %self.game_console.file_read.path
-            os.system("cls")
+
                       
     
     def enter_option(self, length, text, error = "Incorrect input!.\
