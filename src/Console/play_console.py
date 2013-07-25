@@ -66,7 +66,7 @@ class PlayConsole:
         '''
         files_to_open = self.__get_saved_files()
         keys_from_files = files_to_open.keys()
-        key = 1
+        key_counter = 1
         message = ""
         while True:
             os.system("cls")
@@ -77,9 +77,13 @@ class PlayConsole:
                 print("No games saved.\n")
                 raw_input(".....Press Enter to Continue.....")
                 break
-            while key <= int(self.game.get_xml_value("save_game_number")):
-                print(str(key) + ":\t" + files_to_open[key][:-4])
-                key += 1
+            
+            for key in keys_from_files:
+                if(key_counter <= int(self.game.get_xml_value("save_game_number"))):
+                    print(str(key) + ":\t" + files_to_open[key][:-4])
+                    key_counter += 1
+                else: break
+            
             print(message)
             try:
                 option = int(raw_input("Insert option number for game saved: "))

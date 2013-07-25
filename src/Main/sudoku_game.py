@@ -71,7 +71,10 @@ class SudokuGame():
         Display the Sudoku board
         '''
         print dic
-        
+    
+    def display(self, dic):
+        print(self.display_dic.display(dic))
+         
     def export_to_file(self, dic):
         '''
         Export the Sudoku board to file
