@@ -150,6 +150,7 @@ class PlayConsole:
         Function to start the game.
         :param dictionary: dictionary to solve the grid.
         '''
+        original_dict = dictionary.copy()
         self.play = PlaySudoku(self.game, dictionary, \
                                self.game.get_xml_value("default_algorithm"), \
                                self.game.get_xml_value("save_game"))
@@ -157,13 +158,15 @@ class PlayConsole:
         message = ""
         while True:
             self.__display_commands()
-            self.__display_board()
+            self.__display_board(original_dict)
             print(message + "\n\n")
             command = raw_input("Enter a command: ")
             if(command.upper() == "EXIT"): break
             elif(command.upper() == "SOLVE"):
                 message = self.play.play(command)+ "\n\nType 'EXIT' to back to menu."
             else: message = self.play.play(command)
+            if(self.play.dictionary != False):
+                original_dict = self.play.dictionary.copy()
 
     def __display_commands(self):
         '''
@@ -187,10 +190,10 @@ class PlayConsole:
         \n\t\t  was solvable.")
         print("'exit'\t\t: To exit of the game.\n")
         
-    def __display_board(self):
+    def __display_board(self, dictionary):
         '''
         Function to display the current grid.
         '''
         print("\nDifficulty: " + self.game.get_xml_value("difficulty_level") +
                   "\nTime elapsed: " + self.play.get_time() + "\n")
-        self.game.display(self.play.dictionary)
+        self.game.display(dictionary)
