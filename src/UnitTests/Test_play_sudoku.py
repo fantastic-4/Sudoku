@@ -9,6 +9,7 @@ class TestPlaySudoku(unittest.TestCase):
 
     def setUp(self):
         
+        self.maxDiff = None
         self.game = SudokuGame()
         self.algorithm = "norvig"
         
@@ -36,6 +37,7 @@ class TestPlaySudoku(unittest.TestCase):
 "D2": "0", "H1": "8", "H6": "3", "H2": "0", "H4": "2", "D3": "8", "B4": "3", \
 "B5": "0", "B6": "5", "B7": "0", "E9": "8", "B1": "9", "B2": "0", "B3": "0", \
 "D6": "2", "D7": "9", "D4": "1", "D5": "0", "B8": "0", "B9": "1", "D1": "0"}
+        
         self.dict_complete = {"B8": "2", "H1": "8", "C7": "4", "B3": "7", \
 "D3": "8", "G9": "4", "G8": "1", "B9": "1", "A3": "3", "G7": "5", "G6": "9", \
 "G5": "8", "G4": "6", "G3": "2", "G2": "7", "G1": "3", "B5": "4", "I1": "6", \
@@ -48,6 +50,7 @@ class TestPlaySudoku(unittest.TestCase):
 "H3": "4", "F3": "6", "H6": "3", "H7": "7", "H4": "2", "H5": "5", "B4": "3", \
 "A8": "5", "B6": "5", "B7": "8", "E9": "8", "E3": "9", "D8": "7", "F9": "5", \
 "D6": "2", "D7": "9", "D4": "1", "C4": "8", "D2": "4", "E2": "2", "D1": "5"}
+        
         self.dictB = {"I6": "0", "H9": "0", "I2": "0", "E8": "5", "H3": "0", \
 "H7": "0", "I7": "0", "I4": "7", "H5": "3", "F9": "0", "G7": "0", "G6": "0", \
 "G5": "0", "E1": "6", "G3": "1", "G2": "4", "G1": "0", "I1": "0", "C8": "0", \
@@ -73,7 +76,7 @@ class TestPlaySudoku(unittest.TestCase):
 "D2": "0", "H1": "8", "H6": "3", "H2": "0", "H4": "2", "D3": "8", "B4": "3", \
 "B5": "0", "B6": "5", "B7": "0", "E9": "8", "B1": "9", "B2": "0", "B3": "0", \
 "D6": "2", "D7": "9", "D4": "1", "D5": "0", "B8": "0", "B9": "1", "D1": "0"}
-        self.move_to_play = "I6:2"
+        
         self.expected_dictA = {"I6": "2", "H9": "9", "I2": "0", "E8": "0", \
 "H3": "0", "H7": "0", "I7": "3", "I4": "0", "H5": "0", "F9": "0", "G7": "5", \
 "G6": "9", "G5": "0", "E1": "7", "G3": "2", "G2": "0", "G1": "0", "I1": "0", \
@@ -91,13 +94,19 @@ class TestPlaySudoku(unittest.TestCase):
         self.expected_specific_hint_message = "Hint: I6:7"
         self.hint_command = "HiNt"
         self.expected_hint_message = "Hint: H9:8"
+        self.expected_hint_and_wrong_grid_message = "Hint: I6:ERROR, Current\
+ Grid has no Solution"
+        self.expected_hint_and_bad_grid_message = "ERROR, Current\
+ Grid has no Solution"
+        self.expected_no_hints_message = "No hints to give."
         
-        self.verify_command = "VeRiFy"
-        self.expected_verify_message = "Congratulations, You solved the Grid!!"
-        self.expected_wrong_verify_message = "ERROR, 'VeRiFy'\
- is not a valid command."
+        self.validate_command = "VaLiDaTe"
+        self.expected_validate_message = "Congratulations,\
+ You solved the Grid!!"
+        self.expected_wrong_validate_message = "ERROR, The Sudoku game was not\
+ completed yet."
         
-        self.wrong_move_to_play = "Z6:20"
+        self.wrong_move_to_play = "Z6:2"
         self.expected_wrong_coordinate_message = "ERROR, Wrong Square"
         
         self.solve_command = "SoLvE"
@@ -115,43 +124,108 @@ class TestPlaySudoku(unittest.TestCase):
         
         self.undo_command = "UnDo"
         self.last_good_square_command = "ReTuRn"
+        self.expected_no_moves_message = "No moves were made."
+        self.expectd_no_point_to_return_message = "ERROR, Current Grid has no\
+ point to return."
         
+        self.move_to_play = "I6:2"
+        self.move_non_number = "I6:x"
+        self.expected_non_number_message = "ERROR, value is not a number."
+        
+        self.move_invalid_number = "I6:10"
+        self.expected_invalid_number_message = "ERROR, 10 is not a valid\
+ number.(1-9)"
+        
+        self.move_modify_primal_hint = "A3:3"
+        self.expected_modify_hint_message = "ERROR, A3:3 cannot be modified."
+        
+    def test_if_undo_displays_message_when_no_moves_were_made(self):
+        ps = PlaySudoku(self.game, self.dictA, self.algorithm, self.path)
+        m = ps.play(self.undo_command)
+        self.assertEquals(m,self.expected_no_moves_message)
+    
+    def test_if_game_with_no_initial_point_cannot_be_returned_to_last_good_state(self):
+        ps = PlaySudoku(self.game, self.dictA, self.algorithm, self.path)
+        m = ps.play(self.last_good_square_command)
+        self.assertEquals(m, self.expectd_no_point_to_return_message)
+        
+    def test_if_non_number_value_returns_message_expected(self):
+        ps = PlaySudoku(self.game, self.dictA, self.algorithm, self.path)
+        self.assertEquals(ps.play(self.move_non_number),
+                          self.expected_non_number_message)
+         
+    def test_if_invalid_number_value_returns_message_expected(self):
+        ps = PlaySudoku(self.game, self.dictA, self.algorithm, self.path)
+        self.assertEquals(ps.play(self.move_invalid_number),
+                          self.expected_invalid_number_message)
+         
+    def test_if_primal_hint_cannot_be_modified(self):
+        ps = PlaySudoku(self.game, self.dictA, self.algorithm, self.path)
+        self.assertEquals(ps.play(self.move_modify_primal_hint),
+                          self.expected_modify_hint_message)
+         
+    def test_if_specific_hint_for_grid_with_no_solution_displays_message_expected(self):
+        ps = PlaySudoku(self.game, self.wrong_dict, self.algorithm, self.path)
+        m = ps.play(self.specific_hint_command)
+        self.assertEquals(m,self.expected_hint_and_wrong_grid_message)
+         
+    def test_if_current_grid_can_be_solved_by_brute_algorithm(self):
+        ps = PlaySudoku(self.game,self.dictA,"brute",self.path)
+        ps.play(self.solve_command)
+        self.assertDictEqual(ps.dictionary,self.dict_complete)
+         
+    def test_if_current_grid_can_be_solved_by_dlx_algorithm(self):
+        ps = PlaySudoku(self.game,self.dictA,"dlx",self.path)
+        ps.play(self.solve_command)
+        self.assertDictEqual(ps.dictionary,self.dict_complete)
+         
+    def test_if_no_hints_message_is_displayed_when_grid_is_completed(self):
+        ps = PlaySudoku(self.game,self.dict_complete,self.algorithm,self.path)
+        m = ps.play(self.hint_command)
+        self.assertEquals(m,self.expected_no_hints_message)
+     
+    def test_if_custom_hint_for_grid_with_no_solution_displays_message_expected(self):
+        ps = PlaySudoku(self.game, self.wrong_dict, self.algorithm, self.path)
+        m = ps.play(self.hint_command)
+        self.assertEquals(m,self.expected_hint_and_bad_grid_message)
+     
     def test_if_a_number_can_be_set_as_move_played(self):
         ps = PlaySudoku(self.game, self.dictA, self.algorithm, self.path)
         ps.play(self.move_to_play)
         self.assertDictEqual(ps.dictionary,self.expected_dictA)
-            
+              
     def test_if_a_wrong_move_returns_false(self):
         ps = PlaySudoku(self.game, self.dictA, self.algorithm, self.path)
-        self.assertTrue(ps.play(self.wrong_move_to_play),\
-                         self.expected_wrong_coordinate_message)
-            
+        self.assertTrue(ps.play(self.wrong_move_to_play),
+                        self.expected_wrong_coordinate_message)
+              
     def test_if_specific_hint_is_displayed(self):
         ps = PlaySudoku(self.game, self.dictA, self.algorithm, self.path)
         m = ps.play(self.specific_hint_command)
         self.assertEquals(m,self.expected_specific_hint_message)
-            
-    def test_if_verify_command_validates_current_grid(self):
-        ps = PlaySudoku(self.game, self.dict_complete, self.\
-                        algorithm, self.path)
-        m = ps.play(self.verify_command)
-        self.assertEquals(m,self.expected_wrong_verify_message)
-            
-    def test_if_verify_command_validates_wrong_current_grid(self):
+              
+    def test_if_validate_command_validates_current_grid(self):
+        ps = PlaySudoku(self.game, self.dict_complete,
+                        self.algorithm,
+                        self.path)
+        m = ps.play(self.validate_command)
+        self.assertEquals(m,self.expected_validate_message)
+               
+    def test_if_validate_command_validates_wrong_current_grid(self):
         ps = PlaySudoku(self.game, self.dictA, self.algorithm, self.path)
-        m = ps.play(self.verify_command)
-        self.assertEquals(m,self.expected_wrong_verify_message)
-        
+        m = ps.play(self.validate_command)
+        self.assertEquals(m,self.expected_wrong_validate_message)
+          
     def test_if_current_grid_can_be_solved(self):
         ps = PlaySudoku(self.game, self.dictA, self.algorithm, self.path)
         m = ps.play(self.solve_command)
         self.assertEquals(m,self.expected_solve_message)
-            
+              
     def test_if_current_grid_cannot_be_solved(self):
         ps = PlaySudoku(self.game, self.wrong_dict, self.algorithm, self.path)
         m = ps.play(self.solve_command)
         self.assertEquals(m,self.expected_wrong_solve_message)
-            
+              
     def test_if_time_elapsed_can_be_retrieved(self):
         ps = PlaySudoku(self.game, self.dictA, self.algorithm, self.path)
         time.sleep(1)
@@ -159,7 +233,7 @@ class TestPlaySudoku(unittest.TestCase):
         m = m.split(":")
         time_in_seconds = (float(m[0])*60) + (float(m[1]))
         self.assertTrue(time_in_seconds > 0)
-            
+              
     def test_if_time_elapsed_can_be_retrieved_after_load_previous_time(self):
         ps = PlaySudoku(self.game, self.dictA, self.algorithm, self.path)
         ps.set_elapsed_time(self.time_elapsed)
@@ -167,7 +241,7 @@ class TestPlaySudoku(unittest.TestCase):
         m = m.split(":")
         time_in_seconds = (float(m[0])*60) + float(m[1])
         self.assertTrue(time_in_seconds > 90)
-            
+              
     def test_if_current_grid_can_be_saved(self):
         ps = PlaySudoku(self.game, self.wrong_dict, self.algorithm, self.path)
         first_files = os.listdir(self.path)
@@ -182,17 +256,17 @@ class TestPlaySudoku(unittest.TestCase):
         self.assertTrue((files_saved + 1) == new_files_saved)
         for f in current_files:
             if not f in first_files: os.remove(self.path + f)
-           
+             
     def test_if_hint_is_displayed(self):
         ps = PlaySudoku(self.game, self.dictB, self.algorithm, self.path)
         self.assertTrue(ps.play(self.hint_command),self.expected_hint_message)
-           
+             
     def test_if_reset_command_restart_the_grid(self):
         ps = PlaySudoku(self.game, self.dictB, self.algorithm, self.path)
         ps.play(self.move_to_play)
         ps.play(self.reset_command)
         self.assertTrue(ps.dictionary,self.dictB)
-          
+            
     def test_if_reset_command_restart_the_time(self):
         ps = PlaySudoku(self.game, self.dictB, self.algorithm, self.path)
         ps.play(self.move_to_play)
@@ -202,22 +276,22 @@ class TestPlaySudoku(unittest.TestCase):
         m = m.split(":")
         time_in_seconds = (float(m[0])*60) + float(m[1])
         self.assertTrue(time_in_seconds < self.time_playing)
-         
+           
     def test_if_undo_remove_last_move_played(self):
         ps = PlaySudoku(self.game, self.dictA, self.algorithm, self.path)
         ps.play(self.move_to_play)
         ps.play(self.undo_command)
         self.assertDictEqual(ps.dictionary,self.dictA)
-         
+           
     def test_if_game_can_be_returned_to_last_good_state(self):
         ps = PlaySudoku(self.game, self.dictA, self.algorithm, self.path)
-        ps.play(self.move_to_play)
+        ps.play("H9:8")
+        last_good_dictionary = ps.dictionary.copy()
         ps.play("I2:9")
         ps.play("I8:9")
         ps.play(self.last_good_square_command)
-        self.assertDictEqual(self.dictA,ps.dictionary)
+        self.assertDictEqual(last_good_dictionary,ps.dictionary)
          
-                 
 if __name__ == "__main__":
     #import sys;sys.argv = ['', 'Test.testName']
     unittest.main()

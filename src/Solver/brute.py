@@ -21,7 +21,7 @@ class Brute (SolveAlgorithm):
         '''Function to initialize global attributes and start the process,
        also calculates the time that takes the algorithm to solve the grid
        Return the grid fulfilled'''
-        self.global_dictionary = self.__duplicate_dictionary(dictionary_to_solve)
+        self.global_dictionary = dictionary_to_solve.copy()
         self.empty_values = self.__grid_empty_values()
         empties_number = len(self.empty_values.keys())
         while empties_number > 0:
@@ -33,17 +33,6 @@ class Brute (SolveAlgorithm):
         self.time_elapsed = time.clock() - self.time_elapsed
         
         return self.global_dictionary
-        
-    def __duplicate_dictionary(self, dictionary):
-        '''
-        Creates a copy of a dictionary given.
-        :param dictionary: dictionary to clone.
-        '''
-        dictionary_as_list = dictionary.items()
-        new_dictionary = []
-        for element in dictionary_as_list:
-            new_dictionary.append(element)
-        return dict(new_dictionary)
     
     def __grid_empty_values(self):
         '''Function to select all the tuples on dictionary with value as Zero

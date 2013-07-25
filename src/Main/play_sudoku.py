@@ -174,26 +174,15 @@ class PlaySudoku:
         '''
         if(len_poss > 1):
             len_poss -= 1
-            copy_dictionary = self.__duplicate_dictionary(self.dictionary)
+            copy_dictionary = self.dictionary.copy()
             copy_dictionary[min_pos] = current_values[min_pos][len_poss]
             while(self.__solve(copy_dictionary) == False):
                 len_poss -= 1
-                copy_dictionary = self.__duplicate_dictionary(self.dictionary)
+                copy_dictionary = self.dictionary.copy()
                 copy_dictionary[min_pos] = current_values[min_pos][len_poss]
             hint = len_poss
         else: hint = len_poss - 1
         return (current_values[min_pos][hint])
-            
-    def __duplicate_dictionary(self, dictionary):
-        '''
-        Creates a copy of a dictionary given.
-        :param dictionary: dictionary to clone.
-        '''
-        dictionary_as_list = dictionary.items()
-        new_dictionary = []
-        for element in dictionary_as_list:
-            new_dictionary.append(element)
-        return dict(new_dictionary)
         
     def __undo(self):
         '''
@@ -212,7 +201,7 @@ class PlaySudoku:
         '''
         if(len(self.moves_played)>0):
             while(len(self.moves_played)>0):
-                if(not self.__validate_game()):
+                if(self.__validate_game() == False):
                     self.__undo()
                 else: break
             else: return ("Game returned to last good game.")
