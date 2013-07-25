@@ -3,6 +3,7 @@ import datetime
 from File.file import File
 from Main.display import Display
 
+
 class TXTFile(File):
     
     def __init__(self,path , name):
@@ -25,13 +26,13 @@ class TXTFile(File):
             else:
                 return value
 
-    def write_file(self, values):
+    def write_file(self, values,alg):
         '''This method save the game into TXT called Solved_game_timeStamp.txt
          file where the path will be defined in main class'''
         self.file_name=self.__timeStamped("Solved_game")
-        value_r="======================== \n"\
-        +"    Sudoku Solved:    \n"\
-        +"======================== \n"
+        value_r="==========================\t\t==========================\
+\n      Original Game: \t\t\t    solved by:"+alg.upper()+\
+"\n==========================\t\t==========================\n"
         value_r+=values
         self.create_file(value_r)
 
