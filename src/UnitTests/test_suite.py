@@ -20,6 +20,7 @@ from UnitTests.test_integration1_using_both_algorithms import Test_integration_u
 from UnitTests.test_sudoku_game import Test_SudokuGame
 from UnitTests.test_validator import Test_validator
 from UnitTests.Test_play_sudoku import TestPlaySudoku
+from UnitTests.test_bugs_found import TestBugFound
 
 
 if __name__=="__main__":
@@ -39,6 +40,7 @@ if __name__=="__main__":
     suite.addTest(unittest.makeSuite(TestPlaySudoku))
     suite.addTest(unittest.makeSuite(Test_SudokuGame))
     suite.addTest(unittest.makeSuite(Testtxtfile))
+    suite.addTest(unittest.makeSuite(TestBugFound))
 #     suite.addTest(unittest.makeSuite(Test_read_the_default_settings_from_an_XML_config_file))
 
 
