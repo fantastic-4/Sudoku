@@ -1,6 +1,4 @@
 import unittest
-import os
-import glob
 from File.txt_file import TXTFile
 from File.csv_file import Csvfile
  

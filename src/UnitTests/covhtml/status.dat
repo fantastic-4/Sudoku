@@ -2,7 +2,7 @@
 S'files'
 p2
 (dp3
-S'_eclipse_workspace_Copy of Sudoku_src_Parser_validator'
+S'_Users_arnold huanca_Eclipse_workspace_Sudoku_src_File_csv_file'
 p4
 (dp5
 S'index'
@@ -10,11 +10,11 @@ p6
 (dp7
 S'html_filename'
 p8
-S'_eclipse_workspace_Copy of Sudoku_src_Parser_validator.html'
+S'_Users_arnold huanca_Eclipse_workspace_Sudoku_src_File_csv_file.html'
 p9
 sS'name'
 p10
-S'C:\\eclipse\\workspace\\Copy of Sudoku\\src\\Parser\\validator'
+S'D:\\Users\\arnold huanca\\Eclipse\\workspace\\Sudoku\\src\\File\\csv_file'
 p11
 sS'nums'
 p12
@@ -37,7 +37,7 @@ p19
 I0
 sS'n_statements'
 p20
-I53
+I42
 sS'n_excluded'
 p21
 I0
@@ -52,18 +52,18 @@ p24
 I0
 sbssS'hash'
 p25
-S'\xd1Z\xa1\x81\x8fg\x9d>{\x12\xafc\xf7\x82\n\x13'
+S'M\xe6V\xff\xc5\x1bX\xaa\xd9\xadO\xd5\xad\xb0pl'
 p26
-ssS'_eclipse_workspace_Copy of Sudoku_src_Solver_norvig'
+ssS'_Users_arnold huanca_Eclipse_workspace_Sudoku_src_Main_display'
 p27
 (dp28
 g6
 (dp29
 g8
-S'_eclipse_workspace_Copy of Sudoku_src_Solver_norvig.html'
+S'_Users_arnold huanca_Eclipse_workspace_Sudoku_src_Main_display.html'
 p30
 sg10
-S'C:\\eclipse\\workspace\\Copy of Sudoku\\src\\Solver\\norvig'
+S'D:\\Users\\arnold huanca\\Eclipse\\workspace\\Sudoku\\src\\Main\\display'
 p31
 sg12
 g13
@@ -76,7 +76,7 @@ I1
 sg19
 I0
 sg20
-I52
+I36
 sg21
 I0
 sg22
@@ -86,272 +86,25 @@ I0
 sg24
 I0
 sbssg25
-S'\x9b\xd5\x1a\xf5\x00P\xa3\xf0\xcf\x99\x92\x8bf\xa0&\x95'
+S'\xe7\xd7=\x13\xca\xa2\xf0\xce\x9e\xee \x90/\xf5Z\xba'
 p34
-ssS'_eclipse_workspace_Copy of Sudoku_src_Solver_brute'
+ssS'_Users_arnold huanca_Eclipse_workspace_Sudoku_src_File_txt_file'
 p35
 (dp36
 g6
 (dp37
-S'html_filename'
+g8
+S'_Users_arnold huanca_Eclipse_workspace_Sudoku_src_File_txt_file.html'
 p38
-S'_eclipse_workspace_Copy of Sudoku_src_Solver_brute.html'
+sg10
+S'D:\\Users\\arnold huanca\\Eclipse\\workspace\\Sudoku\\src\\File\\txt_file'
 p39
-sS'name'
-p40
-S'C:\\eclipse\\workspace\\Copy of Sudoku\\src\\Solver\\brute'
-p41
-sS'nums'
-p42
-g13
-(g14
-g15
-NtRp43
-(dp44
-g18
-I1
-sg19
-I0
-sg20
-I51
-sg21
-I0
-sg22
-I0
-sg23
-I0
-sg24
-I0
-sbssg25
-S'GN\xf1[W\x8a\xa1?\xb5\xa0\x81\xf9\xcd\xfd\x9e"'
-p45
-ssS'_eclipse_workspace_Copy of Sudoku_src_File_txt_file'
-p46
-(dp47
-g6
-(dp48
-g8
-S'_eclipse_workspace_Copy of Sudoku_src_File_txt_file.html'
-p49
-sg10
-S'C:\\eclipse\\workspace\\Copy of Sudoku\\src\\File\\txt_file'
-p50
 sg12
 g13
 (g14
 g15
-NtRp51
-(dp52
-g18
-I1
-sg19
-I0
-sg20
-I33
-sg21
-I0
-sg22
-I0
-sg23
-I0
-sg24
-I0
-sbssg25
-S'\xc15\r\xdc\xa1\xce\xa7\x18\xec\x95v\x1dH}\x06\x1c'
-p53
-ssS'_eclipse_workspace_Copy of Sudoku_src_File_file'
-p54
-(dp55
-g6
-(dp56
-S'html_filename'
-p57
-S'_eclipse_workspace_Copy of Sudoku_src_File_file.html'
-p58
-sS'name'
-p59
-S'C:\\eclipse\\workspace\\Copy of Sudoku\\src\\File\\file'
-p60
-sS'nums'
-p61
-g13
-(g14
-g15
-NtRp62
-(dp63
-g18
-I1
-sg19
-I0
-sg20
-I22
-sg21
-I0
-sg22
-I0
-sg23
-I0
-sg24
-I0
-sbssg25
-S'\xd3\xef"\xc0\x7f\x99m)>\x8beEY\xe3Q\xb9'
-p64
-ssS'_eclipse_workspace_Copy of Sudoku_src_Parser_grid'
-p65
-(dp66
-g6
-(dp67
-g8
-S'_eclipse_workspace_Copy of Sudoku_src_Parser_grid.html'
-p68
-sg10
-S'C:\\eclipse\\workspace\\Copy of Sudoku\\src\\Parser\\grid'
-p69
-sg12
-g13
-(g14
-g15
-NtRp70
-(dp71
-g18
-I1
-sg19
-I0
-sg20
-I28
-sg21
-I0
-sg22
-I0
-sg23
-I0
-sg24
-I0
-sbssg25
-S'b6O\xbf\xff\x88\xf0[c"\x98\xe9"\xa0_\xfc'
-p72
-ssS'_eclipse_workspace_Copy of Sudoku_src_Main_display'
-p73
-(dp74
-g6
-(dp75
-g8
-S'_eclipse_workspace_Copy of Sudoku_src_Main_display.html'
-p76
-sg10
-S'C:\\eclipse\\workspace\\Copy of Sudoku\\src\\Main\\display'
-p77
-sg12
-g13
-(g14
-g15
-NtRp78
-(dp79
-g18
-I1
-sg19
-I0
-sg20
-I17
-sg21
-I0
-sg22
-I0
-sg23
-I0
-sg24
-I0
-sbssg25
-S'4\xd9\x7fX\xf3\xedV\xc3\xae\xb1\xff\xb0\xe2\x90\xd1\x8a'
-p80
-ssS'_eclipse_workspace_Copy of Sudoku_src_Main_sudoku_game'
-p81
-(dp82
-g6
-(dp83
-g8
-S'_eclipse_workspace_Copy of Sudoku_src_Main_sudoku_game.html'
-p84
-sg10
-S'C:\\eclipse\\workspace\\Copy of Sudoku\\src\\Main\\sudoku_game'
-p85
-sg12
-g13
-(g14
-g15
-NtRp86
-(dp87
-g18
-I1
-sg19
-I0
-sg20
-I41
-sg21
-I0
-sg22
-I0
-sg23
-I3
-sg24
-I0
-sbssg25
-S'4\n\x12p\xbe\xedB<\xae\x9eM\xa3GaTY'
-p88
-ssS'_eclipse_workspace_Copy of Sudoku_src_Solver_solve_algorithm'
-p89
-(dp90
-g6
-(dp91
-g8
-S'_eclipse_workspace_Copy of Sudoku_src_Solver_solve_algorithm.html'
-p92
-sg10
-S'C:\\eclipse\\workspace\\Copy of Sudoku\\src\\Solver\\solve_algorithm'
-p93
-sg12
-g13
-(g14
-g15
-NtRp94
-(dp95
-g18
-I1
-sg19
-I0
-sg20
-I5
-sg21
-I0
-sg22
-I0
-sg23
-I0
-sg24
-I0
-sbssg25
-S'\xbc4\x1bx\xad\xad&J.\x98\x14\x19}JX\xf0'
-p96
-ssS'_eclipse_workspace_Copy of Sudoku_src_File_config_file_xml'
-p97
-(dp98
-g6
-(dp99
-S'html_filename'
-p100
-S'_eclipse_workspace_Copy of Sudoku_src_File_config_file_xml.html'
-p101
-sS'name'
-p102
-S'C:\\eclipse\\workspace\\Copy of Sudoku\\src\\File\\config_file_xml'
-p103
-sS'nums'
-p104
-g13
-(g14
-g15
-NtRp105
-(dp106
+NtRp40
+(dp41
 g18
 I1
 sg19
@@ -367,31 +120,31 @@ I0
 sg24
 I0
 sbssg25
-S'\xdf\x86:\x8d\xf4g\xdb\xa4\x95(\xbeQi2\x11\xf7'
-p107
-ssS'_eclipse_workspace_Copy of Sudoku_src_File_config_file'
-p108
-(dp109
+S';\x0bmB-`\x88\xe2\x9d\xc2\x18\x9c(S\xfct'
+p42
+ssS'_Users_arnold huanca_Eclipse_workspace_Sudoku_src_File_config_file_xml'
+p43
+(dp44
 g6
-(dp110
+(dp45
 g8
-S'_eclipse_workspace_Copy of Sudoku_src_File_config_file.html'
-p111
+S'_Users_arnold huanca_Eclipse_workspace_Sudoku_src_File_config_file_xml.html'
+p46
 sg10
-S'C:\\eclipse\\workspace\\Copy of Sudoku\\src\\File\\config_file'
-p112
+S'D:\\Users\\arnold huanca\\Eclipse\\workspace\\Sudoku\\src\\File\\config_file_xml'
+p47
 sg12
 g13
 (g14
 g15
-NtRp113
-(dp114
+NtRp48
+(dp49
 g18
 I1
 sg19
 I0
 sg20
-I4
+I43
 sg21
 I0
 sg22
@@ -401,88 +154,357 @@ I0
 sg24
 I0
 sbssg25
-S'\x15\x91\x81ccf\xc8)6\xcfi\xf7b\xaf\xd6o'
+S'\xa3\xb5\xd3\x1e\xa7\x91F\x97\xc9\xf2\x91\xb6A1\x9cd'
+p50
+ssS'_Users_arnold huanca_Eclipse_workspace_Sudoku_src_Solver_solve_algorithm'
+p51
+(dp52
+g6
+(dp53
+g8
+S'_Users_arnold huanca_Eclipse_workspace_Sudoku_src_Solver_solve_algorithm.html'
+p54
+sg10
+S'D:\\Users\\arnold huanca\\Eclipse\\workspace\\Sudoku\\src\\Solver\\solve_algorithm'
+p55
+sg12
+g13
+(g14
+g15
+NtRp56
+(dp57
+g18
+I1
+sg19
+I0
+sg20
+I5
+sg21
+I0
+sg22
+I0
+sg23
+I0
+sg24
+I0
+sbssg25
+S'\x8c\xf0\xaf%$\t1\x06\xb9\xa6\xb5\xa9\xa2\x89\xeb!'
+p58
+ssS'_Users_arnold huanca_Eclipse_workspace_Sudoku_src_Parser_validator'
+p59
+(dp60
+g6
+(dp61
+g8
+S'_Users_arnold huanca_Eclipse_workspace_Sudoku_src_Parser_validator.html'
+p62
+sg10
+S'D:\\Users\\arnold huanca\\Eclipse\\workspace\\Sudoku\\src\\Parser\\validator'
+p63
+sg12
+g13
+(g14
+g15
+NtRp64
+(dp65
+g18
+I1
+sg19
+I0
+sg20
+I51
+sg21
+I0
+sg22
+I0
+sg23
+I0
+sg24
+I0
+sbssg25
+S'\xe9\xbc\xc9\xe9\xe5\x8bH\xbeGj\xf98\x8cA\xc8]'
+p66
+ssS'_Users_arnold huanca_Eclipse_workspace_Sudoku_src_Parser_grid'
+p67
+(dp68
+g6
+(dp69
+g8
+S'_Users_arnold huanca_Eclipse_workspace_Sudoku_src_Parser_grid.html'
+p70
+sg10
+S'D:\\Users\\arnold huanca\\Eclipse\\workspace\\Sudoku\\src\\Parser\\grid'
+p71
+sg12
+g13
+(g14
+g15
+NtRp72
+(dp73
+g18
+I1
+sg19
+I0
+sg20
+I28
+sg21
+I0
+sg22
+I0
+sg23
+I0
+sg24
+I0
+sbssg25
+S'\x03\xa2\x06B~\xf5w)@\x90 \x1f\xfe\x8a\x01\xf9'
+p74
+ssS'_Users_arnold huanca_Eclipse_workspace_Sudoku_src_Solver_brute'
+p75
+(dp76
+g6
+(dp77
+g8
+S'_Users_arnold huanca_Eclipse_workspace_Sudoku_src_Solver_brute.html'
+p78
+sg10
+S'D:\\Users\\arnold huanca\\Eclipse\\workspace\\Sudoku\\src\\Solver\\brute'
+p79
+sg12
+g13
+(g14
+g15
+NtRp80
+(dp81
+g18
+I1
+sg19
+I0
+sg20
+I51
+sg21
+I0
+sg22
+I0
+sg23
+I0
+sg24
+I0
+sbssg25
+S'K\x8e\xf3\x0b\xd8\xac^\x9c\xef\xde\x8d\xf8\x80\xee\xbf;'
+p82
+ssS'_Users_arnold huanca_Eclipse_workspace_Sudoku_src_Solver_norvig'
+p83
+(dp84
+g6
+(dp85
+g8
+S'_Users_arnold huanca_Eclipse_workspace_Sudoku_src_Solver_norvig.html'
+p86
+sg10
+S'D:\\Users\\arnold huanca\\Eclipse\\workspace\\Sudoku\\src\\Solver\\norvig'
+p87
+sg12
+g13
+(g14
+g15
+NtRp88
+(dp89
+g18
+I1
+sg19
+I0
+sg20
+I52
+sg21
+I0
+sg22
+I0
+sg23
+I0
+sg24
+I0
+sbssg25
+S'\x873I:\xf8q\xd7\x00Ny\xaeY\xb4sx2'
+p90
+ssS'_Users_arnold huanca_Eclipse_workspace_Sudoku_src_File_config_file'
+p91
+(dp92
+g6
+(dp93
+g8
+S'_Users_arnold huanca_Eclipse_workspace_Sudoku_src_File_config_file.html'
+p94
+sg10
+S'D:\\Users\\arnold huanca\\Eclipse\\workspace\\Sudoku\\src\\File\\config_file'
+p95
+sg12
+g13
+(g14
+g15
+NtRp96
+(dp97
+g18
+I1
+sg19
+I0
+sg20
+I9
+sg21
+I0
+sg22
+I0
+sg23
+I0
+sg24
+I0
+sbssg25
+S'\xa9\x89\x924\x98\xf1vo\xb42\x00`\xb9\x9df\xd0'
+p98
+ssS'_Users_arnold huanca_Eclipse_workspace_Sudoku_src_File_file'
+p99
+(dp100
+g6
+(dp101
+g8
+S'_Users_arnold huanca_Eclipse_workspace_Sudoku_src_File_file.html'
+p102
+sg10
+S'D:\\Users\\arnold huanca\\Eclipse\\workspace\\Sudoku\\src\\File\\file'
+p103
+sg12
+g13
+(g14
+g15
+NtRp104
+(dp105
+g18
+I1
+sg19
+I0
+sg20
+I22
+sg21
+I0
+sg22
+I0
+sg23
+I0
+sg24
+I0
+sbssg25
+S'\xd0\x003\xce\xf9\xf2\xa2{\x16\xeba\x86<\x04\xafm'
+p106
+ssS'_Users_arnold huanca_Eclipse_workspace_Sudoku_src_Solver_dlx'
+p107
+(dp108
+g6
+(dp109
+g8
+S'_Users_arnold huanca_Eclipse_workspace_Sudoku_src_Solver_dlx.html'
+p110
+sg10
+S'D:\\Users\\arnold huanca\\Eclipse\\workspace\\Sudoku\\src\\Solver\\dlx'
+p111
+sg12
+g13
+(g14
+g15
+NtRp112
+(dp113
+g18
+I1
+sg19
+I0
+sg20
+I180
+sg21
+I0
+sg22
+I0
+sg23
+I0
+sg24
+I0
+sbssg25
+S'k\x13I\x1fL/\x9b\xa0\x86\xcb\xed@\xa6\xd1j\r'
+p114
+ssS'_Users_arnold huanca_Eclipse_workspace_Sudoku_src_Main_play_sudoku'
 p115
-ssS'_eclipse_workspace_Copy of Sudoku_src_File_csv_file'
-p116
+(dp116
+g6
 (dp117
-g6
-(dp118
-g57
-S'_eclipse_workspace_Copy of Sudoku_src_File_csv_file.html'
+g8
+S'_Users_arnold huanca_Eclipse_workspace_Sudoku_src_Main_play_sudoku.html'
+p118
+sg10
+S'D:\\Users\\arnold huanca\\Eclipse\\workspace\\Sudoku\\src\\Main\\play_sudoku'
 p119
-sg59
-S'C:\\eclipse\\workspace\\Copy of Sudoku\\src\\File\\csv_file'
-p120
-sg61
+sg12
 g13
 (g14
 g15
-NtRp121
-(dp122
+NtRp120
+(dp121
 g18
 I1
 sg19
 I0
 sg20
-I42
+I146
 sg21
 I0
 sg22
 I0
 sg23
-I0
+I4
 sg24
 I0
 sbssg25
-S'\\\x9d\x19fb\x00DQ`\x0b\x08\x87\xe9\x12\x14\xe6'
+S'\x96K\x87]\x1fx\xfe7\xd6a\x03\xffo\x0e\xc5r'
+p122
+ssS'_Users_arnold huanca_Eclipse_workspace_Sudoku_src_Main_sudoku_game'
 p123
-ssS'_eclipse_workspace_Copy of Sudoku_src_Solver_dlx'
-p124
-(dp125
+(dp124
 g6
-(dp126
-S'html_filename'
+(dp125
+g8
+S'_Users_arnold huanca_Eclipse_workspace_Sudoku_src_Main_sudoku_game.html'
+p126
+sg10
+S'D:\\Users\\arnold huanca\\Eclipse\\workspace\\Sudoku\\src\\Main\\sudoku_game'
 p127
-S'_eclipse_workspace_Copy of Sudoku_src_Solver_dlx.html'
-p128
-sS'name'
-p129
-S'C:\\eclipse\\workspace\\Copy of Sudoku\\src\\Solver\\dlx'
-p130
-sS'nums'
-p131
+sg12
 g13
 (g14
 g15
-NtRp132
-(dp133
+NtRp128
+(dp129
 g18
 I1
 sg19
 I0
 sg20
-I178
+I52
 sg21
 I0
 sg22
 I0
 sg23
-I0
+I2
 sg24
 I0
 sbssg25
-S'\xc9\x14\xba\x03\x88\xbc\xbeytb5+\x1bf\xdf\xd5'
-p134
+S'}\n\xe6\x97Q\xec,!\xe4Z\x83RD\xccIN'
+p130
 sssS'version'
-p135
+p131
 S'3.6'
-p136
+p132
 sS'settings'
-p137
+p133
 S'\x89M\xc0\n\xb1\xe3J\x90\x90\xa05\x9c\x8c\xbev\x83'
-p138
+p134
 sS'format'
-p139
+p135
 I1
 s.

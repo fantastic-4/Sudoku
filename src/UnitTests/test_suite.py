@@ -19,7 +19,7 @@ from UnitTests.test_DLX import TestDlxMatrix
 from UnitTests.test_integration1_using_both_algorithms import Test_integration_using_norvig
 from UnitTests.test_sudoku_game import Test_SudokuGame
 from UnitTests.test_validator import Test_validator
-from UnitTests.Test_play_sudoku import TestPlaySudoku
+from UnitTests.test_play_sudoku import TestPlaySudoku
 from UnitTests.test_bugs_found import TestBugFound
 
 

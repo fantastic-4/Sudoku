@@ -5,7 +5,7 @@
     
     
     <meta http-equiv='X-UA-Compatible' content='IE=emulateIE7' />
-    <title>Coverage for C:\eclipse\workspace\Copy of Sudoku\src\Parser\grid: 100%</title>
+    <title>Coverage for D:\Users\arnold huanca\Eclipse\workspace\Sudoku\src\Parser\grid: 100%</title>
     <link rel='stylesheet' href='style.css' type='text/css'>
     
     <script type='text/javascript' src='jquery-1.4.3.min.js'></script>
@@ -20,7 +20,7 @@
 
 <div id='header'>
     <div class='content'>
-        <h1>Coverage for <b>C:\eclipse\workspace\Copy of Sudoku\src\Parser\grid</b> :
+        <h1>Coverage for <b>D:\Users\arnold huanca\Eclipse\workspace\Sudoku\src\Parser\grid</b> :
             <span class='pc_cov'>100%</span>
         </h1>
         <img id='keyboard_icon' src='keybd_closed.png'>
@@ -93,14 +93,14 @@
 <p id='n30' class='pln'><a href='#n30'>30</a></p>
 <p id='n31' class='stm run hide_run'><a href='#n31'>31</a></p>
 <p id='n32' class='pln'><a href='#n32'>32</a></p>
-<p id='n33' class='pln'><a href='#n33'>33</a></p>
-<p id='n34' class='pln'><a href='#n34'>34</a></p>
+<p id='n33' class='stm run hide_run'><a href='#n33'>33</a></p>
+<p id='n34' class='stm run hide_run'><a href='#n34'>34</a></p>
 <p id='n35' class='stm run hide_run'><a href='#n35'>35</a></p>
 <p id='n36' class='stm run hide_run'><a href='#n36'>36</a></p>
 <p id='n37' class='stm run hide_run'><a href='#n37'>37</a></p>
 <p id='n38' class='stm run hide_run'><a href='#n38'>38</a></p>
-<p id='n39' class='stm run hide_run'><a href='#n39'>39</a></p>
-<p id='n40' class='stm run hide_run'><a href='#n40'>40</a></p>
+<p id='n39' class='pln'><a href='#n39'>39</a></p>
+<p id='n40' class='pln'><a href='#n40'>40</a></p>
 <p id='n41' class='pln'><a href='#n41'>41</a></p>
 <p id='n42' class='pln'><a href='#n42'>42</a></p>
 <p id='n43' class='pln'><a href='#n43'>43</a></p>
@@ -143,18 +143,18 @@
 <p id='t29' class='stm run hide_run'>&nbsp; &nbsp; &nbsp; &nbsp; <span class='key'>return</span> <span class='nam'>dict</span><span class='op'>(</span><span class='nam'>zip</span><span class='op'>(</span><span class='nam'>self</span><span class='op'>.</span><span class='nam'>squares</span><span class='op'>,</span> <span class='nam'>chars</span><span class='op'>)</span><span class='op'>)</span><span class='strut'>&nbsp;</span></p>
 <p id='t30' class='pln'><span class='strut'>&nbsp;</span></p>
 <p id='t31' class='stm run hide_run'>&nbsp; &nbsp; <span class='key'>def</span> <span class='nam'>validate_grid</span><span class='op'>(</span><span class='nam'>self</span><span class='op'>,</span> <span class='nam'>grid_string</span><span class='op'>)</span><span class='op'>:</span><span class='strut'>&nbsp;</span></p>
-<p id='t32' class='pln'>&nbsp; &nbsp; &nbsp; &nbsp; <span class='str'>&#39;&#39;&#39;Function to validate the string given, if the values,</span><span class='strut'>&nbsp;</span></p>
-<p id='t33' class='pln'><span class='str'>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; size and order of values is correct,</span><span class='strut'>&nbsp;</span></p>
-<p id='t34' class='pln'><span class='str'>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; then it will be converted into a dictionary to be solved&#39;&#39;&#39;</span><span class='strut'>&nbsp;</span></p>
-<p id='t35' class='stm run hide_run'>&nbsp; &nbsp; &nbsp; &nbsp; <span class='nam'>flag</span> <span class='op'>=</span> <span class='nam'>self</span><span class='op'>.</span><span class='nam'>validator</span><span class='op'>.</span><span class='nam'>validate_values</span><span class='op'>(</span><span class='nam'>grid_string</span><span class='op'>)</span><span class='strut'>&nbsp;</span></p>
-<p id='t36' class='stm run hide_run'>&nbsp; &nbsp; &nbsp; &nbsp; <span class='key'>if</span><span class='op'>(</span><span class='nam'>flag</span><span class='op'>)</span><span class='op'>:</span><span class='strut'>&nbsp;</span></p>
-<p id='t37' class='stm run hide_run'>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class='nam'>self</span><span class='op'>.</span><span class='nam'>dictionary_of_grid</span> <span class='op'>=</span> <span class='nam'>self</span><span class='op'>.</span><span class='nam'>set_values</span><span class='op'>(</span><span class='nam'>grid_string</span><span class='op'>)</span><span class='strut'>&nbsp;</span></p>
-<p id='t38' class='stm run hide_run'>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class='key'>for</span> <span class='nam'>row</span> <span class='key'>in</span> <span class='nam'>self</span><span class='op'>.</span><span class='nam'>rows</span><span class='op'>:</span><span class='strut'>&nbsp;</span></p>
-<p id='t39' class='stm run hide_run'>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class='key'>for</span> <span class='nam'>column</span> <span class='key'>in</span> <span class='nam'>self</span><span class='op'>.</span><span class='nam'>cols</span><span class='op'>:</span><span class='strut'>&nbsp;</span></p>
-<p id='t40' class='stm run hide_run'>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class='key'>if</span><span class='op'>(</span><span class='key'>not</span> <span class='nam'>self</span><span class='op'>.</span><span class='nam'>validator</span><span class='op'>.</span><span class='nam'>check_lines</span><span class='op'>(</span><span class='nam'>self</span><span class='op'>.</span><span class='nam'>dictionary_of_grid</span><span class='op'>[</span><span class='nam'>row</span><span class='op'>+</span><span class='nam'>column</span><span class='op'>]</span><span class='op'>,</span><span class='strut'>&nbsp;</span></p>
-<p id='t41' class='pln'>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class='nam'>row</span><span class='op'>+</span><span class='nam'>column</span><span class='op'>,</span> <span class='nam'>self</span><span class='op'>.</span><span class='nam'>dictionary_of_grid</span><span class='op'>)</span><span class='strut'>&nbsp;</span></p>
-<p id='t42' class='pln'>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class='key'>and</span> <span class='key'>not</span> <span class='nam'>self</span><span class='op'>.</span><span class='nam'>validator</span><span class='op'>.</span><span class='nam'>check_square</span><span class='op'>(</span><span class='nam'>self</span><span class='op'>.</span><span class='nam'>dictionary_of_grid</span><span class='op'>[</span><span class='nam'>row</span><span class='op'>+</span><span class='nam'>column</span><span class='op'>]</span><span class='op'>,</span><span class='strut'>&nbsp;</span></p>
-<p id='t43' class='pln'>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class='nam'>row</span><span class='op'>+</span><span class='nam'>column</span><span class='op'>,</span> <span class='nam'>self</span><span class='op'>.</span><span class='nam'>dictionary_of_grid</span><span class='op'>)</span><span class='op'>)</span><span class='op'>:</span><span class='strut'>&nbsp;</span></p>
+<p id='t32' class='pln'>&nbsp; &nbsp; &nbsp; &nbsp; <span class='str'>&#39;&#39;&#39;Function to validate the string given&#39;&#39;&#39;</span><span class='strut'>&nbsp;</span></p>
+<p id='t33' class='stm run hide_run'>&nbsp; &nbsp; &nbsp; &nbsp; <span class='nam'>flag</span> <span class='op'>=</span> <span class='nam'>self</span><span class='op'>.</span><span class='nam'>validator</span><span class='op'>.</span><span class='nam'>validate_values</span><span class='op'>(</span><span class='nam'>grid_string</span><span class='op'>)</span><span class='strut'>&nbsp;</span></p>
+<p id='t34' class='stm run hide_run'>&nbsp; &nbsp; &nbsp; &nbsp; <span class='key'>if</span><span class='op'>(</span><span class='nam'>flag</span><span class='op'>)</span><span class='op'>:</span><span class='strut'>&nbsp;</span></p>
+<p id='t35' class='stm run hide_run'>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class='nam'>self</span><span class='op'>.</span><span class='nam'>dictionary_of_grid</span> <span class='op'>=</span> <span class='nam'>self</span><span class='op'>.</span><span class='nam'>set_values</span><span class='op'>(</span><span class='nam'>grid_string</span><span class='op'>)</span><span class='strut'>&nbsp;</span></p>
+<p id='t36' class='stm run hide_run'>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class='key'>for</span> <span class='nam'>row</span> <span class='key'>in</span> <span class='nam'>self</span><span class='op'>.</span><span class='nam'>rows</span><span class='op'>:</span><span class='strut'>&nbsp;</span></p>
+<p id='t37' class='stm run hide_run'>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class='key'>for</span> <span class='nam'>column</span> <span class='key'>in</span> <span class='nam'>self</span><span class='op'>.</span><span class='nam'>cols</span><span class='op'>:</span><span class='strut'>&nbsp;</span></p>
+<p id='t38' class='stm run hide_run'>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class='key'>if</span><span class='op'>(</span><span class='key'>not</span> <span class='nam'>self</span><span class='op'>.</span><span class='nam'>validator</span><span class='op'>.</span><span class='nam'>check_lines</span><span class='op'>(</span><span class='nam'>self</span><span class='op'>.</span><span class='nam'>dictionary_of_grid</span><span class='op'>[</span><span class='nam'>row</span><span class='op'>+</span><span class='nam'>column</span><span class='op'>]</span><span class='op'>,</span><span class='strut'>&nbsp;</span></p>
+<p id='t39' class='pln'>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class='nam'>row</span><span class='op'>+</span><span class='nam'>column</span><span class='op'>,</span><span class='strut'>&nbsp;</span></p>
+<p id='t40' class='pln'>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class='nam'>self</span><span class='op'>.</span><span class='nam'>dictionary_of_grid</span><span class='op'>)</span><span class='strut'>&nbsp;</span></p>
+<p id='t41' class='pln'>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class='key'>or</span> <span class='key'>not</span> <span class='nam'>self</span><span class='op'>.</span><span class='nam'>validator</span><span class='op'>.</span><span class='nam'>check_square</span><span class='op'>(</span><span class='nam'>self</span><span class='op'>.</span><span class='nam'>dictionary_of_grid</span><span class='op'>[</span><span class='nam'>row</span><span class='op'>+</span><span class='nam'>column</span><span class='op'>]</span><span class='op'>,</span><span class='strut'>&nbsp;</span></p>
+<p id='t42' class='pln'>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class='nam'>row</span><span class='op'>+</span><span class='nam'>column</span><span class='op'>,</span><span class='strut'>&nbsp;</span></p>
+<p id='t43' class='pln'>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class='nam'>self</span><span class='op'>.</span><span class='nam'>dictionary_of_grid</span><span class='op'>)</span><span class='op'>)</span><span class='op'>:</span><span class='strut'>&nbsp;</span></p>
 <p id='t44' class='stm run hide_run'>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class='nam'>flag</span> <span class='op'>=</span> <span class='nam'>False</span><span class='strut'>&nbsp;</span></p>
 <p id='t45' class='stm run hide_run'>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class='key'>break</span><span class='strut'>&nbsp;</span></p>
 <p id='t46' class='stm run hide_run'>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class='key'>if</span><span class='op'>(</span><span class='key'>not</span> <span class='nam'>flag</span><span class='op'>)</span><span class='op'>:</span> <span class='key'>break</span><span class='strut'>&nbsp;</span></p>
