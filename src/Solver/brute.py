@@ -9,7 +9,7 @@ class Brute (SolveAlgorithm):
     
         SolveAlgorithm.__init__(self)
         self.validator = Validator()
-        self.dictionary = None
+        self.global_dictionary = None
         
         '''Dictionary with Empty Values only'''
         self.empty_values = None
@@ -17,11 +17,11 @@ class Brute (SolveAlgorithm):
         '''List of lists to register moves for each empty cell'''
         self.moves_per_cell = [[]]
     
-    def solve(self, dictionary):
+    def solve(self, dictionary_to_solve):
         '''Function to initialize global attributes and start the process,
        also calculates the time that takes the algorithm to solve the grid
        Return the grid fulfilled'''
-        self.dictionary = dictionary
+        self.global_dictionary = self.__duplicate_dictionary(dictionary_to_solve)
         self.empty_values = self.__grid_empty_values()
         empties_number = len(self.empty_values.keys())
         while empties_number > 0:
@@ -32,14 +32,25 @@ class Brute (SolveAlgorithm):
         self.__start__()
         self.time_elapsed = time.clock() - self.time_elapsed
         
-        return self.dictionary
+        return self.global_dictionary
         
+    def __duplicate_dictionary(self, dictionary):
+        '''
+        Creates a copy of a dictionary given.
+        :param dictionary: dictionary to clone.
+        '''
+        dictionary_as_list = dictionary.items()
+        new_dictionary = []
+        for element in dictionary_as_list:
+            new_dictionary.append(element)
+        return dict(new_dictionary)
+    
     def __grid_empty_values(self):
         '''Function to select all the tuples on dictionary with value as Zero
        Return a dictionary with empty values'''
     
         empties = []
-        for key,value in self.dictionary.items():
+        for key,value in self.global_dictionary.items():
             if(value == "0" or value == "."):
                 empties.append((key,value)) 
         return dict(empties)    
@@ -57,11 +68,11 @@ class Brute (SolveAlgorithm):
                 if(self.__fill_cell__(pos, val)):
                     pos += 1
                 else:
-                    self.dictionary[val] = "0"
+                    self.global_dictionary[val] = "0"
                     self.moves_per_cell[pos] = []
                     pos -= 1
         except IndexError:
-            self.dictionary = False
+            self.global_dictionary = False
                     
     def __fill_cell__(self,pos,key):
         '''Function to iterate numbers from 1 to 9 until set a number that 
@@ -71,11 +82,11 @@ class Brute (SolveAlgorithm):
         cell_set = False
         for n in range(0,9):
             num = self.validator.digits[n]
-            if(self.validator.check_lines(num, key, self.dictionary) and \
-               self.validator.check_square(num, key, self.dictionary) 
+            if(self.validator.check_lines(num, key, self.global_dictionary) and \
+               self.validator.check_square(num, key, self.global_dictionary) 
                and not(num in self.moves_per_cell[pos])):
                 cell_set = True
-                self.dictionary[key] = num
+                self.global_dictionary[key] = num
                 self.moves_per_cell[pos].append(num)
                 break
         return cell_set
