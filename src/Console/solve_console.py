@@ -63,8 +63,10 @@ class SolveConsole():
         
         
         solved = self.game_console.solve_sudoku_from_file(file_path, file_name)
-
-        self.display_or_export_sudoku_solved(solved)
+        if(solved != False):
+                self.display_or_export_sudoku_solved(solved)
+        else:
+            print "\n...Current grid cannot be solved...\n"
         raw_input("Press any key to continue...")
         
     def verify_path(self, ispath):
@@ -109,7 +111,10 @@ class SolveConsole():
         if(flag):
             dictionary = input_text
             solved = self.game_console.solve_sudoku_from_console(dictionary)
-            self.display_or_export_sudoku_solved(solved)
+            if(solved != False):
+                self.display_or_export_sudoku_solved(solved)
+            else:
+                print "\n...Current grid cannot be solved...\n"
             raw_input("Press any key to continue...")
     
     def display_or_export_sudoku_solved(self, dictionary):
