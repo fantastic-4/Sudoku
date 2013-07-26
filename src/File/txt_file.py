@@ -26,7 +26,7 @@ class TXTFile(File):
             else:
                 return value
 
-    def write_file(self, values,alg):
+    def write_file(self, values, alg):
         '''This method save the game into TXT called Solved_game_timeStamp.txt
          file where the path will be defined in main class'''
         self.file_name=self.__timeStamped("Solved_game")

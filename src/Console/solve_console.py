@@ -63,7 +63,6 @@ class SolveConsole():
         
         
         solved = self.game_console.solve_sudoku_from_file(file_path, file_name)
-    #    original1=self.game_console.get_original_string(file_path, file_name)
 
         self.display_or_export_sudoku_solved(solved)
         raw_input("Press any key to continue...")
@@ -137,7 +136,7 @@ class SolveConsole():
             self.game_console.display_string(sudoku_solved)
         if (output == 'export to file'):
             self.game_console.display_string(sudoku_solved)
-            self.game_console.file_read.write_file(sudoku_solved,alg)
+            self.game_console.file_read.write_file(sudoku_solved, alg)
             print "\n...The solution was exported successfully to the path: %s\
              \n" %self.game_console.file_read.path
 

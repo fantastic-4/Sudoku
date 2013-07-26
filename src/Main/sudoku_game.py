@@ -43,6 +43,7 @@ class SudokuGame():
         algorithm = self.get_xml_value("default_algorithm").lower()
         self.original = self.grid.set_values(iofile_easy)
         sudoku_resolved = self.dict_algorithm.get(algorithm)(self.original)
+        self.file_read = TXTFile(path, filename)
         return sudoku_resolved
     
     def solve_sudoku_from_console (self, dictionary):
